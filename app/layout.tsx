@@ -22,6 +22,13 @@ const imFellEnglish = IM_Fell_English({
   display: "swap",
 });
 
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Stack or Crack",
   description: "Down the rabbit hole of AI tools",
