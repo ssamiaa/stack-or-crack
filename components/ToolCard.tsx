@@ -61,24 +61,24 @@ export default function ToolCard({ tool, isSelected, onSelect, onLearnMore }: To
             {tool.trending && (
                 <span
                     style={badgeStyle}
-                    className="absolute top-3 right-3 rounded-2xl bg-amber-200 px-2 py-0.5 text-xs font-medium text-amber-700">
+                    className="absolute top-3 right-3 rounded-2xl bg-amber-200 px-2 py-0.5 text-md font-medium text-amber-700">
                     Trending
                 </span>
             )}
 
             {/* Logo + name + maker */}
-            <div className="flex flex-col gap-1">
-                <span className="text-3xl leading-none" role="img" aria-label={tool.name}>
+            <div className="flex flex-col">
+                <span className="text-4xl leading-none" role="img" aria-label={tool.name}>
                     {tool.logo}
                 </span>
-                <span className="text-base font-semibold text-white leading-tight">
+                <span className="text-2xl font-bold text-white leading-tight">
                     {tool.name}
                 </span>
-                <span className="text-xs text-white/50">{tool.maker}</span>
+                <span className="text-lg font-bold text-white/50">by {tool.maker}</span>
             </div>
 
             {/* Tagline */}
-            <p className="text-sm text-white/50 leading-snug">{tool.tagline}</p>
+            <p className="text-md text-white/50 leading-snug">{tool.tagline}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5">
@@ -86,7 +86,7 @@ export default function ToolCard({ tool, isSelected, onSelect, onLearnMore }: To
                     <span
                         key={tag}
                         style={{ boxShadow: '0 0 6px 1px rgba(100, 200, 150, 0.3)' }}
-                        className="rounded-2xl border border-white/20 px-2.5 py-0.5 text-xs font-medium text-white/60"
+                        className="rounded-2xl border border-white/20 px-2.5 py-0.5 text-sm font-medium text-white/60"
                     >
                         {tag}
                     </span>
@@ -100,22 +100,25 @@ export default function ToolCard({ tool, isSelected, onSelect, onLearnMore }: To
                     animate={{ scale: isSelected ? 1 : 0, opacity: isSelected ? 1 : 0 }}
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
                     style={badgeStyle}
-                    className="flex h-5 w-5 items-center justify-center rounded-full"
+                    className="flex h-7 w-7 items-center justify-center rounded-full"
                 >
-                    <svg className="h-3 w-3 text-white/50" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="h-4 w-4 text-white/50" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
                     </svg>
                 </motion.div>
 
-                <button
+                <motion.button
                     onClick={(e) => {
                         e.stopPropagation();
                         onLearnMore(tool);
                     }}
-                    className="rounded-lg px-3 py-1.5 text-xs font-medium text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                    style={badgeStyle}
+                    whileHover={{ boxShadow: '0 0 5px 2px rgba(168, 85, 247, 0.5)', color: '#fff' }}
+                    transition={{ duration: 0.15 }}
+                    className="rounded-lg px-3 py-1.5 text-md font-medium text-white/60 cursor-pointer"
                 >
                     Learn More
-                </button>
+                </motion.button>
             </div>
         </motion.div>
     );
