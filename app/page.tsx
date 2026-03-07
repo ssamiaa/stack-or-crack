@@ -1,53 +1,23 @@
 "use client";
 import { useState } from "react";
-
-type Screen = "landing" | "brief" | "map" | "judging" | "verdict";
+import { Screen } from "@/lib/types";
+import Landing from "@/components/screens/Landing";
+import Brief from "@/components/screens/Brief";
+import Map from "@/components/screens/Map";
+import Judging from "@/components/screens/Judging";
+import Verdict from "@/components/screens/Verdict";
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
-
   const goTo = (s: Screen) => setScreen(s);
 
   return (
     <main>
-      {screen === "landing" && (
-        <div>
-          <h1>Landing</h1>
-          <button onClick={() => goTo("brief")}>Start Challenge</button>
-          <button onClick={() => goTo("map")}>Explore Map</button>
-        </div>
-      )}
-
-      {screen === "brief" && (
-        <div>
-          <h1>Brief</h1>
-          <button onClick={() => goTo("map")}>Build My Stack</button>
-          <button onClick={() => goTo("landing")}>Back</button>
-        </div>
-      )}
-
-      {screen === "map" && (
-        <div>
-          <h1>Map</h1>
-          <button onClick={() => goTo("judging")}>Drink Me</button>
-          <button onClick={() => goTo("brief")}>Back</button>
-        </div>
-      )}
-
-      {screen === "judging" && (
-        <div>
-          <h1>Judging</h1>
-          <button onClick={() => goTo("verdict")}>See Verdict</button>
-        </div>
-      )}
-
-      {screen === "verdict" && (
-        <div>
-          <h1>Verdict</h1>
-          <button onClick={() => goTo("brief")}>Try Again</button>
-          <button onClick={() => goTo("map")}>Back to Map</button>
-        </div>
-      )}
+      {screen === "landing" && <Landing goTo={goTo} />}
+      {screen === "brief" && <Brief goTo={goTo} />}
+      {screen === "map" && <Map goTo={goTo} />}
+      {screen === "judging" && <Judging goTo={goTo} />}
+      {screen === "verdict" && <Verdict goTo={goTo} />}
     </main>
   );
 }
