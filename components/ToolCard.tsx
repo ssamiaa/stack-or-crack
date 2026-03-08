@@ -16,7 +16,7 @@ export interface Tool {
     tags: string[];
     cost: string;
     costDetail: string;
-    url: string;
+    url?: string;
     trending: boolean;
 }
 

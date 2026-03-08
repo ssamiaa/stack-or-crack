@@ -1,52 +1,66 @@
 "use client";
 import { useState } from "react";
-
-type Screen = "landing" | "brief" | "map" | "judging" | "verdict";
+import { Screen } from "@/lib/types";
+import Landing from "@/components/screens/Landing";
+import Brief from "@/components/screens/Brief";
+import Map from "@/components/screens/Map";
+import Judging from "@/components/screens/Judging";
+import Verdict from "@/components/screens/Verdict";
+import { Tool } from "@/components/ToolCard";
+import toolsData from "@/data/tools.json";
+import briefsData from "@/data/briefs.json";
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
+  const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
+  const [currentBrief, setCurrentBrief] = useState(() => {
+    const briefs = briefsData.briefs;
+    return briefs[Math.floor(Math.random() * briefs.length)];
+  });
 
   const goTo = (s: Screen) => setScreen(s);
 
+  const clearStack = () => setSelectedTools([]);
+
+  const newBrief = () => {
+    const briefs = briefsData.briefs;
+    setCurrentBrief(briefs[Math.floor(Math.random() * briefs.length)]);
+    clearStack();
+  };
+
+  const toggleTool = (id: string) => {
+    setSelectedTools(prev => {
+      if (prev.find(t => t.id === id)) return prev.filter(t => t.id !== id);
+      if (prev.length >= 5) return prev;
+      const tool = toolsData.tools.find(t => t.id === id) as Tool;
+      return tool ? [...prev, tool] : prev;
+    });
+  };
+
   return (
     <main>
-      {screen === "landing" && (
-        <div>
-          <h1>Landing</h1>
-          <button onClick={() => goTo("brief")}>Start Challenge</button>
-          <button onClick={() => goTo("map")}>Explore Map</button>
-        </div>
-      )}
-
-      {screen === "brief" && (
-        <div>
-          <h1>Brief</h1>
-          <button onClick={() => goTo("map")}>Build My Stack</button>
-          <button onClick={() => goTo("landing")}>Back</button>
-        </div>
-      )}
-
+      {screen === "landing" && <Landing goTo={goTo} />}
+      {screen === "brief" && <Brief goTo={goTo} brief={currentBrief} onNewBrief={newBrief} />}
       {screen === "map" && (
-        <div>
-          <h1>Map</h1>
-          <button onClick={() => goTo("judging")}>Drink Me</button>
-          <button onClick={() => goTo("brief")}>Back</button>
-        </div>
+        <Map
+          goTo={goTo}
+          selectedTools={selectedTools}
+          onToggleTool={toggleTool}
+          brief={currentBrief}
+        />
       )}
-
       {screen === "judging" && (
-        <div>
-          <h1>Judging</h1>
-          <button onClick={() => goTo("verdict")}>See Verdict</button>
-        </div>
+        <Judging
+          goTo={goTo}
+          selectedTools={selectedTools}
+        />
       )}
-
       {screen === "verdict" && (
-        <div>
-          <h1>Verdict</h1>
-          <button onClick={() => goTo("brief")}>Try Again</button>
-          <button onClick={() => goTo("map")}>Back to Map</button>
-        </div>
+        <Verdict
+          goTo={goTo}
+          selectedTools={selectedTools}
+          onClear={clearStack}
+        />
       )}
     </main>
   );
