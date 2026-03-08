@@ -9,7 +9,6 @@ import toolsData from "@/data/tools.json";
 import StackTray from "@/components/StackTray";
 import briefsData from "@/data/briefs.json";
 import Image from "next/image";
-import BriefCard from "@/components/BriefCard";
 // images
 import lang from "@/images/brain.png";
 import voi from "@/images/microphone-black-shape.png";
@@ -18,6 +17,7 @@ import agent from "@/images/artificial-intelligence.png";
 import devt from "@/images/settings.png";
 import rags from "@/images/open-book.png";
 import poison from "@/images/potion.png"
+import info from "@/images/information.png"
 
 type Brief = typeof briefsData.briefs[0];
 
@@ -33,6 +33,13 @@ type Props = {
 export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreMode = false, onNewBrief }: Props) {
     const [activeCategory, setActiveCategory] = useState("llm");
     const [drawerTool, setDrawerTool] = useState<Tool | null>(null);
+    const [showBudgetTooltip, setShowBudgetTooltip] = useState(false);
+
+    const budgetDescriptions: Record<string, string> = {
+        startup: "Bootstrap budget — free tiers and tools under ~$50/month",
+        growth: "Growing team — willing to pay for quality, ~$50–300/month",
+        pro: "Professional setup — no hard cost ceiling, prioritise capability",
+    };
 
     const tools = toolsData.tools;
 
@@ -181,37 +188,149 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                     </div>
                 </div>
 
-                {/* Tools grid */}
-                <div style={{ flex: 1, padding: "24px", overflowY: "auto" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "30px", color: "#f6f5f4", marginBottom: "20px" }}>
-                        {(() => {
-                            const cat = categories.find(c => c.id === activeCategory);
-                            return cat ? (
-                                <Image
-                                    src={cat.img}
-                                    alt={cat.label}
-                                    width={30}
-                                    height={30}
-                                    style={{ filter: "drop-shadow(0 0 5px rgba(100,200,150,0.8)) invert(1)" }}
-                                />
-                            ) : null;
-                        })()}
-                        {categoryTitleLabel[activeCategory]}
+                {/* Content row: tools + brief sidebar */}
+                <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+
+                    {/* Tools grid */}
+                    <div style={{ flex: 1, padding: "24px", overflowY: "auto" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "30px", color: "#f6f5f4", marginBottom: "20px" }}>
+                            {(() => {
+                                const cat = categories.find(c => c.id === activeCategory);
+                                return cat ? (
+                                    <Image
+                                        src={cat.img}
+                                        alt={cat.label}
+                                        width={30}
+                                        height={30}
+                                        style={{ filter: "drop-shadow(0 0 5px rgba(100,200,150,0.8)) invert(1)" }}
+                                    />
+                                ) : null;
+                            })()}
+                            {categoryTitleLabel[activeCategory]}
+                        </div>
+                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${exploreMode ? 5 : 4}, 1fr)`, gap: "30px" }}>
+                            {tools
+                                .filter(tool => tool.category === activeCategory)
+                                .map(tool => (
+                                    <ToolCard
+                                        key={tool.id}
+                                        tool={tool}
+                                        isSelected={selectedTools.some(t => t.id === tool.id)}
+                                        stackFull={selectedTools.length === 5}
+                                        onSelect={onToggleTool}
+                                        onLearnMore={(tool) => setDrawerTool(tool)}
+                                    />
+                                ))}
+                        </div>
                     </div>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "30px" }}>
-                        {tools
-                            .filter(tool => tool.category === activeCategory)
-                            .map(tool => (
-                                <ToolCard
-                                    key={tool.id}
-                                    tool={tool}
-                                    isSelected={selectedTools.some(t => t.id === tool.id)}
-                                    stackFull={selectedTools.length === 5}
-                                    onSelect={onToggleTool}
-                                    onLearnMore={(tool) => setDrawerTool(tool)}
-                                />
-                            ))}
-                    </div>
+
+                    {/* Brief sidebar — challenge mode only */}
+                    {!exploreMode && (
+                        <div style={{
+                            width: "410px",
+                            flexShrink: 0,
+                            borderLeft: "1px solid rgba(255,255,255,0.07)",
+                            overflowY: "auto",
+                            background: "linear-gradient(225deg, rgba(77,124,91,0.12) 0%, rgba(43,74,83,0.1) 50%, rgba(30,51,68,0.12) 100%)",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "15px",
+                            padding: "20px",
+                        }}>
+                            {/* Mission + title */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                                <span style={{ fontSize: "15px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "rgba(255,255,255,0.3)" }}>Your Mission</span>
+                                <h2 style={{ margin: 0, fontSize: "25px", fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>{brief.title}</h2>
+                            </div>
+
+                            {/* Capability tags */}
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                                {brief.required_capabilities.map(cap => (
+                                    <span
+                                        key={cap}
+                                        style={{
+                                            boxShadow: "0 0 6px 1px rgba(100,200,150,0.25)",
+                                            border: "1px solid rgba(255,255,255,0.15)",
+                                            borderRadius: "999px",
+                                            padding: "3px 12px",
+                                            fontSize: "14px",
+                                            color: "rgba(255,255,255,0.6)",
+                                        }}
+                                    >
+                                        {cap}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Description */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                                <span style={{ fontSize: "15px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "rgba(255,255,255,0.3)" }}>Brief</span>
+                                <p style={{ margin: 0, fontSize: "18px", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>{brief.description}</p>
+                            </div>
+
+                            {/* Constraints */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                                <span style={{ fontSize: "15px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "rgba(255,255,255,0.3)" }}>Constraints</span>
+                                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
+                                    {/* Budget with info tooltip */}
+                                    <div style={{ position: "relative", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                        <span style={{ display: "block", fontSize: "14px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Budget</span>
+                                        <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)" }}>{brief.budget}</span>
+                                        <div
+                                            style={{ position: "absolute", bottom: "5px", right: "6px", display: "flex", alignItems: "center", cursor: "pointer" }}
+                                            onMouseEnter={() => setShowBudgetTooltip(true)}
+                                            onMouseLeave={() => setShowBudgetTooltip(false)}
+                                        >
+                                            <Image src={info} alt="info" width={15} height={15} style={{ opacity: 0.4, filter: "invert(1)" }} />
+                                            {showBudgetTooltip && (
+                                                <div style={{
+                                                    position: "absolute",
+                                                    top: "50%",
+                                                    transform: "translateY(-50%)",
+                                                    left: "calc(100% + 12px)",
+                                                    width: "200px",
+                                                    background: "#1a1a2e",
+                                                    border: "1px solid rgba(112, 56, 208, 0.4)",
+                                                    borderRadius: "10px",
+                                                    padding: "10px 12px",
+                                                    fontSize: "12px",
+                                                    color: "rgba(255,255,255,0.7)",
+                                                    lineHeight: 1.5,
+                                                    zIndex: 50,
+                                                    pointerEvents: "none",
+                                                    whiteSpace: "normal",
+                                                    boxShadow: `
+                                                        0 4px 6px -1px rgba(0, 0, 0, 0.6), 
+                                                        0 0 15px 1px rgba(112, 56, 208, 0.4)
+                                                    `
+                                                }}>
+                                                    {budgetDescriptions[brief.budget] ?? brief.budget}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    {/* Timeline */}
+                                    <div style={{ borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                        <span style={{ display: "block", fontSize: "14px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Timeline</span>
+                                        <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)" }}>{brief.timeline}</span>
+                                    </div>
+                                    {/* Users */}
+                                    <div style={{ borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                        <span style={{ display: "block", fontSize: "14px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Users</span>
+                                        <span style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)" }}>{brief.users}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Objective */}
+                            <div style={{ borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "12px", background: "rgba(255,255,255,0.03)" }}>
+                                <span style={{ fontSize: "15px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "rgba(255,255,255,0.3)" }}>Objective</span>
+                                <p style={{ margin: "6px 0 0", fontSize: "15px", fontStyle: "italic", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+                                    Pick 5 tools that best serve this brief. Your stack will be judged on fit, cost, and coverage.
+                                </p>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
             </div>
