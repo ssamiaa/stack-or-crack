@@ -24,8 +24,13 @@ export default function Home() {
 
   const newBrief = () => {
     const briefs = briefsData.briefs;
-    setCurrentBrief(briefs[Math.floor(Math.random() * briefs.length)]);
+    const available = briefs.filter(b => b.id !== currentBrief.id);
+    const picked = available[Math.floor(Math.random() * available.length)];
+    console.log("current:", currentBrief.id);
+    console.log("picked:", picked.id);
+    setCurrentBrief(picked);
     clearStack();
+    setScreen("brief");
   };
 
   const toggleTool = (id: string) => {
@@ -57,11 +62,12 @@ export default function Home() {
       )}
       {screen === "verdict" && (
         <Verdict
-          goTo={goTo}
-          selectedTools={selectedTools}
-          onClear={clearStack}
+            goTo={goTo}
+            selectedTools={selectedTools}
+            onClear={clearStack}
+            onNewBrief={newBrief}
         />
-      )}
+    )}
     </main>
   );
 }
