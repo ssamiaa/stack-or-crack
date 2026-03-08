@@ -33,7 +33,7 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
 
     const primaryButtonStyle: React.CSSProperties = {
         backgroundColor: "#1a3a2a",
-        color: "#fafcfb",
+        color: "#86efac",
         boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.45)",
     };
 
@@ -115,42 +115,6 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                         </p>
                     </div>
 
-                </div>
-
-                {/* Footer */}
-                <div className="flex gap-3 border-t border-white/10 p-4">
-                    <motion.button
-                        onClick={() => goTo("map")}
-                        style={primaryButtonStyle}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.15 }}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
-                    >
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                        </svg>
-                        Build My Stack
-                    </motion.button>
-
-                    <motion.button
-                        onClick={handleNewBrief}
-                        style={badgeStyle}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.15 }}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
-                    >
-                        New Brief
-                    </motion.button>
-
-                    <motion.button
-                        onClick={() => goTo("landing")}
-                        style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)", boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.3)" }}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.15 }}
-                        className="flex items-center justify-center gap-2 rounded-xl border border-white/20 px-5 py-2.5 text-lg font-semibold cursor-pointer"
-                    >
-                        Home
-                    </motion.button>
                 </div>
             </motion.div>
         </div>
