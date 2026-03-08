@@ -1,11 +1,17 @@
+"use client";
+import { motion } from "framer-motion";
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
 import briefsData from "@/data/briefs.json";
-import redo from "@/images/repeat.png";
-import Image from "next/image";
-import { motion } from "framer-motion";
-
 type Brief = typeof briefsData.briefs[0];
+
+type JudgeVerdict = {
+    overall_rating: string;
+    overall: string;
+    tool_verdicts: { tool: string; rating: string; correct: boolean; verdict: string }[];
+    missed_tools: string[];
+    hatter_quote: string;
+};
 
 type Props = {
     goTo: (s: Screen) => void;
@@ -16,28 +22,20 @@ type Props = {
     brief: Brief | null;
 };
 
-type JudgeVerdict = {
-    overall_rating: string;
-    overall: string;
-    tool_verdicts: { tool: string; rating: string; correct: boolean; verdict: string }[];
-    missed_tools: string[];
-    hatter_quote: string;
-};
-
 const LEVEL_CONFIG: Record<string, { color: string; glow: string; bg: string; border: string; label: string }> = {
-    exploring: { color: "#93c5fd", glow: "rgba(147,197,253,0.4)", bg: "rgba(59,130,246,0.08)", border: "rgba(147,197,253,0.3)", label: "Just getting started" },
-    developing: { color: "#c4b5fd", glow: "rgba(196,181,253,0.4)", bg: "rgba(139,92,246,0.08)", border: "rgba(196,181,253,0.3)", label: "Building intuition" },
-    emerging: { color: "#6ee7b7", glow: "rgba(110,231,183,0.4)", bg: "rgba(52,211,153,0.08)", border: "rgba(110,231,183,0.3)", label: "Pattern forming" },
-    proficient: { color: "#fcd34d", glow: "rgba(252,211,77,0.4)", bg: "rgba(245,158,11,0.08)", border: "rgba(252,211,77,0.3)", label: "Strong instincts" },
-    extending: { color: "#f9a8d4", glow: "rgba(249,168,212,0.45)", bg: "rgba(236,72,153,0.08)", border: "rgba(249,168,212,0.3)", label: "Beyond the brief" },
+    exploring:  { color: "#93c5fd", glow: "rgba(147,197,253,0.4)",  bg: "rgba(59,130,246,0.08)",  border: "rgba(147,197,253,0.3)",  label: "Just getting started" },
+    developing: { color: "#c4b5fd", glow: "rgba(196,181,253,0.4)",  bg: "rgba(139,92,246,0.08)",  border: "rgba(196,181,253,0.3)",  label: "Building intuition" },
+    emerging:   { color: "#6ee7b7", glow: "rgba(110,231,183,0.4)",  bg: "rgba(52,211,153,0.08)",  border: "rgba(110,231,183,0.3)",  label: "Pattern forming" },
+    proficient: { color: "#fcd34d", glow: "rgba(252,211,77,0.4)",   bg: "rgba(245,158,11,0.08)",  border: "rgba(252,211,77,0.3)",   label: "Strong instincts" },
+    extending:  { color: "#f9a8d4", glow: "rgba(249,168,212,0.45)", bg: "rgba(236,72,153,0.08)",  border: "rgba(249,168,212,0.3)",  label: "Beyond the brief" },
 };
 
 const ratingDescriptions: Record<string, string> = {
-    exploring: "You're at the very beginning of understanding this space. The tools you chose don't yet match the problem — but recognizing that gap is the first step to closing it.",
-    emerging: "You're starting to develop a sense of the AI landscape, but still need more practice matching tools to problems. The direction is there — the precision isn't quite yet.",
+    exploring:  "You're at the very beginning of understanding this space. The tools you chose don't yet match the problem — but recognizing that gap is the first step to closing it.",
+    emerging:   "You're starting to develop a sense of the AI landscape, but still need more practice matching tools to problems. The direction is there — the precision isn't quite yet.",
     developing: "You understand parts of the problem but there are still gaps in your tool choices. You're on the right track — a few more deliberate swaps would get you to proficient.",
     proficient: "You have a solid understanding of what this brief requires and chose tools that genuinely fit. This is the goal — you've shown real judgment about the AI landscape.",
-    extending: "You've gone beyond just knowing the tools — you understand exactly why each one belongs here. You're applying your knowledge with precision and purpose.",
+    extending:  "You've gone beyond just knowing the tools — you understand exactly why each one belongs here. You're applying your knowledge with precision and purpose.",
 };
 
 export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brief }: Props) {
@@ -63,11 +61,11 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                 border: "1px solid rgba(255,255,255,0.08)",
                 overflow: "hidden",
                 background: `
-          radial-gradient(ellipse at 0% 0%, rgba(77,124,91,0.5) 0%, transparent 60%),
-          radial-gradient(ellipse at 100% 0%, rgba(49,35,74,0.7) 0%, transparent 55%),
-          radial-gradient(ellipse at 50% 100%, rgba(30,51,68,0.8) 0%, transparent 60%),
-          linear-gradient(160deg, #1a2e28 0%, #1e2a3a 50%, #1a1228 100%)
-        `,
+                    radial-gradient(ellipse at 0% 0%, rgba(77,124,91,0.5) 0%, transparent 60%),
+                    radial-gradient(ellipse at 100% 0%, rgba(49,35,74,0.7) 0%, transparent 55%),
+                    radial-gradient(ellipse at 50% 100%, rgba(30,51,68,0.8) 0%, transparent 60%),
+                    linear-gradient(160deg, #1a2e28 0%, #1e2a3a 50%, #1a1228 100%)
+                `,
                 boxShadow: `0 0 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)`,
             }}>
 
@@ -81,18 +79,24 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                     gap: "12px",
                     flexShrink: 0,
                 }}>
-                    <span style={{ fontSize: "32px", filter: `drop-shadow(0 0 16px ${cfg.glow})` }}>🎩</span>
+                     <img
+                            src="/hatterw:ob.png"
+                            alt="Mad Hatter"
+                            style={{
+                                width: "90px",
+                                height: "90px",
+                                objectFit: "cover",
+                            }}
+                    />
                     <div>
-                        <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "24px", color: "rgba(255,255,255,0.9)", margin: 0, lineHeight: 1.2 }}>
-                            The Hatter Has Spoken
-                        </h2>
-                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0 }}>
-                            Your stack has been judged
-                        </p>
+                    <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "24px", color: "rgba(255,255,255,0.9)", margin: 0, lineHeight: 1.2 }}>
+                        The Hatter Has Spoken
+                    </h2>
+                    <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0 }}>
+                        Your stack has been judged
+                    </p>
                     </div>
                 </div>
-
-
 
                 {/* Scrollable body */}
                 <div style={{ flex: 1, overflowY: "auto", padding: "24px 32px", display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -109,16 +113,10 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                     }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                             <span style={{ fontSize: "16px", flexShrink: 0 }}>📜</span>
-                            <span style={{
-                                fontFamily: "Cormorant Garamond, serif",
-                                fontWeight: 700,
-                                fontSize: "16px",
-                                color: "rgba(255,255,255,0.7)",
-                            }}>
+                            <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "16px", color: "rgba(255,255,255,0.7)" }}>
                                 {brief?.title ?? ""}
                             </span>
                         </div>
-
                         <p style={{
                             fontFamily: "Cormorant Garamond, serif",
                             fontStyle: "italic",
@@ -130,8 +128,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                         }}>
                             {brief?.description ?? ""}
                         </p>
-
-                        <div style={{ display: "flex", gap: "6px", paddingLeft: "26px", flexWrap: "wrap", }}>
+                        <div style={{ display: "flex", gap: "6px", paddingLeft: "26px", flexWrap: "wrap" }}>
                             {[brief?.budget, brief?.timeline, brief?.users].filter(Boolean).map((item, i) => (
                                 <span key={i} style={{
                                     fontFamily: "Cormorant Garamond, serif",
@@ -139,16 +136,12 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                                     fontWeight: 700,
                                     color: "rgba(255,255,255,0.25)",
                                     letterSpacing: "0.5px",
-                                    textShadow: "0 0 4px rgba(255,255,255,0.1)",
                                 }}>
                                     {i > 0 && <span style={{ marginRight: "6px", opacity: 0.4 }}>•</span>}
                                     {item}
                                 </span>
                             ))}
                         </div>
-
-
-
                     </div>
 
                     {/* Level + description banner */}
@@ -162,7 +155,6 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                         flexDirection: "column",
                         gap: "12px",
                     }}>
-                        {/* Level badge */}
                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                             <div style={{ width: "3px", height: "24px", borderRadius: "2px", background: cfg.color, flexShrink: 0 }} />
                             <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "20px", color: cfg.color, letterSpacing: "1px" }}>
@@ -172,8 +164,6 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                                 — {cfg.label}
                             </span>
                         </div>
-
-                        {/* Hardcoded rating description */}
                         <p style={{
                             fontFamily: "Cormorant Garamond, serif",
                             fontSize: "15px",
@@ -183,7 +173,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                         }}>
                             {ratingDescriptions[currentLevel]}
                         </p>
-                    </div> {/* ← banner closes here */}
+                    </div>
 
                     {/* Overall comment from API */}
                     <p style={{
@@ -309,7 +299,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                         </p>
                     </div>
 
-                </div> {/* ← scrollable body closes here */}
+                </div>
 
                 {/* Fixed footer */}
                 <div style={{
@@ -358,18 +348,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                             alignItems: "center",
                             gap: "8px",
                         }}>
-                        <Image
-                            src={redo}
-                            alt="redo"
-                            width={16}
-                            height={16}
-                            style={{
-                                filter: "invert(1) drop-shadow(0 0 3px rgba(134, 239, 172, 0.4))",
-                                opacity: 0.9,
-                                transition: "filter 0.3s ease"
-                            }}
-                        />
-                        Try Another Brief
+                        🔄 Try Another Brief
                     </motion.button>
                 </div>
 

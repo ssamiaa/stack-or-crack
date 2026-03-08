@@ -42,12 +42,39 @@ export default function Landing({ goTo, onExplore }: Props) {
             textAlign: "center",
             gap: "24px",
         }}>
+    
+
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+                <motion.h1
+                    className="title-main"
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
+                >
+                   <img
+            src="/hatterw:ob.png"
+            alt="Mad Hatter"
+            style={{
+                width: "120px",
+                height: "120px",
+                objectFit: "cover",
+                marginBottom: "-40px",
+            }}
+            />
+
+                </motion.h1>
+            
+            </motion.div>
             {/* Floating title */}
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
+                
                 <motion.h1
                     className="title-main"
                     animate={{ y: [0, -12, 0] }}
