@@ -2,11 +2,31 @@
 import { useEffect, useState } from "react";
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
+import briefsData from "@/data/briefs.json";
+type Brief = typeof briefsData.briefs[0];
+
+type Verdict = {
+  verdict: string;
+  score?: number;
+  feedback?: string;
+};
+
+
+type JudgeVerdict = {
+  overall_rating: string;
+  overall: string;
+  tool_verdicts: { tool: string; rating: string; correct: boolean; verdict: string }[];
+  missed_tools: string[];
+  hatter_quote: string;
+};
 
 type Props = {
   goTo: (s: Screen) => void;
   selectedTools: Tool[];
+  brief: Brief;
+  onVerdictReady: (verdict: JudgeVerdict) => void;
 };
+
 
 const steps = [
   "Stack received. Examining your choices…",
@@ -14,30 +34,55 @@ const steps = [
   "Sharpening the quill for your verdict…",
 ];
 
-export default function Judging({ goTo, selectedTools }: Props) {
+export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: Props) {
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
-        setProgress(prev => {
-            if (prev >= 100) { clearInterval(progressInterval); return 100; }
-            return prev + 1;
-        });
-    }, 45); // 45ms * 100 steps = 4500ms
+  // API call
+  const callJudge = async () => {
+    try {
+      const res = await fetch("/api/judge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          brief: {
+            title: brief.title,
+            description: brief.description,
+            constraints: brief.constraints,
+            required_capabilities: brief.required_capabilities,
+          },
+          playerStack: selectedTools.map(t => ({ name: t.name, category: t.category })),
+          expertStack: brief.expert_stack,
+        }),
+      });
+      const data = await res.json();
+      onVerdictReady(data);
+    } catch (err) {
+      console.error("Judge API failed:", err);
+    }
+  };
 
-    const step1 = setTimeout(() => setCurrentStep(1), 1500);
-    const step2 = setTimeout(() => setCurrentStep(2), 3000);
-    const step3 = setTimeout(() => setDone(true), 4500);      
+  callJudge();
 
-    return () => {
-      clearInterval(progressInterval);
-      clearTimeout(step1);
-      clearTimeout(step2);
-      clearTimeout(step3);
-    };
-  }, []);
+  const progressInterval = setInterval(() => {
+  setProgress(prev => {
+    if (prev >= 100) { clearInterval(progressInterval); return 100; }
+    return prev + 1;
+  });
+}, 45);
+  const step1 = setTimeout(() => setCurrentStep(1), 1500);
+  const step2 = setTimeout(() => setCurrentStep(2), 3000);
+  const step3 = setTimeout(() => setDone(true), 4500);
+
+  return () => {
+    clearInterval(progressInterval);
+    clearTimeout(step1);
+    clearTimeout(step2);
+    clearTimeout(step3);
+  };
+}, []);
 
   useEffect(() => {
     if (done) goTo("verdict");
