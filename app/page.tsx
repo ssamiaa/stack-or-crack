@@ -21,13 +21,22 @@ type JudgeVerdict = {
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
   const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
+  const [verdict, setVerdict] = useState<JudgeVerdict | null>(null);
   const [currentBrief, setCurrentBrief] = useState(() => {
     const briefs = briefsData.briefs;
     return briefs[Math.floor(Math.random() * briefs.length)];
   });
-  const [verdict, setVerdict] = useState<JudgeVerdict | null>(null);
+  const [exploreMode, setExploreMode] = useState(false);
 
-  const goTo = (s: Screen) => setScreen(s);
+  const goTo = (s: Screen) => {
+    setExploreMode(false);
+    setScreen(s);
+  };
+
+  const goToExplore = () => {
+    setExploreMode(true);
+    setScreen("map");
+  };
 
   const clearStack = () => setSelectedTools([]);
 
@@ -35,10 +44,9 @@ export default function Home() {
     const briefs = briefsData.briefs;
     const available = briefs.filter(b => b.id !== currentBrief.id);
     const picked = available[Math.floor(Math.random() * available.length)];
-    console.log("current:", currentBrief.id);
-    console.log("picked:", picked.id);
     setCurrentBrief(picked);
     clearStack();
+    setVerdict(null);
     setScreen("brief");
   };
 
@@ -53,7 +61,7 @@ export default function Home() {
 
   return (
     <main>
-      {screen === "landing" && <Landing goTo={goTo} />}
+      {screen === "landing" && <Landing goTo={goTo} goToExplore={goToExplore} />}
       {screen === "brief" && <Brief goTo={goTo} brief={currentBrief} onNewBrief={newBrief} />}
       {screen === "map" && (
         <Map
@@ -61,26 +69,27 @@ export default function Home() {
           selectedTools={selectedTools}
           onToggleTool={toggleTool}
           brief={currentBrief}
+          exploreMode={exploreMode}
         />
       )}
       {screen === "judging" && (
         <Judging
-            goTo={goTo}
-            selectedTools={selectedTools}
-            brief={currentBrief}
-            onVerdictReady={setVerdict}
+          goTo={goTo}
+          selectedTools={selectedTools}
+          brief={currentBrief}
+          onVerdictReady={setVerdict}
         />
-        )}
-        {screen === "verdict" && (
+      )}
+      {screen === "verdict" && (
         <Verdict
-            goTo={goTo}
-            selectedTools={selectedTools}
-            onClear={clearStack}
-            onNewBrief={newBrief}
-            verdict={verdict}
-            brief={currentBrief}
+          goTo={goTo}
+          selectedTools={selectedTools}
+          onClear={clearStack}
+          onNewBrief={newBrief}
+          verdict={verdict}
+          brief={currentBrief}
         />
-        )}
+      )}
     </main>
   );
 }
