@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
 
@@ -6,32 +8,207 @@ type Props = {
   selectedTools: Tool[];
 };
 
-export default function Judging({ goTo }: Props) {
-  return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: "24px", textAlign: "center" }}>
-      
-      <div style={{ fontSize: "80px" }}></div>
-      
-      <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "28px", color: "#f0e0c8" }}>
-        The Hatter Deliberates…
-      </h2>
+const steps = [
+  "Stack received. Examining your choices…",
+  "Comparing against the brief requirements…",
+  "Sharpening the quill for your verdict…",
+];
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px", minWidth: "320px" }}>
-        {[
-          "Stack received. Examining your choices…",
-          "Comparing against the brief requirements…",
-          "Sharpening the quill for your verdict…"
-        ].map(step => (
-          <div key={step} style={{ display: "flex", alignItems: "center", gap: "12px", padding: "12px 18px", background: "rgba(26,158,143,0.08)", border: "1px solid rgba(26,158,143,0.2)", borderRadius: "3px" }}>
-            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#1a9e8f", boxShadow: "0 0 8px rgba(26,158,143,0.6)", flexShrink: 0 }} />
-            <span style={{ fontFamily: "Special Elite, cursive", fontSize: "13px", color: "rgba(240,224,200,0.6)", letterSpacing: "1px" }}>{step}</span>
-          </div>
-        ))}
+export default function Judging({ goTo, selectedTools }: Props) {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    const progressInterval = setInterval(() => {
+        setProgress(prev => {
+            if (prev >= 100) { clearInterval(progressInterval); return 100; }
+            return prev + 1;
+        });
+    }, 45); // 45ms * 100 steps = 4500ms
+
+    const step1 = setTimeout(() => setCurrentStep(1), 1500);
+    const step2 = setTimeout(() => setCurrentStep(2), 3000);
+    const step3 = setTimeout(() => setDone(true), 4500);      
+
+    return () => {
+      clearInterval(progressInterval);
+      clearTimeout(step1);
+      clearTimeout(step2);
+      clearTimeout(step3);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (done) goTo("verdict");
+  }, [done]);
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      gap: "32px",
+      textAlign: "center",
+      padding: "40px 20px",
+    }}>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-16px); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0px); }
+        }
+      `}</style>
+
+      {/* Animated hat */}
+      <div style={{
+        fontSize: "72px",
+        animation: "float 2s ease-in-out infinite",
+        filter: "drop-shadow(0 0 24px rgba(100, 200, 150, 0.45))",
+      }}>
+        🎩
       </div>
 
-      <button onClick={() => goTo("verdict")} style={{ marginTop: "16px", padding: "12px 32px", background: "transparent", border: "1px solid rgba(240,224,200,0.2)", color: "rgba(240,224,200,0.4)", fontFamily: "Special Elite, cursive", fontSize: "13px", letterSpacing: "2px", cursor: "pointer", borderRadius: "2px" }}>
-        See Verdict →
-      </button>
+      {/* Title */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        <h2 style={{
+          fontFamily: "Cormorant Garamond, serif",
+          fontWeight: 700,
+          fontSize: "32px",
+          color: "#ffffff",
+          margin: 0,
+          letterSpacing: "-0.5px",
+        }}>
+          The Hatter Deliberates…
+        </h2>
+        <p style={{
+          fontFamily: "Cormorant Garamond, serif",
+          fontStyle: "italic",
+          fontSize: "16px",
+          color: "rgba(255,255,255,0.35)",
+          margin: 0,
+        }}>
+          Every choice is being weighed
+        </p>
+      </div>
+
+      {/* Card container */}
+      <div style={{
+        width: "100%",
+        maxWidth: "420px",
+        background: "linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "16px",
+        padding: "24px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+      }}>
+
+        {/* Progress bar */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "13px", color: "rgba(255,255,255,0.4)", letterSpacing: "1px" }}>
+              Analysing
+            </span>
+            <span style={{
+              backgroundColor: "#31234a",
+              color: "#e9d5ff",
+              boxShadow: "0 0 8px 2px rgba(168, 85, 247, 0.4)",
+              borderRadius: "20px",
+              padding: "2px 10px",
+              fontSize: "12px",
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 600,
+            }}>
+              {progress}%
+            </span>
+          </div>
+          <div style={{ width: "100%", height: "4px", background: "rgba(255,255,255,0.08)", borderRadius: "2px", overflow: "hidden" }}>
+            <div style={{
+              height: "100%",
+              width: `${progress}%`,
+              background: "linear-gradient(90deg, rgba(100,200,150,0.8), rgba(168,85,247,0.8))",
+              borderRadius: "2px",
+              transition: "width 0.1s linear",
+              boxShadow: "0 0 8px rgba(100,200,150,0.5)",
+            }} />
+          </div>
+        </div>
+
+        {/* Steps */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          {steps.map((step, i) => (
+            <div key={step} style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "10px 14px",
+              background: i <= currentStep ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
+              border: `1px solid ${i <= currentStep ? "rgba(100,200,150,0.25)" : "rgba(255,255,255,0.06)"}`,
+              borderRadius: "10px",
+              opacity: i <= currentStep ? 1 : 0.35,
+              transition: "all 0.4s ease",
+              animation: i === currentStep ? "fadeIn 0.4s ease forwards" : "none",
+            }}>
+              <div style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                flexShrink: 0,
+                background: i < currentStep
+                  ? "#e9d5ff"
+                  : i === currentStep
+                  ? "rgba(100,200,150,0.9)"
+                  : "rgba(255,255,255,0.15)",
+                boxShadow: i === currentStep
+                  ? "0 0 8px rgba(100,200,150,0.8)"
+                  : i < currentStep
+                  ? "0 0 8px rgba(168,85,247,0.5)"
+                  : "none",
+                transition: "all 0.4s ease",
+              }} />
+              <span style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontSize: "15px",
+                fontStyle: "italic",
+                color: i <= currentStep ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.2)",
+                transition: "color 0.4s ease",
+              }}>
+                {step}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Tool logos */}
+        <div style={{ display: "flex", gap: "8px", alignItems: "center", justifyContent: "center", paddingTop: "4px" }}>
+          {selectedTools.map((tool, i) => (
+            <div key={tool.id} style={{
+              width: "38px",
+              height: "38px",
+              borderRadius: "10px",
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "18px",
+              boxShadow: i < currentStep ? "0 0 8px 2px rgba(100,200,150,0.3)" : "none",
+              transition: "box-shadow 0.4s ease",
+            }}>
+              {tool.logo}
+            </div>
+          ))}
+        </div>
+
+      </div>
 
     </div>
   );
