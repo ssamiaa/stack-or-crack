@@ -64,7 +64,7 @@ export default function Drawer({ tool, isSelected, onClose, onSelect }: DrawerPr
                             <div className="flex-shrink-0 flex flex-col gap-4 border-b border-white/10 p-6">
                                 <div className="flex items-start justify-between">
                                     <div className="flex flex-col gap-1">
-                                        <span className="text-4xl leading-none">{tool.logo}</span>
+                                        <img src={tool.logo} alt={tool.name} style={{ width: "48px", height: "48px", objectFit: "contain", borderRadius: "8px", background: "rgba(255,255,255,0.08)", padding: "5px", flexShrink: 0 }} />
                                         <span className="mt-2 text-2xl font-bold text-white">{tool.name}</span>
                                         <span className="text-lg font-bold text-white/50">by {tool.maker}</span>
                                     </div>

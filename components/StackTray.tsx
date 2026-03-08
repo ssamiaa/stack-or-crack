@@ -56,17 +56,18 @@ export default function StackTray({ stack, maxSize = 5 }: StackTrayProps) {
                     >
                         <AnimatePresence mode="wait">
                             {tool ? (
-                                <motion.span
+                                <motion.img
                                     key={tool.id}
+                                    src={tool.logo}
+                                    alt={tool.name}
+                                    width={36}
+                                    height={36}
                                     initial={{ scale: 0, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
                                     exit={{ scale: 0, opacity: 0 }}
                                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                                    role="img"
-                                    aria-label={tool.name}
-                                >
-                                    {tool.logo}
-                                </motion.span>
+                                    style={{ width: "36px", height: "36px", objectFit: "contain", borderRadius: "6px", background: "rgba(255,255,255,0.08)", padding: "4px", flexShrink: 0 }}
+                                />
                             ) : (
                                 <motion.span
                                     key="empty"

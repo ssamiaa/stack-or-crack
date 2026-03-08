@@ -251,7 +251,7 @@ export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: 
               boxShadow: i < Math.ceil((progress / 100) * selectedTools.length) ? "0 0 8px 2px rgba(100,200,150,0.3)" : "none",
               transition: "box-shadow 0.4s ease",
             }}>
-              {tool.logo}
+              <img src={tool.logo} alt={tool.name} style={{ width: "28px", height: "28px", objectFit: "contain", borderRadius: "6px", background: "rgba(255,255,255,0.08)", padding: "3px", flexShrink: 0 }} />
             </div>
           ))}
         </div>

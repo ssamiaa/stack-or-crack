@@ -86,7 +86,7 @@
       },
       {
         "id": "gemini",
-        "logo": "/logos/gemini.png",
+        "logo": "/logos/gemeni.png",
         "name": "Gemini",
         "maker": "Google",
         "category": "llm",
