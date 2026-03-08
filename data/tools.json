@@ -2,7 +2,7 @@
     "tools": [
       {
         "id": "gpt-4o",
-        "logo": "🤖",
+        "logo": "https://img.logo.dev/openai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "GPT-4o",
         "maker": "OpenAI",
         "category": "llm",
@@ -44,8 +44,8 @@
       },
       {
         "id": "claude",
-        "logo": "🟠",
-        "name": "Claude",
+        "logo": "https://img.logo.dev/claude.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
+        "name": "Claude 3.5 Sonnet",
         "maker": "Anthropic",
         "category": "llm",
         "tagline": "The LLM built to be safe, honest, and genuinely helpful.",
@@ -86,7 +86,7 @@
       },
       {
         "id": "gemini",
-        "logo": "♊",
+        "logo": "/logos/gemini.png",
         "name": "Gemini",
         "maker": "Google",
         "category": "llm",
@@ -128,7 +128,7 @@
       },
       {
         "id": "llama",
-        "logo": "🦙",
+        "logo": "https://img.logo.dev/meta.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Llama",
         "maker": "Meta",
         "category": "llm",
@@ -170,7 +170,7 @@
       },
       {
         "id": "mistral",
-        "logo": "💨",
+        "logo": "https://img.logo.dev/mistral.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Mistral",
         "maker": "Mistral AI",
         "category": "llm",
@@ -211,50 +211,50 @@
         "trending": false
       },
       {
-        "id": "groq",
-        "logo": "⚡",
-        "name": "Groq",
-        "maker": "Groq",
+        "id": "deepseek",
+        "logo": "https://img.logo.dev/deepseek.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
+        "name": "DeepSeek",
+        "maker": "DeepSeek AI",
         "category": "llm",
-        "tagline": "Run open source AI models at insane speeds.",
-        "what": "Groq is not an AI model — it is a platform that runs existing open source models like Llama and Mistral on custom hardware called LPUs (Language Processing Units). The result is AI inference that is 10 to 100 times faster than running the same models on standard GPUs.",
-        "analogy": "Same music, completely different speakers. Groq takes the same AI models everyone else uses and plays them at full volume.",
+        "tagline": "A powerful open source model that matches GPT-4 at a fraction of the cost.",
+        "what": "DeepSeek is a family of open source AI models from a Chinese AI lab that shocked the industry by matching GPT-4 level performance at dramatically lower cost. DeepSeek-V3 and R1 are particularly strong at reasoning and coding tasks, and because they are open source, you can run them yourself or access them via API for pennies compared to OpenAI.",
+        "analogy": "Imagine a car that performs like a Ferrari but costs like a Toyota. That is the reaction the AI industry had when DeepSeek dropped — same performance, radically cheaper.",
         "usecases": [
           {
-            "icon": "🎙",
-            "text": "Powering a voice assistant where the AI response needs to come back in under 200 milliseconds to feel natural"
+            "icon": "💰",
+            "text": "Replacing GPT-4o in a high-volume app to cut AI costs by 90% without a noticeable drop in quality"
           },
           {
-            "icon": "🏎",
-            "text": "Running real-time AI moderation on a live stream where every second of delay matters"
+            "icon": "🧠",
+            "text": "Solving complex multi-step reasoning problems where other cheaper models fall short"
           },
           {
-            "icon": "🔁",
-            "text": "Prototyping an app that makes hundreds of AI calls per minute without hitting rate limits"
+            "icon": "💻",
+            "text": "Generating and reviewing code with near GPT-4 accuracy at open source pricing"
           }
         ],
         "comparisons": [
           {
-            "name": "vs OpenAI API",
-            "diff": "Groq is dramatically faster and cheaper for open source models. OpenAI has access to GPT-4o which Groq doesn't offer."
+            "name": "vs GPT-4o",
+            "diff": "DeepSeek matches GPT-4o on many benchmarks but costs significantly less per token. GPT-4o has a more mature ecosystem and better multimodal support."
           },
           {
-            "name": "vs Ollama",
-            "diff": "Ollama runs models locally on your own machine. Groq runs them on their cloud infrastructure at much higher speeds."
+            "name": "vs Claude 3.5 Sonnet",
+            "diff": "Claude is stronger at long-form writing and following nuanced instructions. DeepSeek is more cost-efficient for high-volume reasoning and coding tasks."
           }
         ],
         "tags": [
           "llm",
-          "inference",
-          "fast"
+          "open-source",
+          "reasoning"
         ],
         "cost": "",
-        "costDetail": "Free tier available with rate limits. Paid plans start at $0.05 per million tokens.",
+        "costDetail": "Open source and free to self-host. API access starts at $0.27 per million input tokens — roughly 10x cheaper than GPT-4o.",
         "trending": true
       },
       {
         "id": "cohere",
-        "logo": "🔗",
+        "logo": "https://img.logo.dev/cohere.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Cohere",
         "maker": "Cohere",
         "category": "llm",
@@ -296,7 +296,7 @@
       },
       {
         "id": "mixtral",
-        "logo": "🌀",
+        "logo": "https://img.logo.dev/mistral.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Mixtral",
         "maker": "Mistral AI",
         "category": "llm",
@@ -333,12 +333,12 @@
           "mixture-of-experts"
         ],
         "cost": "free",
-        "costDetail": "Completely free and open source. Can be run via Groq, Together AI, or self-hosted on your own hardware.",
+        "costDetail": "Completely free and open source. Can be run via Replicate, Together AI, or self-hosted on your own hardware.",
         "trending": false
       },
       {
         "id": "whisper",
-        "logo": "🎙",
+        "logo": "https://img.logo.dev/openai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Whisper",
         "maker": "OpenAI",
         "category": "voice",
@@ -380,7 +380,7 @@
       },
       {
         "id": "elevenlabs",
-        "logo": "🎤",
+        "logo": "/logos/elevenlabs.png",
         "name": "ElevenLabs",
         "maker": "ElevenLabs",
         "category": "voice",
@@ -422,7 +422,7 @@
       },
       {
         "id": "assemblyai",
-        "logo": "📋",
+        "logo": "https://img.logo.dev/assemblyai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "AssemblyAI",
         "maker": "AssemblyAI",
         "category": "voice",
@@ -464,7 +464,7 @@
       },
       {
         "id": "deepgram",
-        "logo": "🌊",
+        "logo": "https://img.logo.dev/deepgram.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Deepgram",
         "maker": "Deepgram",
         "category": "voice",
@@ -506,7 +506,7 @@
       },
       {
         "id": "openai-tts",
-        "logo": "🔊",
+        "logo": "https://img.logo.dev/openai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "OpenAI TTS",
         "maker": "OpenAI",
         "category": "voice",
@@ -548,7 +548,7 @@
       },
       {
         "id": "speechify",
-        "logo": "📖",
+        "logo": "https://img.logo.dev/speechify.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Speechify",
         "maker": "Speechify",
         "category": "voice",
@@ -590,7 +590,7 @@
       },
       {
         "id": "murf",
-        "logo": "🎬",
+        "logo": "https://img.logo.dev/murf.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Murf",
         "maker": "Murf AI",
         "category": "voice",
@@ -632,7 +632,7 @@
       },
       {
         "id": "playht",
-        "logo": "▶️",
+        "logo": "/logos/playht.png",
         "name": "PlayHT",
         "maker": "PlayHT",
         "category": "voice",
@@ -674,7 +674,7 @@
       },
       {
         "id": "dalle-3",
-        "logo": "🎨",
+        "logo": "https://img.logo.dev/openai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "DALL-E 3",
         "maker": "OpenAI",
         "category": "image",
@@ -716,7 +716,7 @@
       },
       {
         "id": "midjourney",
-        "logo": "🖼",
+        "logo": "https://img.logo.dev/midjourney.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Midjourney",
         "maker": "Midjourney",
         "category": "image",
@@ -758,7 +758,7 @@
       },
       {
         "id": "stable-diffusion",
-        "logo": "🌌",
+        "logo": "https://img.logo.dev/stability.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Stable Diffusion",
         "maker": "Stability AI",
         "category": "image",
@@ -800,7 +800,7 @@
       },
       {
         "id": "flux",
-        "logo": "✨",
+        "logo": "https://img.logo.dev/blackforestlabs.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Flux",
         "maker": "Black Forest Labs",
         "category": "image",
@@ -842,7 +842,7 @@
       },
       {
         "id": "ideogram",
-        "logo": "🔤",
+        "logo": "https://img.logo.dev/ideogram.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Ideogram",
         "maker": "Ideogram",
         "category": "image",
@@ -884,7 +884,7 @@
       },
       {
         "id": "firefly",
-        "logo": "🦋",
+        "logo": "https://img.logo.dev/adobe.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Firefly",
         "maker": "Adobe",
         "category": "image",
@@ -926,7 +926,7 @@
       },
       {
         "id": "kling",
-        "logo": "🎞",
+        "logo": "https://img.logo.dev/klingai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Kling",
         "maker": "Kuaishou",
         "category": "image",
@@ -968,7 +968,7 @@
       },
       {
         "id": "runway",
-        "logo": "🎥",
+        "logo": "/logos/runway.png",
         "name": "Runway",
         "maker": "Runway",
         "category": "image",
@@ -1010,7 +1010,7 @@
       },
       {
         "id": "langchain",
-        "logo": "⛓",
+        "logo": "https://img.logo.dev/langchain.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "LangChain",
         "maker": "LangChain",
         "category": "agents",
@@ -1052,7 +1052,7 @@
       },
       {
         "id": "crewai",
-        "logo": "👥",
+        "logo": "https://img.logo.dev/crewai.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "CrewAI",
         "maker": "CrewAI",
         "category": "agents",
@@ -1094,7 +1094,7 @@
       },
       {
         "id": "autogpt",
-        "logo": "🧠",
+        "logo": "https://img.logo.dev/agpt.co?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "AutoGPT",
         "maker": "Significant Gravitas",
         "category": "agents",
@@ -1136,7 +1136,7 @@
       },
       {
         "id": "n8n",
-        "logo": "🔁",
+        "logo": "https://img.logo.dev/n8n.io?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "n8n",
         "maker": "n8n",
         "category": "agents",
@@ -1178,7 +1178,7 @@
       },
       {
         "id": "flowise",
-        "logo": "🌊",
+        "logo": "/logos/flowise.png",
         "name": "Flowise",
         "maker": "FlowiseAI",
         "category": "agents",
@@ -1220,7 +1220,7 @@
       },
       {
         "id": "llamaindex",
-        "logo": "📚",
+        "logo": "https://img.logo.dev/llamaindex.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "LlamaIndex",
         "maker": "LlamaIndex",
         "category": "agents",
@@ -1262,7 +1262,7 @@
       },
       {
         "id": "dify",
-        "logo": "🏗",
+        "logo": "https://img.logo.dev/dify.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Dify",
         "maker": "Dify",
         "category": "agents",
@@ -1304,7 +1304,7 @@
       },
       {
         "id": "zapier-ai",
-        "logo": "⚡",
+        "logo": "/logos/zapier.png",
         "name": "Zapier AI",
         "maker": "Zapier",
         "category": "agents",
@@ -1346,7 +1346,7 @@
       },
       {
         "id": "cursor",
-        "logo": "🖱",
+        "logo": "https://img.logo.dev/cursor.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Cursor",
         "maker": "Anysphere",
         "category": "devtools",
@@ -1388,7 +1388,7 @@
       },
       {
         "id": "github-copilot",
-        "logo": "🐙",
+        "logo": "https://img.logo.dev/github.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "GitHub Copilot",
         "maker": "GitHub / Microsoft",
         "category": "devtools",
@@ -1430,7 +1430,7 @@
       },
       {
         "id": "vercel-ai-sdk",
-        "logo": "▲",
+        "logo": "https://img.logo.dev/vercel.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Vercel AI SDK",
         "maker": "Vercel",
         "category": "devtools",
@@ -1472,7 +1472,7 @@
       },
       {
         "id": "supabase",
-        "logo": "🟢",
+        "logo": "https://img.logo.dev/supabase.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Supabase",
         "maker": "Supabase",
         "category": "devtools",
@@ -1514,7 +1514,7 @@
       },
       {
         "id": "pinecone",
-        "logo": "🌲",
+        "logo": "https://img.logo.dev/pinecone.io?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Pinecone",
         "maker": "Pinecone",
         "category": "devtools",
@@ -1556,7 +1556,7 @@
       },
       {
         "id": "replicate",
-        "logo": "♻️",
+        "logo": "https://img.logo.dev/replicate.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Replicate",
         "maker": "Replicate",
         "category": "devtools",
@@ -1598,7 +1598,7 @@
       },
       {
         "id": "ollama",
-        "logo": "🦙",
+        "logo": "https://img.logo.dev/ollama.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Ollama",
         "maker": "Ollama",
         "category": "devtools",
@@ -1621,12 +1621,12 @@
         ],
         "comparisons": [
           {
-            "name": "vs Groq",
-            "diff": "Ollama runs models on your own hardware — private and free but limited by your laptop's speed. Groq runs the same models on cloud hardware at 10x the speed."
+            "name": "vs Replicate",
+            "diff": "Ollama runs models entirely on your own hardware — free and private, but limited by your laptop's speed. Replicate runs the same models on cloud GPUs, so it's faster but costs money per request."
           },
           {
-            "name": "vs Replicate",
-            "diff": "Replicate hosts models on the cloud and charges per use. Ollama runs models locally for free, but only as fast as your own hardware allows."
+            "name": "vs Modal",
+            "diff": "Ollama runs models on your own laptop for free with no internet required. Modal runs models on cloud GPUs — much faster for heavy workloads, but you pay per second of compute."
           }
         ],
         "tags": [
@@ -1640,7 +1640,7 @@
       },
       {
         "id": "modal",
-        "logo": "☁️",
+        "logo": "https://img.logo.dev/modal.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Modal",
         "maker": "Modal Labs",
         "category": "devtools",
@@ -1682,7 +1682,7 @@
       },
       {
         "id": "cohere-embed",
-        "logo": "🔢",
+        "logo": "https://img.logo.dev/cohere.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Cohere Embed",
         "maker": "Cohere",
         "category": "rag",
@@ -1724,7 +1724,7 @@
       },
       {
         "id": "unstructured",
-        "logo": "📄",
+        "logo": "https://img.logo.dev/unstructured.io?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Unstructured",
         "maker": "Unstructured.io",
         "category": "rag",
@@ -1766,7 +1766,7 @@
       },
       {
         "id": "qdrant",
-        "logo": "🎯",
+        "logo": "https://img.logo.dev/qdrant.tech?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Qdrant",
         "maker": "Qdrant",
         "category": "rag",
@@ -1808,7 +1808,7 @@
       },
       {
         "id": "chroma",
-        "logo": "🌈",
+        "logo": "https://img.logo.dev/trychroma.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Chroma",
         "maker": "Chroma",
         "category": "rag",
@@ -1850,7 +1850,7 @@
       },
       {
         "id": "weaviate",
-        "logo": "🕸",
+        "logo": "https://img.logo.dev/weaviate.io?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Weaviate",
         "maker": "Weaviate",
         "category": "rag",
@@ -1892,7 +1892,7 @@
       },
       {
         "id": "exa",
-        "logo": "🔍",
+        "logo": "https://img.logo.dev/exa.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Exa",
         "maker": "Exa",
         "category": "rag",
@@ -1934,7 +1934,7 @@
       },
       {
         "id": "tavily",
-        "logo": "🗺",
+        "logo": "https://img.logo.dev/tavily.com?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Tavily",
         "maker": "Tavily",
         "category": "rag",
@@ -1976,7 +1976,7 @@
       },
       {
         "id": "perplexity",
-        "logo": "🔮",
+        "logo": "https://img.logo.dev/perplexity.ai?token=pk_Woeo-FsARFWGXil2-TcUhA",
         "name": "Perplexity",
         "maker": "Perplexity AI",
         "category": "rag",

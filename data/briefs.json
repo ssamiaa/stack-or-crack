@@ -82,7 +82,7 @@
         "id": "brief-04",
         "title": "Personalized AI News Digest",
         "description": "A busy professional wants a daily briefing that pulls fresh articles on technology, business, and global events every morning, summarizes the key stories, and delivers everything as a short email digest.",
-        "constraints": "Must fetch fresh web content daily, digest must arrive by 8am",
+        "constraints": "Must fetch fresh web content daily, digest must arrive by 8am, requires a scheduled trigger and a separate email delivery step",
         "budget": "Personal",
         "budgetDescription": "One person, hobby project",
         "timeline": "2 weeks",
@@ -92,14 +92,14 @@
           "Summarization",
           "LLM Reasoning",
           "Scheduled Automation",
-          "Data Storage"
+          "Email Delivery"
         ],
         "difficulty": "Beginner",
         "slots": 5,
         "expert_stack": [
           "Exa",
-          "Claude 3.5 Sonnet",
-          "Groq",
+          "DeepSeek",
+          "n8n",
           "Zapier AI",
           "Supabase"
         ]
@@ -107,7 +107,7 @@
       {
         "id": "brief-05",
         "title": "AI Image Generation for an E-Commerce Store",
-        "description": "An online store wants to stop paying photographers for every new product. They need a system that takes a product name and description, generates polished image variations, and delivers them ready for product pages and ad campaigns.",
+        "description": "An online store wants to stop paying photographers for every new product. They need a system that takes a product name and description, generates polished image variations, short video clips for ad campaign, and delivers them ready for product pages and ad campaigns.",
         "constraints": "High visual quality required, small team with no design background, must handle batch generation for new product launches",
         "budget": "Startup",
         "budgetDescription": "Small team, limited funding",
@@ -134,7 +134,7 @@
         "id": "brief-06",
         "title": "AI Research Assistant for a Journalist",
         "description": "A journalist needs help researching stories across live web sources, public records, and news archives. They want an AI that can search the open web, summarize findings, and answer questions with citations so every claim can be traced back to its source.",
-        "constraints": "Accuracy matters more than speed, every answer must cite a source URL, sources must be live and current not static documents",
+        "constraints": "Accuracy matters more than speed, every answer must cite a source URL, sources include both live web content and archived documents",
         "budget": "Startup",
         "budgetDescription": "Small team, limited funding",
         "timeline": "4 weeks",
