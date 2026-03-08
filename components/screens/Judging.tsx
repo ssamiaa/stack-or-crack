@@ -1,6 +1,9 @@
 import { Screen } from "@/lib/types";
 
-type Props = { goTo: (s: Screen) => void };
+type Props = {
+  goTo: (s: Screen) => void;
+  selectedTools: string[];
+};
 
 export default function Judging({ goTo }: Props) {
   return (
