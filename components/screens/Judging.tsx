@@ -5,13 +5,6 @@ import { Tool } from "@/components/ToolCard";
 import briefsData from "@/data/briefs.json";
 type Brief = typeof briefsData.briefs[0];
 
-type Verdict = {
-  verdict: string;
-  score?: number;
-  feedback?: string;
-};
-
-
 type JudgeVerdict = {
   overall_rating: string;
   overall: string;
@@ -27,7 +20,6 @@ type Props = {
   onVerdictReady: (verdict: JudgeVerdict) => void;
 };
 
-
 const steps = [
   "Stack received. Examining your choices…",
   "Comparing against the brief requirements…",
@@ -37,56 +29,59 @@ const steps = [
 export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: Props) {
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [done, setDone] = useState(false);
+  const [apiDone, setApiDone] = useState(false);
+  const [timerDone, setTimerDone] = useState(false);
 
   useEffect(() => {
-  // API call
-  const callJudge = async () => {
-    try {
-      const res = await fetch("/api/judge", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          brief: {
-            title: brief.title,
-            description: brief.description,
-            constraints: brief.constraints,
-            required_capabilities: brief.required_capabilities,
-          },
-          playerStack: selectedTools.map(t => ({ name: t.name, category: t.category })),
-          expertStack: brief.expert_stack,
-        }),
+    const callJudge = async () => {
+      try {
+        const res = await fetch("/api/judge", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            brief: {
+              title: brief.title,
+              description: brief.description,
+              constraints: brief.constraints,
+              required_capabilities: brief.required_capabilities,
+            },
+            playerStack: selectedTools.map(t => ({ name: t.name, category: t.category })),
+            expertStack: brief.expert_stack,
+          }),
+        });
+        const data = await res.json();
+        onVerdictReady(data);
+        setApiDone(true);
+      } catch (err) {
+        console.error("Judge API failed:", err);
+        setApiDone(true); // navigate anyway so user isn't stuck
+      }
+    };
+
+    callJudge();
+
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) { clearInterval(progressInterval); return 100; }
+        return prev + 1;
       });
-      const data = await res.json();
-      onVerdictReady(data);
-    } catch (err) {
-      console.error("Judge API failed:", err);
-    }
-  };
+    }, 45);
 
-  callJudge();
+    const step1 = setTimeout(() => setCurrentStep(1), 1500);
+    const step2 = setTimeout(() => setCurrentStep(2), 3000);
+    const step3 = setTimeout(() => setTimerDone(true), 4500);
 
-  const progressInterval = setInterval(() => {
-  setProgress(prev => {
-    if (prev >= 100) { clearInterval(progressInterval); return 100; }
-    return prev + 1;
-  });
-}, 45);
-  const step1 = setTimeout(() => setCurrentStep(1), 1500);
-  const step2 = setTimeout(() => setCurrentStep(2), 3000);
-  const step3 = setTimeout(() => setDone(true), 4500);
-
-  return () => {
-    clearInterval(progressInterval);
-    clearTimeout(step1);
-    clearTimeout(step2);
-    clearTimeout(step3);
-  };
-}, []);
+    return () => {
+      clearInterval(progressInterval);
+      clearTimeout(step1);
+      clearTimeout(step2);
+      clearTimeout(step3);
+    };
+  }, []);
 
   useEffect(() => {
-    if (done) goTo("verdict");
-  }, [done]);
+    if (timerDone && apiDone) goTo("verdict");
+  }, [timerDone, apiDone]);
 
   return (
     <div style={{
@@ -245,7 +240,7 @@ export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: 
               alignItems: "center",
               justifyContent: "center",
               fontSize: "18px",
-              boxShadow: i < currentStep ? "0 0 8px 2px rgba(100,200,150,0.3)" : "none",
+              boxShadow: i < Math.ceil((progress / 100) * selectedTools.length) ? "0 0 8px 2px rgba(100,200,150,0.3)" : "none",
               transition: "box-shadow 0.4s ease",
             }}>
               {tool.logo}
@@ -254,7 +249,6 @@ export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: 
         </div>
 
       </div>
-
     </div>
   );
 }
