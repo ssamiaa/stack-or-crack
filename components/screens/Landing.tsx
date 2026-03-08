@@ -1,13 +1,20 @@
 import { Screen } from "@/lib/types";
 import { motion } from "framer-motion";
+import toolsData from "@/data/tools.json";
+import briefsData from "@/data/briefs.json";
 
 type Props = { goTo: (s: Screen) => void; onExplore: () => void };
 
+const toolCount = toolsData.tools.length;
+const realmCount = new Set(toolsData.tools.map(t => t.category)).size;
+const briefCount = briefsData.briefs.length;
+
 export default function Landing({ goTo, onExplore }: Props) {
     const primaryButtonStyle: React.CSSProperties = {
-        backgroundColor: "#1a3a2a",
-        color: "#fafcfa",
-        boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.45)",
+        background: "linear-gradient(135deg, rgba(77,124,91,0.6), rgba(49,35,74,0.6))",
+        border: "1px solid rgba(100,200,150,0.3)",
+        color: "rgba(255,255,255,0.85)",
+        boxShadow: "0 0 16px rgba(100,200,150,0.3)",
         transition: "all 0.1s ease",
         letterSpacing: "2px",
     };
@@ -110,7 +117,7 @@ export default function Landing({ goTo, onExplore }: Props) {
                     }}
                     whileTap={{ scale: 0.95 }}
                     transition={springTransition}
-                    className="flex w-fit items-center justify-center gap-4 rounded-2xl px-10 py-2.5 text-xl font-semibold cursor-pointer border border-transparent"
+                    className="flex w-fit items-center justify-center gap-4 rounded-2xl px-10 py-2.5 text-xl font-semibold cursor-pointer"
                 >
                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -158,9 +165,9 @@ export default function Landing({ goTo, onExplore }: Props) {
                 }}
             >
                 {[
-                    { value: "40+", label: "AI Tools" },
-                    { value: "6", label: "Realms" },
-                    { value: "10", label: "Briefs" }
+                    { value: String(toolCount), label: "AI Tools" },
+                    { value: String(realmCount), label: "Realms" },
+                    { value: String(briefCount), label: "Briefs" }
                 ].map((stat, index) => (
                     <div key={index} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                         <span style={{

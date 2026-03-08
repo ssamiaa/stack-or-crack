@@ -122,7 +122,7 @@ export default function Drawer({ tool, isSelected, onClose, onSelect }: DrawerPr
                                         <ul className="flex flex-col gap-2">
                                             {tool.usecases.map((u, i) => (
                                                 <li key={i} className="flex items-start gap-2.5 text-base text-white/70">
-                                                    <span className="mt-0.5 text-lg leading-none">{u.icon}</span>
+                                                    <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-white/40" />
                                                     <span className="leading-snug">{u.text}</span>
                                                 </li>
                                             ))}

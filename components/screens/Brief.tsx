@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Screen } from "@/lib/types";
 import briefsData from "@/data/briefs.json";
 import info from "@/images/information.png";
+import Image from "next/image";
 
 type Brief = typeof briefsData.briefs[0];
 
@@ -16,6 +17,7 @@ type Props = {
 
 export default function Brief({ goTo, brief, onNewBrief }: Props) {
     const [flipKey, setFlipKey] = useState(0);
+    const [showBudgetTooltip, setShowBudgetTooltip] = useState(false);
 
     const handleNewBrief = () => {
         onNewBrief();
@@ -91,16 +93,53 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                     <div className="flex flex-col gap-2">
                         <span className="text-xl font-semibold uppercase tracking-widest text-white/30">Constraints</span>
                         <div className="grid grid-cols-3 gap-3">
-                            {[["Budget", brief.budget], ["Timeline", brief.timeline], ["Users", brief.users]].map(([label, value]) => (
+                            {/* Budget — with info icon in bottom-right */}
+                            <div className="relative rounded-xl border border-white/10 px-4 py-3 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
+                                <span className="block text-lg font-semibold uppercase tracking-widest text-white/30 mb-1">Budget</span>
+                                <span className="text-lg text-white/75">{brief.budget}</span>
                                 <div
-                                    key={label}
-                                    className="rounded-xl border border-white/10 px-4 py-3 text-center"
-                                    style={{ background: "rgba(255,255,255,0.04)" }}
+                                    className="absolute bottom-1.5 right-2 flex items-center cursor-pointer"
+                                    onMouseEnter={() => setShowBudgetTooltip(true)}
+                                    onMouseLeave={() => setShowBudgetTooltip(false)}
                                 >
-                                    <span className="block text-lg font-semibold uppercase tracking-widest text-white/30 mb-1">{label}</span>
-                                    <span className="text-lg text-white/75">{value}</span>
+                                    <Image src={info} alt="info" width={15} height={15} style={{ opacity: 0.35, filter: "invert(1)" }} />
+                                    {showBudgetTooltip && (
+                                        <div style={{
+                                                    position: "absolute",
+                                                    top: "50%",
+                                                    transform: "translateY(-50%)",
+                                                    left: "calc(100% + 12px)",
+                                                    width: "200px",
+                                                    background: "#1a1a2e",
+                                                    border: "1px solid rgba(112, 56, 208, 0.4)",
+                                                    borderRadius: "10px",
+                                                    padding: "10px 12px",
+                                                    fontSize: "15px",
+                                                    color: "rgba(255,255,255,0.7)",
+                                                    lineHeight: 1.5,
+                                                    zIndex: 50,
+                                                    pointerEvents: "none",
+                                                    whiteSpace: "normal",
+                                                    boxShadow: `
+                                                        0 4px 6px -1px rgba(0, 0, 0, 0.6), 
+                                                        0 0 15px 1px rgba(112, 56, 208, 0.4)
+                                                    `
+                                                }}>
+                                            {brief.budgetDescription}
+                                        </div>
+                                    )}
                                 </div>
-                            ))}
+                            </div>
+                            {/* Timeline */}
+                            <div className="rounded-xl border border-white/10 px-4 py-3 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
+                                <span className="block text-lg font-semibold uppercase tracking-widest text-white/30 mb-1">Timeline</span>
+                                <span className="text-lg text-white/75">{brief.timeline}</span>
+                            </div>
+                            {/* Users */}
+                            <div className="rounded-xl border border-white/10 px-4 py-3 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
+                                <span className="block text-lg font-semibold uppercase tracking-widest text-white/30 mb-1">Users</span>
+                                <span className="text-lg text-white/75">{brief.users}</span>
+                            </div>
                         </div>
                     </div>
 

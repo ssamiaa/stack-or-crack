@@ -19,13 +19,13 @@ type JudgeVerdict = {
 };
 
 export default function Home() {
-  const [screen, setScreen] = useState<Screen>("landing");
-  const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
+    const [screen, setScreen] = useState<Screen>("landing");
+    const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
+    const [currentBrief, setCurrentBrief] = useState(() => {
+        const briefs = briefsData.briefs;
+        return briefs[Math.floor(Math.random() * briefs.length)];
+    });
   const [verdict, setVerdict] = useState<JudgeVerdict | null>(null);
-  const [currentBrief, setCurrentBrief] = useState(() => {
-    const briefs = briefsData.briefs;
-    return briefs[Math.floor(Math.random() * briefs.length)];
-  });
   const [exploreMode, setExploreMode] = useState(false);
 
   const goTo = (s: Screen) => {
