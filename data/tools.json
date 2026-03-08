@@ -51,7 +51,7 @@
       {
         "id": "gemini",
         "url": "https://gemini.google.com",
-        "logo": "/logos/gemini.png",
+        "logo": "/logos/gemeni.png",
         "name": "Gemini",
         "maker": "Google",
         "category": "llm",
