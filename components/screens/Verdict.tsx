@@ -5,10 +5,10 @@ type Props = {
   goTo: (s: Screen) => void;
   selectedTools: Tool[];
   onClear: () => void;
+  onNewBrief: () => void;
 };
 
-
-export default function Verdict({ goTo, onClear }: Props) {
+export default function Verdict({ goTo, onClear, onNewBrief }: Props) {
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "40px 20px" }}>
       <div style={{ maxWidth: "700px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: "28px" }}>
@@ -50,7 +50,7 @@ export default function Verdict({ goTo, onClear }: Props) {
 
         {/* Actions */}
         <div style={{ display: "flex", gap: "12px" }}>
-          <button onClick={() => { onClear(); goTo("brief"); }}style={{ padding: "13px 32px", background: "linear-gradient(135deg, #0d2e1a, #1a9e8f, #0d2e1a)", border: "1px solid rgba(26,158,143,0.4)", color: "#f0e0c8", fontFamily: "Special Elite, cursive", fontSize: "13px", letterSpacing: "2px", cursor: "pointer", borderRadius: "2px" }}>
+          <button onClick={onNewBrief} style={{ padding: "13px 32px", background: "linear-gradient(135deg, #0d2e1a, #1a9e8f, #0d2e1a)", border: "1px solid rgba(26,158,143,0.4)", color: "#f0e0c8", fontFamily: "Special Elite, cursive", fontSize: "13px", letterSpacing: "2px", cursor: "pointer", borderRadius: "2px" }}>
             🔄 Try Another Brief
           </button>
           <button onClick={() => goTo("map")} style={{ padding: "10px 20px", background: "transparent", border: "1px solid rgba(240,224,200,0.15)", color: "rgba(240,224,200,0.4)", fontFamily: "Special Elite, cursive", fontSize: "12px", letterSpacing: "1px", cursor: "pointer", borderRadius: "2px" }}>
