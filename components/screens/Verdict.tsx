@@ -358,7 +358,17 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                             alignItems: "center",
                             gap: "8px",
                         }}>
-                        <Image src={redo} alt="redo" width={16} height={16} style={{ filter: "invert(1)", opacity: 0.85 }} />
+                        <Image
+                            src={redo}
+                            alt="redo"
+                            width={16}
+                            height={16}
+                            style={{
+                                filter: "invert(1) drop-shadow(0 0 3px rgba(134, 239, 172, 0.4))",
+                                opacity: 0.9,
+                                transition: "filter 0.3s ease"
+                            }}
+                        />
                         Try Another Brief
                     </motion.button>
                 </div>
