@@ -41,7 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cormorantGaramond.className}>{children}</body>
+      <body className={cormorantGaramond.className}>
+        <div className="gradient-bg" />
+        {children}
+      </body>
     </html>
   );
 }

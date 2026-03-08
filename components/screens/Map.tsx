@@ -26,9 +26,11 @@ type Props = {
     selectedTools: Tool[];
     onToggleTool: (id: string) => void;
     brief: Brief;
+    exploreMode?: boolean;
+    onNewBrief: () => void;
 };
 
-export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props) {
+export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreMode = false, onNewBrief }: Props) {
     const [activeCategory, setActiveCategory] = useState("llm");
     const [drawerTool, setDrawerTool] = useState<Tool | null>(null);
 
@@ -64,82 +66,103 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props)
             {/* Body */}
             <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
-                {/* Category bar */}
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "12px 24px", background: "transparent", borderBottom: "1px solid rgba(255,255,255,0.07)", overflowX: "auto" }}>
-                    {/* Logo — flex:1 left side to balance right */}
+                {/* Header bar */}
+                <div style={{ position: "relative", display: "flex", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+
+                    {/* Left — logo */}
                     <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
                         <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "35px", color: "#fbfbf9", whiteSpace: "nowrap" }}>
                             Stack or <span style={{ fontWeight: 700, fontSize: "40px", fontStyle: "italic", color: "#7038d0", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>Crack</span>
                         </span>
                     </div>
-                    {categories.map(({ img, label, id }) => (
-                        <div key={id} onClick={() => setActiveCategory(id)} style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            padding: "8px 18px",
-                            cursor: "pointer",
-                            borderRadius: "14px",
-                            border: `1px solid ${activeCategory === id ? "rgba(100,200,150,0.45)" : "rgba(255,255,255,0.1)"}`,
-                            background: activeCategory === id
-                                ? "linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)"
-                                : "rgba(255,255,255,0.04)",
-                            boxShadow: activeCategory === id ? "0 0 10px 2px rgba(100,200,150,0.3)" : "none",
-                            color: activeCategory === id ? "#fff" : "rgba(255,255,255,0.5)",
-                            fontFamily: "Cormorant Garamond, serif",
-                            fontWeight: 600,
-                            fontSize: "14px",
-                            whiteSpace: "nowrap",
-                            flexShrink: 0,
-                            transition: "all 0.2s ease",
-                        }}>
-                            <Image
-                                src={img}
-                                alt={label}
-                                width={18}
-                                height={18}
-                                style={{
-                                    filter: activeCategory === id
-                                        ? "drop-shadow(0 0 5px rgba(100,200,150,0.9)) invert(1)"
-                                        : "drop-shadow(0 0 3px rgba(100,200,150,0.4)) invert(0.6)",
-                                    transition: "filter 0.2s ease",
-                                }}
-                            />
-                            {label}
-                        </div>
-                    ))}
 
-                    {/* New Brief button */}
-                    <div style={{ flex: 3, display: "flex", justifyContent: "flex-end" }}>
-                        <motion.button
-                            onClick={() => goTo("brief")}
-                            whileHover={{ boxShadow: "0 0 8px 2px rgba(168, 85, 247, 0.4)", borderColor: "rgba(185, 87, 227, 0.45)" }}
-                            style={{
-                                flexShrink: 0,
+                    {/* Centre — categories (absolutely positioned so they're truly centred) */}
+                    <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: "8px" }}>
+                        {categories.map(({ img, label, id }) => (
+                            <div key={id} onClick={() => setActiveCategory(id)} style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
                                 padding: "8px 18px",
-                                background: "#31234a",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                color: "rgba(255,255,255,0.5)",
+                                cursor: "pointer",
+                                borderRadius: "14px",
+                                border: `1px solid ${activeCategory === id ? "rgba(100,200,150,0.45)" : "rgba(255,255,255,0.1)"}`,
+                                background: activeCategory === id
+                                    ? "linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)"
+                                    : "rgba(255,255,255,0.04)",
+                                boxShadow: activeCategory === id ? "0 0 10px 2px rgba(100,200,150,0.3)" : "none",
+                                color: activeCategory === id ? "#fff" : "rgba(255,255,255,0.5)",
                                 fontFamily: "Cormorant Garamond, serif",
                                 fontWeight: 600,
                                 fontSize: "14px",
-                                borderRadius: "14px",
-                                cursor: "pointer",
                                 whiteSpace: "nowrap",
+                                flexShrink: 0,
                                 transition: "all 0.2s ease",
-                            }}
-                        >
-                            New Brief
-                        </motion.button>
+                            }}>
+                                <Image
+                                    src={img}
+                                    alt={label}
+                                    width={18}
+                                    height={18}
+                                    style={{
+                                        filter: activeCategory === id
+                                            ? "drop-shadow(0 0 5px rgba(100,200,150,0.9)) invert(1)"
+                                            : "drop-shadow(0 0 3px rgba(100,200,150,0.4)) invert(0.6)",
+                                        transition: "filter 0.2s ease",
+                                    }}
+                                />
+                                {label}
+                            </div>
+                        ))}
                     </div>
 
-                    {/* View Brief button — flex:1 right side to balance logo */}
-                    <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+                    {/* Right — buttons */}
+                    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px" }}>
+                        {exploreMode ? (
+                            <motion.button
+                                onClick={() => goTo("brief")}
+                                whileHover={{ boxShadow: "0 0 10px 2px rgba(100,200,150,0.45)", borderColor: "rgba(100,200,150,0.55)" }}
+                                style={{
+                                    padding: "8px 18px",
+                                    background: "#1a3a2a",
+                                    border: "1px solid rgba(100,200,150,0.25)",
+                                    color: "rgba(255,255,255,0.7)",
+                                    fontFamily: "Cormorant Garamond, serif",
+                                    fontWeight: 600,
+                                    fontSize: "14px",
+                                    borderRadius: "14px",
+                                    cursor: "pointer",
+                                    whiteSpace: "nowrap",
+                                    transition: "all 0.2s ease",
+                                }}
+                            >
+                                Start Challenge
+                            </motion.button>
+                        ) : (
+                            <motion.button
+                                onClick={onNewBrief}
+                                whileHover={{ boxShadow: "0 0 8px 2px rgba(168, 85, 247, 0.4)", borderColor: "rgba(185, 87, 227, 0.45)" }}
+                                style={{
+                                    padding: "8px 18px",
+                                    background: "#31234a",
+                                    border: "1px solid rgba(255,255,255,0.1)",
+                                    color: "rgba(255,255,255,0.5)",
+                                    fontFamily: "Cormorant Garamond, serif",
+                                    fontWeight: 600,
+                                    fontSize: "14px",
+                                    borderRadius: "14px",
+                                    cursor: "pointer",
+                                    whiteSpace: "nowrap",
+                                    transition: "all 0.2s ease",
+                                }}
+                            >
+                                New Brief
+                            </motion.button>
+                        )}
                         <motion.button
-                            onClick={() => goTo("brief")}
+                            onClick={() => goTo(exploreMode ? "landing" : "brief")}
                             whileHover={{ boxShadow: "0 0 10px 2px rgba(100,200,150,0.35)", borderColor: "rgba(100,200,150,0.45)" }}
                             style={{
-                                flexShrink: 0,
                                 padding: "8px 18px",
                                 background: "rgba(255,255,255,0.04)",
                                 border: "1px solid rgba(255,255,255,0.1)",
@@ -193,8 +216,8 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props)
 
             </div>
 
-            {/* Submit bar */}
-            <div style={{
+            {/* Submit bar — hidden in explore mode */}
+            {!exploreMode && <div style={{
                 display: "flex",
                 alignItems: "center",
                 padding: "16px 28px",
@@ -251,7 +274,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props)
                         Drink Me
                     </motion.button>
                 </div>
-            </div>
+            </div>}
 
             {/* Drawer */}
             <Drawer

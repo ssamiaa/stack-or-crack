@@ -1,77 +1,160 @@
 import { Screen } from "@/lib/types";
+import { motion } from "framer-motion";
 
-type Props = { goTo: (s: Screen) => void };
+type Props = { goTo: (s: Screen) => void; onExplore: () => void };
 
-export default function Landing({ goTo }: Props) {
-  return (
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "40px 20px",
-      textAlign: "center",
-      gap: "24px",
-    }}>
-      <div style={{ fontSize: "13px", letterSpacing: "5px", textTransform: "uppercase", color: "#d4a853", opacity: 0.8, fontFamily: "Special Elite, cursive" }}>
-        A Hackathon Adventure
-      </div>
+export default function Landing({ goTo, onExplore }: Props) {
+    const primaryButtonStyle: React.CSSProperties = {
+        backgroundColor: "#1a3a2a",
+        color: "#fafcfa",
+        boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.45)",
+        transition: "all 0.1s ease",
+        letterSpacing: "2px",
+    };
 
-      <h1 className="title-main">
-        Stack or <span className="title-crack">Crack</span>
-      </h1>
+    const springTransition = {
+        type: "spring" as const,
+        stiffness: 400,
+        damping: 17
+    };
 
-      <div style={{ fontFamily: "IM Fell English, serif", fontStyle: "italic", fontSize: "16px", color: "rgba(240,224,200,0.45)", letterSpacing: "1px" }}>
-        Down the Rabbit Hole of AI Tools
-      </div>
+    const popIn = (delay: number) => ({
+        initial: { opacity: 0, y: 28, scale: 0.95 },
+        animate: { opacity: 1, y: 0, scale: 1 },
+        transition: { delay, duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+    });
 
-      <div style={{ maxWidth: "460px", display: "flex", flexDirection: "column", gap: "6px", margin: "8px 0 24px" }}>
-        <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "17px", color: "rgba(240,224,200,0.55)", lineHeight: 1.9 }}>
-          You get a <strong style={{ color: "rgba(240,224,200,0.88)" }}>real project brief.</strong>
-        </p>
-        <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "17px", color: "rgba(240,224,200,0.55)", lineHeight: 1.9 }}>
-          You explore the <strong style={{ color: "rgba(240,224,200,0.88)" }}>map of AI tools.</strong>
-        </p>
-        <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "17px", color: "rgba(240,224,200,0.55)", lineHeight: 1.9 }}>
-          You assemble your stack — then the <strong style={{ color: "rgba(240,224,200,0.88)" }}>Mad Hatter judges every choice.</strong>
-        </p>
-        <p style={{ fontFamily: "Cormorant Garamond, serif", fontSize: "17px", color: "rgba(240,224,200,0.55)", lineHeight: 1.9 }}>
-          Learn the AI landscape by <strong style={{ color: "rgba(240,224,200,0.88)" }}>defending your decisions.</strong>
-        </p>
-        <span style={{ fontFamily: "IM Fell English, serif", fontStyle: "italic", fontSize: "15px", color: "rgba(184,134,11,0.65)", marginTop: "8px" }}>
-          Only the curious survive.
-        </span>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "center" }}>
-        <button onClick={() => goTo("brief")} style={{
-          padding: "14px 48px",
-          background: "linear-gradient(135deg, #0d2e1a 0%, #1a3d2b 40%, #1a9e8f 60%, #1a3d2b 80%, #0d2e1a 100%)",
-          border: "1px solid rgba(26,158,143,0.4)",
-          color: "#f0e0c8",
-          fontFamily: "Special Elite, cursive",
-          fontSize: "15px",
-          letterSpacing: "2px",
-          cursor: "pointer",
-          borderRadius: "2px",
+    return (
+        <div style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "40px 20px",
+            textAlign: "center",
+            gap: "24px",
         }}>
-          Start Challenge
-        </button>
-        <button onClick={() => goTo("map")} style={{
-          padding: "10px 32px",
-          background: "transparent",
-          border: "1px solid rgba(240,224,200,0.2)",
-          color: "rgba(240,224,200,0.5)",
-          fontFamily: "Special Elite, cursive",
-          fontSize: "13px",
-          letterSpacing: "2px",
-          cursor: "pointer",
-          borderRadius: "2px",
-        }}>
-          Explore the Map
-        </button>
-      </div>
-    </div>
-  );
+            {/* Floating title */}
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+                <motion.h1
+                    className="title-main"
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
+                >
+                    Stack or <span className="title-crack">Crack</span>
+                </motion.h1>
+            </motion.div>
+
+            <motion.div
+                {...popIn(0.3)}
+                style={{ fontFamily: "IM Fell English, serif", fontStyle: "italic", fontSize: "30px", color: "rgba(240,224,200,0.45)", letterSpacing: "1px" }}
+            >
+                Can you navigate the AI realm?
+            </motion.div>
+
+            <motion.div {...popIn(0.5)} style={{ maxWidth: "460px", margin: "8px 0 24px" }}>
+                <p style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: "19px",
+                    color: "rgba(240,224,200,0.55)",
+                    lineHeight: 1.8,
+                    textAlign: "center"
+                }}>
+                    You get a <strong style={{ color: "rgba(240,224,200,0.88)" }}>real project brief</strong> and explore the
+                    <strong style={{ color: "rgba(240,224,200,0.88)" }}> map of AI tools.</strong> You assemble your stack, then the
+                    <strong style={{ color: "rgba(240,224,200,0.88)" }}> Mad Hatter judges every choice.</strong> Learn the AI landscape by
+                    <strong style={{ color: "rgba(240,224,200,0.88)" }}> putting it to use.</strong>
+                </p>
+            </motion.div>
+
+            <motion.div {...popIn(0.7)} style={{ display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
+                <motion.button
+                    onClick={() => goTo("brief")}
+                    style={primaryButtonStyle}
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 0 20px 2px rgba(134, 239, 172, 0.3)",
+                        borderColor: "rgba(134, 239, 172, 0.6)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={springTransition}
+                    className="flex w-fit items-center justify-center gap-4 rounded-2xl px-10 py-2.5 text-xl font-semibold cursor-pointer border border-transparent"
+                >
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                    Start Challenge
+                </motion.button>
+
+                <motion.button
+                    onClick={onExplore}
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 0 20px 2px rgba(240, 224, 200, 0.15)",
+                        borderColor: "rgba(240, 224, 200, 0.6)",
+                        color: "rgba(240, 224, 200, 0.9)",
+                        backgroundColor: "rgba(240, 224, 200, 0.05)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={springTransition}
+                    style={{
+                        padding: "10px 40px",
+                        background: "transparent",
+                        border: "1px solid rgba(240, 224, 200, 0.2)",
+                        color: "rgba(240, 224, 200, 0.5)",
+                        fontSize: "18px",
+                        letterSpacing: "2px",
+                        cursor: "pointer",
+                        borderRadius: "16px",
+                        transition: "all 0.1s ease",
+                        fontWeight: 500,
+                    }}
+                >
+                    Explore the Map
+                </motion.button>
+            </motion.div>
+
+            <motion.div
+                {...popIn(0.9)}
+                style={{
+                    display: "flex",
+                    gap: "48px",
+                    marginTop: "20px",
+                    padding: "10px 0",
+                    borderTop: "1px solid rgba(240,224,200,0.1)",
+                    borderBottom: "1px solid rgba(240,224,200,0.1)"
+                }}
+            >
+                {[
+                    { value: "40+", label: "AI Tools" },
+                    { value: "6", label: "Realms" },
+                    { value: "10", label: "Briefs" }
+                ].map((stat, index) => (
+                    <div key={index} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                        <span style={{
+                            fontSize: "25px",
+                            fontWeight: 700,
+                            color: "#f0e0c8",
+                            lineHeight: 1,
+                        }}>
+                            {stat.value}
+                        </span>
+                        <span style={{
+                            fontSize: "15px",
+                            textTransform: "uppercase",
+                            letterSpacing: "1.5px",
+                            color: "rgba(240,224,200,0.4)"
+                        }}>
+                            {stat.label}
+                        </span>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
 }

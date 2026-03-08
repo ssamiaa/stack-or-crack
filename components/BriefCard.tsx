@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Screen } from "@/lib/types";
 import briefsData from "@/data/briefs.json";
+import info from "@/images/information.png";
 
 type Brief = typeof briefsData.briefs[0];
 

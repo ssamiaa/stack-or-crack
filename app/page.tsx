@@ -18,7 +18,17 @@ export default function Home() {
         return briefs[Math.floor(Math.random() * briefs.length)];
     });
 
-    const goTo = (s: Screen) => setScreen(s);
+    const [exploreMode, setExploreMode] = useState(false);
+
+    const goTo = (s: Screen) => {
+        setExploreMode(false);
+        setScreen(s);
+    };
+
+    const goToExplore = () => {
+        setExploreMode(true);
+        setScreen("map");
+    };
 
     const clearStack = () => setSelectedTools([]);
 
@@ -44,7 +54,7 @@ export default function Home() {
 
     return (
         <main>
-            {screen === "landing" && <Landing goTo={goTo} />}
+            {screen === "landing" && <Landing goTo={goTo} onExplore={goToExplore} />}
             {screen === "brief" && <Brief goTo={goTo} brief={currentBrief} onNewBrief={newBrief} />}
             {screen === "map" && (
                 <Map
@@ -52,6 +62,8 @@ export default function Home() {
                     selectedTools={selectedTools}
                     onToggleTool={toggleTool}
                     brief={currentBrief}
+                    exploreMode={exploreMode}
+                    onNewBrief={newBrief}
                 />
             )}
             {screen === "judging" && (

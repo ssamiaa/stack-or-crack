@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Screen } from "@/lib/types";
 import briefsData from "@/data/briefs.json";
+import info from "@/images/information.png";
 
 type Brief = typeof briefsData.briefs[0];
 
@@ -32,7 +33,7 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
 
     const primaryButtonStyle: React.CSSProperties = {
         backgroundColor: "#1a3a2a",
-        color: "#86efac",
+        color: "#fafcfb",
         boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.45)",
     };
 
