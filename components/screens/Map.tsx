@@ -186,8 +186,24 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                 <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
 
                     {/* Tools grid */}
-                    <div style={{ flex: 1, padding: "24px", overflowY: "auto" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "30px", color: "#f6f5f4", marginBottom: "20px" }}>
+                    <div style={{ flex: 1, overflowY: "auto" }}>
+                        <div style={{
+                            position: "sticky",
+                            top: 0,
+                            zIndex: 10,
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            fontFamily: "Cormorant Garamond, serif",
+                            fontWeight: 700,
+                            fontSize: "25px",
+                            color: "#f6f5f4",
+                            padding: "10px 24px 10px",
+                            background: "rgba(10, 10, 24, 0.85)",
+                            backdropFilter: "blur(8px)",
+                            WebkitBackdropFilter: "blur(8px)",
+                            borderBottom: "1px solid rgba(255,255,255,0.05)",
+                        }}>
                             {(() => {
                                 const cat = categories.find(c => c.id === activeCategory);
                                 return cat ? (
@@ -202,7 +218,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                             })()}
                             {categoryTitleLabel[activeCategory]}
                         </div>
-                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${exploreMode ? 5 : 4}, 1fr)`, gap: "30px" }}>
+                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${exploreMode ? 5 : 4}, 1fr)`, gap: "30px", padding: "24px" }}>
                             {tools
                                 .filter(tool => tool.category === activeCategory)
                                 .map(tool => (
@@ -333,29 +349,29 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
             {!exploreMode && <div style={{
                 display: "flex",
                 alignItems: "center",
-                padding: "16px 28px",
+                height: "125px",
+                padding: "0px 28px",
                 background: "transparent",
                 borderTop: "1px solid rgba(255,255,255,0.07)",
                 position: "relative",
+                overflow: "visible",
             }}>
-                {/* Spacer left */}
-                
-                {/* Mascot — bottom left */}
+                {/* Mascot — bottom left, overflows upward */}
                 <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
-                style={{ flex: 1, display: "flex", alignItems: "flex-end" }}
+                    animate={{ y: [0, -12, 0] }}
+                    transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
+                    style={{ flex: 1, display: "flex", alignItems: "flex-end", marginLeft: "-30px" }}
                 >
-                <img
-                    src="/hatterw:ob.png"
-                    alt="Mad Hatter"
-                    style={{
-                    width: "150px",
-                    height: "150px",
-                    objectFit: "contain",
-                    marginBottom: "-20px",
-                    }}
-                />
+                    <img
+                        src="/hatterw:ob.png"
+                        alt="Mad Hatter"
+                        style={{
+                            width: "180px",
+                            height: "180px",
+                            objectFit: "contain",
+                            marginBottom: "-10px",
+                        }}
+                    />
                 </motion.div>
 
 

@@ -75,7 +75,7 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
             {/* Logo + name + maker */}
             <div className="flex flex-col">
                 <img src={tool.logo} alt={tool.name} style={{ width: "36px", height: "36px", objectFit: "contain", borderRadius: "8px", background: "rgba(255,255,255,0.08)", padding: "4px", flexShrink: 0 }} />
-                <span className="text-xl font-bold text-white leading-tight">
+                <span className="text-xl font-bold text-white leading-tight mt-2">
                     {tool.name}
                 </span>
                 <span className="text-sm font-bold text-white/50">by {tool.maker}</span>
