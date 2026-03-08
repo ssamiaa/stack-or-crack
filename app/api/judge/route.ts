@@ -41,8 +41,7 @@ interface JudgeResponse {
 }
 
 // ── Rating Descriptions ───────────────────────────────────────────────────────
-// These are hardcoded here as a reference for Arshia to use on the frontend.
-// Do NOT put these in the prompt — they must stay consistent and never drift.
+// These are hardcoded here as a reference for use on the frontend.
 //
 // export const ratingDescriptions: Record<Rating, string> = {
 //   exploring: "You're at the very beginning of understanding this space. The tools you chose don't yet match the problem — but recognizing that gap is the first step to closing it.",
@@ -147,8 +146,8 @@ export async function POST(req: NextRequest) {
     const prompt = buildPrompt(brief, playerStack, expertStack);
 
     const message = await client.messages.create({
-      model: "claude-haiku-4-5",
-      max_tokens: 1024,
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 2048,
       messages: [
         {
           role: "user",
