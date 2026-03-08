@@ -54,7 +54,7 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
             onClick={() => onSelect(tool.id)}
             style={gradientStyle}
             className={`
-        relative flex flex-col gap-3 rounded-2xl border p-5
+        relative flex flex-col gap-2 rounded-xl border p-3.5
         transition-colors duration-150 select-none
         ${dimmed ? "cursor-not-allowed" : "cursor-pointer"}
         ${isSelected
@@ -67,24 +67,24 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
             {tool.trending && (
                 <span
                     style={badgeStyle}
-                    className="absolute top-3 right-3 rounded-2xl bg-amber-200 px-2 py-0.5 text-md font-medium text-amber-700">
+                    className="absolute top-3 right-3 rounded-2xl bg-amber-200 px-2 py-0.5 text-sm font-medium text-amber-700">
                     Trending
                 </span>
             )}
 
             {/* Logo + name + maker */}
             <div className="flex flex-col">
-                <span className="text-4xl leading-none" role="img" aria-label={tool.name}>
+                <span className="text-2xl leading-none" role="img" aria-label={tool.name}>
                     {tool.logo}
                 </span>
-                <span className="text-2xl font-bold text-white leading-tight">
+                <span className="text-xl font-bold text-white leading-tight">
                     {tool.name}
                 </span>
-                <span className="text-lg font-bold text-white/50">by {tool.maker}</span>
+                <span className="text-sm font-bold text-white/50">by {tool.maker}</span>
             </div>
 
             {/* Tagline */}
-            <p className="text-md text-white/50 leading-snug">{tool.tagline}</p>
+            <p className="text-xs text-white/50 leading-snug">{tool.tagline}</p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5">
@@ -92,7 +92,7 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
                     <span
                         key={tag}
                         style={{ boxShadow: '0 0 6px 1px rgba(100, 200, 150, 0.3)' }}
-                        className="rounded-2xl border border-white/20 px-2.5 py-0.5 text-sm font-medium text-white/60"
+                        className="rounded-2xl border border-white/20 px-2 py-0.5 text-xs font-medium text-white/60"
                     >
                         {tag}
                     </span>
@@ -121,7 +121,7 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
                     style={badgeStyle}
                     whileHover={{ boxShadow: '0 0 5px 2px rgba(168, 85, 247, 0.5)', color: '#fff' }}
                     transition={{ duration: 0.15 }}
-                    className="rounded-lg px-3 py-1.5 text-md font-medium text-white/60 cursor-pointer"
+                    className="rounded-lg px-2.5 py-1 text-sm font-medium text-white/60 cursor-pointer"
                 >
                     Learn More
                 </motion.button>
