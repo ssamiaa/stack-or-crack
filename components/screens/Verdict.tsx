@@ -114,24 +114,20 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                         flexDirection: "column",
                         gap: "8px",
                     }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                            <span style={{ fontSize: "16px", flexShrink: 0 }}>📜</span>
-                            <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "16px", color: "rgba(255,255,255,0.7)" }}>
-                                {brief?.title ?? ""}
-                            </span>
-                        </div>
+                        <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "22px", color: "rgba(255,255,255,0.7)" }}>
+                            {brief?.title ?? ""}
+                        </span>
                         <p style={{
                             fontFamily: "Cormorant Garamond, serif",
                             fontStyle: "italic",
-                            fontSize: "14px",
+                            fontSize: "15px",
                             color: "rgba(255,255,255,0.35)",
                             lineHeight: 1.6,
                             margin: 0,
-                            paddingLeft: "26px",
                         }}>
                             {brief?.description ?? ""}
                         </p>
-                        <div style={{ display: "flex", gap: "6px", paddingLeft: "26px", flexWrap: "wrap" }}>
+                        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                             {[brief?.budget, brief?.timeline, brief?.users].filter(Boolean).map((item, i) => (
                                 <span key={i} style={{
                                     fontFamily: "Cormorant Garamond, serif",
