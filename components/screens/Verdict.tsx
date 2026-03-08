@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
 import briefsData from "@/data/briefs.json";
+import reload from "@/images/repeat.png"
+import Image from "next/image";
+
 type Brief = typeof briefsData.briefs[0];
 
 type JudgeVerdict = {
@@ -23,19 +26,19 @@ type Props = {
 };
 
 const LEVEL_CONFIG: Record<string, { color: string; glow: string; bg: string; border: string; label: string }> = {
-    exploring:  { color: "#93c5fd", glow: "rgba(147,197,253,0.4)",  bg: "rgba(59,130,246,0.08)",  border: "rgba(147,197,253,0.3)",  label: "Just getting started" },
-    developing: { color: "#c4b5fd", glow: "rgba(196,181,253,0.4)",  bg: "rgba(139,92,246,0.08)",  border: "rgba(196,181,253,0.3)",  label: "Building intuition" },
-    emerging:   { color: "#6ee7b7", glow: "rgba(110,231,183,0.4)",  bg: "rgba(52,211,153,0.08)",  border: "rgba(110,231,183,0.3)",  label: "Pattern forming" },
-    proficient: { color: "#fcd34d", glow: "rgba(252,211,77,0.4)",   bg: "rgba(245,158,11,0.08)",  border: "rgba(252,211,77,0.3)",   label: "Strong instincts" },
-    extending:  { color: "#f9a8d4", glow: "rgba(249,168,212,0.45)", bg: "rgba(236,72,153,0.08)",  border: "rgba(249,168,212,0.3)",  label: "Beyond the brief" },
+    exploring: { color: "#93c5fd", glow: "rgba(147,197,253,0.4)", bg: "rgba(59,130,246,0.08)", border: "rgba(147,197,253,0.3)", label: "Just getting started" },
+    developing: { color: "#c4b5fd", glow: "rgba(196,181,253,0.4)", bg: "rgba(139,92,246,0.08)", border: "rgba(196,181,253,0.3)", label: "Building intuition" },
+    emerging: { color: "#6ee7b7", glow: "rgba(110,231,183,0.4)", bg: "rgba(52,211,153,0.08)", border: "rgba(110,231,183,0.3)", label: "Pattern forming" },
+    proficient: { color: "#fcd34d", glow: "rgba(252,211,77,0.4)", bg: "rgba(245,158,11,0.08)", border: "rgba(252,211,77,0.3)", label: "Strong instincts" },
+    extending: { color: "#f9a8d4", glow: "rgba(249,168,212,0.45)", bg: "rgba(236,72,153,0.08)", border: "rgba(249,168,212,0.3)", label: "Beyond the brief" },
 };
 
 const ratingDescriptions: Record<string, string> = {
-    exploring:  "You're at the very beginning of understanding this space. The tools you chose don't yet match the problem — but recognizing that gap is the first step to closing it.",
-    emerging:   "You're starting to develop a sense of the AI landscape, but still need more practice matching tools to problems. The direction is there — the precision isn't quite yet.",
+    exploring: "You're at the very beginning of understanding this space. The tools you chose don't yet match the problem — but recognizing that gap is the first step to closing it.",
+    emerging: "You're starting to develop a sense of the AI landscape, but still need more practice matching tools to problems. The direction is there — the precision isn't quite yet.",
     developing: "You understand parts of the problem but there are still gaps in your tool choices. You're on the right track — a few more deliberate swaps would get you to proficient.",
     proficient: "You have a solid understanding of what this brief requires and chose tools that genuinely fit. This is the goal — you've shown real judgment about the AI landscape.",
-    extending:  "You've gone beyond just knowing the tools — you understand exactly why each one belongs here. You're applying your knowledge with precision and purpose.",
+    extending: "You've gone beyond just knowing the tools — you understand exactly why each one belongs here. You're applying your knowledge with precision and purpose.",
 };
 
 export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brief }: Props) {
@@ -79,22 +82,22 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                     gap: "12px",
                     flexShrink: 0,
                 }}>
-                     <img
-                            src="/hatterw:ob.png"
-                            alt="Mad Hatter"
-                            style={{
-                                width: "90px",
-                                height: "90px",
-                                objectFit: "cover",
-                            }}
+                    <img
+                        src="/hatterw:ob.png"
+                        alt="Mad Hatter"
+                        style={{
+                            width: "90px",
+                            height: "90px",
+                            objectFit: "cover",
+                        }}
                     />
                     <div>
-                    <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "24px", color: "rgba(255,255,255,0.9)", margin: 0, lineHeight: 1.2 }}>
-                        The Hatter Has Spoken
-                    </h2>
-                    <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0 }}>
-                        Your stack has been judged
-                    </p>
+                        <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "24px", color: "rgba(255,255,255,0.9)", margin: 0, lineHeight: 1.2 }}>
+                            The Hatter Has Spoken
+                        </h2>
+                        <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0 }}>
+                            Your stack has been judged
+                        </p>
                     </div>
                 </div>
 
@@ -348,7 +351,18 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                             alignItems: "center",
                             gap: "8px",
                         }}>
-                        🔄 Try Another Brief
+                        <Image
+                            src={reload}
+                            alt="redo"
+                            width={16}
+                            height={16}
+                            style={{
+                                filter: "invert(1) drop-shadow(0 0 3px rgba(134, 239, 172, 0.4))",
+                                opacity: 0.9,
+                                transition: "filter 0.3s ease"
+                            }}
+                        />
+                        Try Another Brief
                     </motion.button>
                 </div>
 
