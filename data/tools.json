@@ -1,0 +1,2020 @@
+{
+    "tools": [
+      {
+        "id": "gpt-4o",
+        "logo": "🤖",
+        "name": "GPT-4o",
+        "maker": "OpenAI",
+        "category": "llm",
+        "tagline": "The world's most widely used AI model.",
+        "what": "GPT-4o is an AI model that can read text, images, and audio and respond in a way that feels almost human. An LLM (Large Language Model) is basically a program trained on billions of pages of text until it learned how to understand and generate language. GPT-4o is one of the smartest ones available.",
+        "analogy": "A genius intern who has read the entire internet, never sleeps, and will answer anything you ask instantly.",
+        "usecases": [
+          {
+            "icon": "💬",
+            "text": "Building a customer support chatbot that handles refund requests automatically"
+          },
+          {
+            "icon": "📝",
+            "text": "Generating first drafts of essays, emails, or reports from a short prompt"
+          },
+          {
+            "icon": "🖼",
+            "text": "Analyzing a photo of a receipt and extracting the total amount spent"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Claude",
+            "diff": "GPT-4o is faster and more widely integrated. Claude tends to write better long-form content and is less likely to hallucinate on complex reasoning tasks."
+          },
+          {
+            "name": "vs Gemini",
+            "diff": "GPT-4o has a larger developer ecosystem. Gemini has a bigger context window and integrates better with Google products."
+          }
+        ],
+        "tags": [
+          "llm",
+          "multimodal",
+          "api"
+        ],
+        "cost": "",
+        "costDetail": "Free through ChatGPT with limits. API access is pay-per-use starting at $2.50 per million input tokens.",
+        "trending": true
+      },
+      {
+        "id": "claude",
+        "logo": "🟠",
+        "name": "Claude",
+        "maker": "Anthropic",
+        "category": "llm",
+        "tagline": "The LLM built to be safe, honest, and genuinely helpful.",
+        "what": "Claude is an AI model made by Anthropic, a company founded specifically to build safer AI. It can read, write, reason, and analyze — and it is particularly strong at handling very long documents and producing clean, well-structured writing.",
+        "analogy": "A brilliant editor who actually reads your whole document before giving feedback, not just the first paragraph.",
+        "usecases": [
+          {
+            "icon": "📄",
+            "text": "Summarizing a 100-page PDF research report into a 1-page brief"
+          },
+          {
+            "icon": "🧠",
+            "text": "Walking through a complex coding bug step by step and explaining exactly what went wrong"
+          },
+          {
+            "icon": "✍️",
+            "text": "Writing a polished cover letter that actually sounds like a human wrote it"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs GPT-4o",
+            "diff": "Claude handles longer documents better and tends to be more careful with facts. GPT-4o has more third-party integrations and plugins."
+          },
+          {
+            "name": "vs Gemini",
+            "diff": "Claude is generally considered stronger at writing and reasoning. Gemini is better if you need live Google Search integration."
+          }
+        ],
+        "tags": [
+          "llm",
+          "long-context",
+          "safe"
+        ],
+        "cost": "",
+        "costDetail": "Free through claude.ai with daily limits. API access is pay-per-use starting at $3 per million input tokens.",
+        "trending": true
+      },
+      {
+        "id": "gemini",
+        "logo": "♊",
+        "name": "Gemini",
+        "maker": "Google",
+        "category": "llm",
+        "tagline": "Google's AI model with the biggest context window.",
+        "what": "Gemini is Google's family of AI models. The most powerful version, Gemini 1.5 Pro, can process up to 1 million tokens at once — meaning you can feed it entire codebases, hours of video, or thousands of documents and it will reason across all of it.",
+        "analogy": "A researcher who can read an entire library in one sitting and then answer specific questions about any book in it.",
+        "usecases": [
+          {
+            "icon": "🎥",
+            "text": "Uploading an hour-long lecture video and asking it to find every moment a specific topic was mentioned"
+          },
+          {
+            "icon": "🔍",
+            "text": "Feeding an entire codebase and asking it to find every place a specific function is called"
+          },
+          {
+            "icon": "📊",
+            "text": "Analyzing a year's worth of customer emails to identify the most common complaints"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs GPT-4o",
+            "diff": "Gemini has a much larger context window and native Google Search integration. GPT-4o has a more mature developer ecosystem."
+          },
+          {
+            "name": "vs Claude",
+            "diff": "Gemini handles video natively and connects to Google products. Claude is stronger at writing and careful reasoning."
+          }
+        ],
+        "tags": [
+          "llm",
+          "multimodal",
+          "long-context"
+        ],
+        "cost": "",
+        "costDetail": "Free through gemini.google.com with limits. API access is free up to a rate limit, then pay-per-use.",
+        "trending": false
+      },
+      {
+        "id": "llama",
+        "logo": "🦙",
+        "name": "Llama",
+        "maker": "Meta",
+        "category": "llm",
+        "tagline": "The most powerful open source AI model you can run yourself.",
+        "what": "Llama is Meta's open source AI model, meaning anyone can download it and run it on their own computer or server for free. This is a big deal because most powerful AI models are locked behind APIs — Llama lets you have a GPT-level model that you fully own and control.",
+        "analogy": "The difference between renting a car and owning one. Most AI models are rentals. Llama is a car you own — you can modify it, paint it, drive it anywhere, and nobody can take it away.",
+        "usecases": [
+          {
+            "icon": "🔒",
+            "text": "Building an AI tool for a hospital where patient data can never leave their own servers"
+          },
+          {
+            "icon": "💰",
+            "text": "Running thousands of AI requests per day without paying per-token API costs"
+          },
+          {
+            "icon": "🛠",
+            "text": "Fine-tuning the model on your own data to make it an expert in your specific domain"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs GPT-4o",
+            "diff": "GPT-4o is smarter out of the box. Llama is free, private, and customizable — but you need your own hardware or hosting to run it."
+          },
+          {
+            "name": "vs Mistral",
+            "diff": "Both are open source. Llama is bigger and more capable. Mistral is smaller and faster, better for low-resource environments."
+          }
+        ],
+        "tags": [
+          "llm",
+          "open-source",
+          "self-hosted"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. You pay only for whatever compute you use to run it.",
+        "trending": false
+      },
+      {
+        "id": "mistral",
+        "logo": "💨",
+        "name": "Mistral",
+        "maker": "Mistral AI",
+        "category": "llm",
+        "tagline": "A lean, fast, open source model that punches above its weight.",
+        "what": "Mistral is a family of open source AI models from a French AI startup. They are known for being surprisingly powerful despite being much smaller than models like GPT-4o — which makes them faster, cheaper to run, and easier to deploy on limited hardware.",
+        "analogy": "A sports car that gets better mileage than an SUV but still beats it off the line.",
+        "usecases": [
+          {
+            "icon": "⚡",
+            "text": "Running a real-time AI assistant that needs to respond in under a second"
+          },
+          {
+            "icon": "📱",
+            "text": "Deploying an AI model on a device with limited memory, like an edge server or IoT device"
+          },
+          {
+            "icon": "💸",
+            "text": "Processing millions of short AI requests per day at a fraction of the cost of GPT-4o"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Llama",
+            "diff": "Both are open source. Mistral is smaller and faster. Llama is larger and more capable for complex tasks."
+          },
+          {
+            "name": "vs GPT-4o",
+            "diff": "GPT-4o is significantly smarter on hard tasks. Mistral is cheaper and faster for simpler tasks where you don't need GPT-4o's full power."
+          }
+        ],
+        "tags": [
+          "llm",
+          "open-source",
+          "fast"
+        ],
+        "cost": "",
+        "costDetail": "Open source models are free to download and run. API access starts at $0.25 per million tokens.",
+        "trending": false
+      },
+      {
+        "id": "groq",
+        "logo": "⚡",
+        "name": "Groq",
+        "maker": "Groq",
+        "category": "llm",
+        "tagline": "Run open source AI models at insane speeds.",
+        "what": "Groq is not an AI model — it is a platform that runs existing open source models like Llama and Mistral on custom hardware called LPUs (Language Processing Units). The result is AI inference that is 10 to 100 times faster than running the same models on standard GPUs.",
+        "analogy": "Same music, completely different speakers. Groq takes the same AI models everyone else uses and plays them at full volume.",
+        "usecases": [
+          {
+            "icon": "🎙",
+            "text": "Powering a voice assistant where the AI response needs to come back in under 200 milliseconds to feel natural"
+          },
+          {
+            "icon": "🏎",
+            "text": "Running real-time AI moderation on a live stream where every second of delay matters"
+          },
+          {
+            "icon": "🔁",
+            "text": "Prototyping an app that makes hundreds of AI calls per minute without hitting rate limits"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs OpenAI API",
+            "diff": "Groq is dramatically faster and cheaper for open source models. OpenAI has access to GPT-4o which Groq doesn't offer."
+          },
+          {
+            "name": "vs Ollama",
+            "diff": "Ollama runs models locally on your own machine. Groq runs them on their cloud infrastructure at much higher speeds."
+          }
+        ],
+        "tags": [
+          "llm",
+          "inference",
+          "fast"
+        ],
+        "cost": "",
+        "costDetail": "Free tier available with rate limits. Paid plans start at $0.05 per million tokens.",
+        "trending": true
+      },
+      {
+        "id": "cohere",
+        "logo": "🔗",
+        "name": "Cohere",
+        "maker": "Cohere",
+        "category": "llm",
+        "tagline": "The LLM platform built specifically for enterprise search and RAG.",
+        "what": "Cohere is an AI company that builds language models specifically designed for business use cases — particularly search, summarization, and retrieval. While OpenAI and Anthropic focus on general-purpose chat, Cohere focuses on helping companies search through their own data intelligently.",
+        "analogy": "While other AI companies build Swiss Army knives, Cohere builds the best possible knife for one specific job — finding and understanding information inside large document collections.",
+        "usecases": [
+          {
+            "icon": "🏢",
+            "text": "Building an internal search tool that lets employees search through thousands of company documents by meaning, not just keywords"
+          },
+          {
+            "icon": "📚",
+            "text": "Creating a Q&A system over a large knowledge base where accuracy and citations matter"
+          },
+          {
+            "icon": "🔍",
+            "text": "Re-ranking search results so the most relevant documents always appear first"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs OpenAI Embeddings",
+            "diff": "Cohere's Rerank model adds a second layer that re-orders results by relevance, which OpenAI doesn't offer natively."
+          },
+          {
+            "name": "vs GPT-4o",
+            "diff": "GPT-4o is general purpose. Cohere is purpose-built for enterprise search pipelines where accuracy and data privacy matter more."
+          }
+        ],
+        "tags": [
+          "llm",
+          "embeddings",
+          "enterprise"
+        ],
+        "cost": "",
+        "costDetail": "Free trial with limited API calls. Production pricing starts at $0.10 per million tokens for embeddings.",
+        "trending": false
+      },
+      {
+        "id": "mixtral",
+        "logo": "🌀",
+        "name": "Mixtral",
+        "maker": "Mistral AI",
+        "category": "llm",
+        "tagline": "An open source model that uses a clever trick to be smarter and faster at the same time.",
+        "what": "Mixtral is an open source AI model from Mistral AI that uses a technique called Mixture of Experts (MoE). Instead of using the entire model for every question, it only activates the parts most relevant to your specific request. This means it gets near GPT-4 level performance while using far less compute.",
+        "analogy": "Instead of asking your entire team to show up for every task, you only call in the two people who are actually experts in what you need. Same team, much less wasted effort.",
+        "usecases": [
+          {
+            "icon": "💡",
+            "text": "Running a powerful AI assistant on a budget server that couldn't handle a full-sized model"
+          },
+          {
+            "icon": "🔀",
+            "text": "Handling a wide variety of tasks — coding, writing, math — without needing to switch between specialized models"
+          },
+          {
+            "icon": "🏗",
+            "text": "Building a self-hosted AI product that needs near-GPT-4 quality without the API cost"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Mistral 7B",
+            "diff": "Mixtral is significantly more capable than the smaller Mistral 7B model and handles complex reasoning much better."
+          },
+          {
+            "name": "vs GPT-4o",
+            "diff": "GPT-4o is still smarter overall. But Mixtral is free, open source, and gets surprisingly close to GPT-4 performance at a fraction of the cost."
+          }
+        ],
+        "tags": [
+          "llm",
+          "open-source",
+          "mixture-of-experts"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. Can be run via Groq, Together AI, or self-hosted on your own hardware.",
+        "trending": false
+      },
+      {
+        "id": "whisper",
+        "logo": "🎙",
+        "name": "Whisper",
+        "maker": "OpenAI",
+        "category": "voice",
+        "tagline": "Best-in-class open source speech-to-text.",
+        "what": "Whisper converts spoken audio into text with high accuracy in almost any language. You give it an audio file, it gives you a text transcript back. It runs completely offline, meaning your audio never has to leave your computer.",
+        "analogy": "A court stenographer that works for free, understands any accent, and never needs a break.",
+        "usecases": [
+          {
+            "icon": "🎓",
+            "text": "Transcribing university lectures into searchable text notes automatically"
+          },
+          {
+            "icon": "🎙",
+            "text": "Adding voice input to any app — user speaks, Whisper converts it to text for the AI to process"
+          },
+          {
+            "icon": "🌍",
+            "text": "Transcribing meetings held in foreign languages with high accuracy"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs AssemblyAI",
+            "diff": "Whisper is free and runs offline. AssemblyAI costs money but adds features like speaker labels and automatic summaries."
+          },
+          {
+            "name": "vs Deepgram",
+            "diff": "Deepgram is faster for live real-time audio. Whisper is better for recorded audio files where speed is less important."
+          }
+        ],
+        "tags": [
+          "stt",
+          "open-source",
+          "free"
+        ],
+        "cost": "free",
+        "costDetail": "100% free and open source. No API key needed. Runs on your own machine.",
+        "trending": false
+      },
+      {
+        "id": "elevenlabs",
+        "logo": "🎤",
+        "name": "ElevenLabs",
+        "maker": "ElevenLabs",
+        "category": "voice",
+        "tagline": "The most realistic AI voice generator available.",
+        "what": "ElevenLabs turns text into spoken audio that sounds indistinguishable from a real human voice. You type something, pick a voice, and it speaks it out loud. It also lets you clone any voice from a short audio sample.",
+        "analogy": "A voice actor in your pocket who can sound like anyone, speak any language, and deliver a line in seconds.",
+        "usecases": [
+          {
+            "icon": "📖",
+            "text": "Turning a blog post into a podcast episode automatically without recording anything"
+          },
+          {
+            "icon": "🎮",
+            "text": "Adding voiced dialogue to a video game without hiring voice actors"
+          },
+          {
+            "icon": "🌐",
+            "text": "Dubbing a YouTube video into Spanish, French, and Japanese while keeping the original speaker's voice"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs OpenAI TTS",
+            "diff": "ElevenLabs sounds more natural and supports voice cloning. OpenAI TTS is cheaper and simpler for basic text-to-speech needs."
+          },
+          {
+            "name": "vs Murf",
+            "diff": "Murf is better for corporate presentations with a studio interface. ElevenLabs is better for developers building apps that need realistic real-time voice."
+          }
+        ],
+        "tags": [
+          "tts",
+          "voice-cloning",
+          "realistic"
+        ],
+        "cost": "",
+        "costDetail": "Free tier gives 10,000 characters per month. Paid plans start at $5/month for 30,000 characters.",
+        "trending": false
+      },
+      {
+        "id": "assemblyai",
+        "logo": "📋",
+        "name": "AssemblyAI",
+        "maker": "AssemblyAI",
+        "category": "voice",
+        "tagline": "Speech-to-text with built-in AI features like summaries and speaker detection.",
+        "what": "AssemblyAI transcribes audio like Whisper does, but goes further — it can automatically identify who is speaking, summarize what was said, detect topics, and flag action items. It is designed for developers who want to extract structured information from audio, not just raw text.",
+        "analogy": "Whisper gives you a transcript. AssemblyAI gives you a transcript plus a meeting summary, speaker breakdown, and a list of follow-up tasks — all in one API call.",
+        "usecases": [
+          {
+            "icon": "📋",
+            "text": "Automatically generating meeting notes with speaker labels and action items after every Zoom call"
+          },
+          {
+            "icon": "🎙",
+            "text": "Building a podcast platform that auto-generates chapter titles and summaries for every episode"
+          },
+          {
+            "icon": "📞",
+            "text": "Analyzing customer support calls to detect sentiment and flag unhappy customers automatically"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Whisper",
+            "diff": "Whisper is free and offline but gives you only raw text. AssemblyAI costs money but adds speaker labels, summaries, and topic detection."
+          },
+          {
+            "name": "vs Deepgram",
+            "diff": "Deepgram is faster and better for real-time live transcription. AssemblyAI has richer post-processing features for recorded audio."
+          }
+        ],
+        "tags": [
+          "stt",
+          "speaker-detection",
+          "summarization"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes 100 hours of transcription. Paid usage is $0.37 per hour of audio.",
+        "trending": false
+      },
+      {
+        "id": "deepgram",
+        "logo": "🌊",
+        "name": "Deepgram",
+        "maker": "Deepgram",
+        "category": "voice",
+        "tagline": "The fastest real-time speech-to-text API for live applications.",
+        "what": "Deepgram is a speech-to-text API optimized for speed. Where Whisper processes a file after it is done recording, Deepgram can transcribe audio as it is being spoken — word by word, in real time. This makes it the go-to choice for live apps like voice assistants and real-time captions.",
+        "analogy": "Whisper is like getting a printed transcript after a meeting. Deepgram is like having subtitles appear on screen as someone is still talking.",
+        "usecases": [
+          {
+            "icon": "🎧",
+            "text": "Adding live captions to a video call platform so every participant sees what is being said in real time"
+          },
+          {
+            "icon": "🤖",
+            "text": "Building a voice assistant that starts processing your request before you even finish your sentence"
+          },
+          {
+            "icon": "📺",
+            "text": "Auto-generating live subtitles for a streaming broadcast"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Whisper",
+            "diff": "Deepgram is faster and works live. Whisper is free and better for accuracy on recorded files."
+          },
+          {
+            "name": "vs AssemblyAI",
+            "diff": "Deepgram wins on speed and real-time capability. AssemblyAI wins on post-processing features like summaries and speaker detection."
+          }
+        ],
+        "tags": [
+          "stt",
+          "real-time",
+          "streaming"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes $200 in credits. After that, pay-per-use starting at $0.0043 per minute.",
+        "trending": false
+      },
+      {
+        "id": "openai-tts",
+        "logo": "🔊",
+        "name": "OpenAI TTS",
+        "maker": "OpenAI",
+        "category": "voice",
+        "tagline": "Simple, cheap text-to-speech from the makers of ChatGPT.",
+        "what": "OpenAI TTS (Text-to-Speech) is the voice generation API from OpenAI. You send it text, it returns an audio file of that text spoken out loud. It is simpler than ElevenLabs — no voice cloning, fewer options — but it is fast, reliable, and cheap, making it great for apps that just need a decent voice.",
+        "analogy": "The no-frills option. Not the fanciest voice you have ever heard, but it shows up on time, costs almost nothing, and gets the job done.",
+        "usecases": [
+          {
+            "icon": "🔔",
+            "text": "Adding voice readback to a notification system so users can hear their alerts instead of reading them"
+          },
+          {
+            "icon": "📱",
+            "text": "Building a mobile app that reads out AI responses for users who prefer audio"
+          },
+          {
+            "icon": "♿",
+            "text": "Making a web app accessible by reading out page content for visually impaired users"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs ElevenLabs",
+            "diff": "ElevenLabs sounds more human and supports voice cloning. OpenAI TTS is cheaper and easier to integrate if you are already using OpenAI."
+          },
+          {
+            "name": "vs Murf",
+            "diff": "Murf has a full studio interface for content creators. OpenAI TTS is API-only, built for developers who need voice in their apps."
+          }
+        ],
+        "tags": [
+          "tts",
+          "api",
+          "simple"
+        ],
+        "cost": "",
+        "costDetail": "No free tier for the API. Costs $15 per million characters of text converted to speech.",
+        "trending": false
+      },
+      {
+        "id": "speechify",
+        "logo": "📖",
+        "name": "Speechify",
+        "maker": "Speechify",
+        "category": "voice",
+        "tagline": "Turn any text or document into audio you can listen to on the go.",
+        "what": "Speechify is a tool that reads any text out loud — PDFs, articles, emails, textbooks, anything. It is primarily a consumer app built for people who want to consume written content by listening rather than reading, but it also has an API for developers.",
+        "analogy": "An audiobook service that works on any text you throw at it, not just books someone decided to record.",
+        "usecases": [
+          {
+            "icon": "📚",
+            "text": "A student uploading their 400-page textbook and listening to it during their commute instead of reading"
+          },
+          {
+            "icon": "📰",
+            "text": "Turning a long research paper into audio so you can absorb it while working out"
+          },
+          {
+            "icon": "♿",
+            "text": "Building a reading accessibility feature into an app for users with dyslexia"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs ElevenLabs",
+            "diff": "Speechify is built for consuming content as a listener. ElevenLabs is built for developers creating voice experiences in apps."
+          },
+          {
+            "name": "vs OpenAI TTS",
+            "diff": "Speechify has a polished consumer app with speed controls and highlighting. OpenAI TTS is a raw API with no interface."
+          }
+        ],
+        "tags": [
+          "tts",
+          "consumer",
+          "accessibility"
+        ],
+        "cost": "",
+        "costDetail": "Free app with basic voices. Premium plan is $139/year for high-quality AI voices and speed controls.",
+        "trending": false
+      },
+      {
+        "id": "murf",
+        "logo": "🎬",
+        "name": "Murf",
+        "maker": "Murf AI",
+        "category": "voice",
+        "tagline": "A studio-grade AI voice generator built for content creators.",
+        "what": "Murf is a text-to-speech platform with a full editing studio built in. You type your script, pick from over 120 AI voices across 20 languages, adjust pacing and emphasis, and sync the audio to slides or video — all in the browser. It is designed for people making presentations, explainer videos, and e-learning content.",
+        "analogy": "A professional recording studio, minus the studio, the microphone, and the voice actor — just you and a browser.",
+        "usecases": [
+          {
+            "icon": "🎓",
+            "text": "Creating a narrated e-learning course with professional voiceover without hiring a voice actor"
+          },
+          {
+            "icon": "📊",
+            "text": "Adding spoken narration to a product demo video by typing the script and syncing it to the slides"
+          },
+          {
+            "icon": "📣",
+            "text": "Producing radio-style ads for a small business at a fraction of the cost of a recording studio"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs ElevenLabs",
+            "diff": "Murf has a full studio interface with video sync, better for content creators. ElevenLabs is API-first, better for developers."
+          },
+          {
+            "name": "vs OpenAI TTS",
+            "diff": "Murf gives you 120+ voices, a visual editor, and video sync. OpenAI TTS is simpler and cheaper but has no interface."
+          }
+        ],
+        "tags": [
+          "tts",
+          "studio",
+          "content-creation"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 10 minutes of voice generation. Paid plans start at $19/month.",
+        "trending": false
+      },
+      {
+        "id": "playht",
+        "logo": "▶️",
+        "name": "PlayHT",
+        "maker": "PlayHT",
+        "category": "voice",
+        "tagline": "Ultra-realistic AI voices with real-time streaming and voice cloning.",
+        "what": "PlayHT is a text-to-speech platform that focuses on ultra-realistic voices and real-time streaming. Like ElevenLabs it supports voice cloning — you can train it on a few minutes of audio and it will generate new speech in that person's voice. It also streams audio in real time, so responses start playing before the full audio is generated.",
+        "analogy": "Like ElevenLabs but with a turbo button — it starts talking before it has even finished thinking of what to say.",
+        "usecases": [
+          {
+            "icon": "🤖",
+            "text": "Building a voice AI agent that responds to users in real time with a cloned voice of the company's CEO"
+          },
+          {
+            "icon": "🎙",
+            "text": "Creating personalized audio messages at scale — 10,000 customers each getting a message in the same cloned voice"
+          },
+          {
+            "icon": "🌐",
+            "text": "Adding multilingual voice support to a customer service bot without re-recording anything"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs ElevenLabs",
+            "diff": "Both offer voice cloning and realistic voices. PlayHT has lower latency streaming, making it better for real-time conversational apps."
+          },
+          {
+            "name": "vs OpenAI TTS",
+            "diff": "PlayHT sounds more realistic and supports voice cloning. OpenAI TTS is simpler and more predictable for basic use cases."
+          }
+        ],
+        "tags": [
+          "tts",
+          "voice-cloning",
+          "streaming"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 12,500 characters per month. Paid plans start at $31.20/month.",
+        "trending": false
+      },
+      {
+        "id": "dalle-3",
+        "logo": "🎨",
+        "name": "DALL-E 3",
+        "maker": "OpenAI",
+        "category": "image",
+        "tagline": "Type a description, get a professional image back instantly.",
+        "what": "DALL-E 3 is OpenAI's image generation model. You describe what you want in plain English and it generates a high-quality image in seconds. It is built directly into ChatGPT, making it the most accessible AI image tool for non-designers.",
+        "analogy": "A graphic designer who can visualize anything you describe in plain English, in under ten seconds, with no revisions needed.",
+        "usecases": [
+          {
+            "icon": "📱",
+            "text": "Generating a custom illustration for a blog post without paying a designer or searching stock photo sites"
+          },
+          {
+            "icon": "🛍",
+            "text": "Creating product mockup images for an e-commerce store before the physical product even exists"
+          },
+          {
+            "icon": "🎨",
+            "text": "Rapidly prototyping UI concepts by generating visual mockups from text descriptions"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Midjourney",
+            "diff": "DALL-E 3 is easier to use and integrates with ChatGPT. Midjourney produces more artistic, higher-quality images but requires a Discord account."
+          },
+          {
+            "name": "vs Stable Diffusion",
+            "diff": "DALL-E 3 is simpler and requires no setup. Stable Diffusion is free and customizable but requires technical knowledge to run."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "text-to-image",
+          "api"
+        ],
+        "cost": "",
+        "costDetail": "Free through ChatGPT with limits. API access costs $0.04 per image at standard quality.",
+        "trending": false
+      },
+      {
+        "id": "midjourney",
+        "logo": "🖼",
+        "name": "Midjourney",
+        "maker": "Midjourney",
+        "category": "image",
+        "tagline": "The gold standard for artistic, high-quality AI image generation.",
+        "what": "Midjourney is an AI image generator known for producing strikingly beautiful and artistic images. You type a prompt in Discord, it generates four image options, and you can refine and upscale your favourite. It consistently produces the most visually impressive results of any AI image tool.",
+        "analogy": "Hiring the most talented artist you have ever seen, who works entirely in Discord and charges a flat monthly fee no matter how many pieces you commission.",
+        "usecases": [
+          {
+            "icon": "🖼",
+            "text": "Creating concept art for a game or film project to pitch to investors before hiring a full art team"
+          },
+          {
+            "icon": "👗",
+            "text": "Generating fashion design concepts and mood boards without a single sketch"
+          },
+          {
+            "icon": "📖",
+            "text": "Illustrating a children's book with a consistent art style across every page"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs DALL-E 3",
+            "diff": "Midjourney produces more artistic and visually striking images. DALL-E 3 is easier to use and accessible directly through ChatGPT."
+          },
+          {
+            "name": "vs Stable Diffusion",
+            "diff": "Midjourney is easier and produces better results out of the box. Stable Diffusion is free and fully customizable but has a steep learning curve."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "artistic",
+          "discord"
+        ],
+        "cost": "",
+        "costDetail": "No free tier. Plans start at $10/month for 200 image generations.",
+        "trending": false
+      },
+      {
+        "id": "stable-diffusion",
+        "logo": "🌌",
+        "name": "Stable Diffusion",
+        "maker": "Stability AI",
+        "category": "image",
+        "tagline": "The open source image model you can run, customize, and own completely.",
+        "what": "Stable Diffusion is a free, open source AI image generation model. Unlike DALL-E or Midjourney which run on someone else's servers, you can download Stable Diffusion and run it on your own computer. This means no usage fees, no content restrictions, and the ability to fine-tune it on your own image datasets.",
+        "analogy": "Midjourney is a restaurant — great food, but you eat what they serve, on their schedule. Stable Diffusion is a professional kitchen you own. More work to set up, but you can cook anything you want.",
+        "usecases": [
+          {
+            "icon": "🎨",
+            "text": "Fine-tuning the model on a specific art style to generate consistent branded illustrations for a company"
+          },
+          {
+            "icon": "🔒",
+            "text": "Generating product images for a client who requires all assets to be created on private servers"
+          },
+          {
+            "icon": "🛠",
+            "text": "Building a custom image generation pipeline with full control over every step of the process"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Midjourney",
+            "diff": "Midjourney is easier and produces better results by default. Stable Diffusion is free, private, and fully customizable."
+          },
+          {
+            "name": "vs DALL-E 3",
+            "diff": "DALL-E 3 requires no setup and has a simple API. Stable Diffusion requires technical knowledge but costs nothing and has no content filters."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "open-source",
+          "self-hosted"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. Runs locally on your GPU. Cloud APIs are available from third parties if you prefer.",
+        "trending": false
+      },
+      {
+        "id": "flux",
+        "logo": "✨",
+        "name": "Flux",
+        "maker": "Black Forest Labs",
+        "category": "image",
+        "tagline": "The newest open source image model that is beating Midjourney at its own game.",
+        "what": "Flux is a recently released open source image generation model from Black Forest Labs, founded by some of the original creators of Stable Diffusion. It produces extremely photorealistic and detailed images and has quickly become the favourite among developers who want Midjourney-quality results they can run themselves.",
+        "analogy": "The new kid who transferred in and is already top of the class. Everyone expected Stable Diffusion 3, and got Flux instead.",
+        "usecases": [
+          {
+            "icon": "📸",
+            "text": "Generating photorealistic product photos for an e-commerce store without a photography shoot"
+          },
+          {
+            "icon": "👤",
+            "text": "Creating consistent realistic portraits of fictional characters across a whole project"
+          },
+          {
+            "icon": "🏗",
+            "text": "Generating architectural visualizations of buildings from text descriptions for client presentations"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Stable Diffusion",
+            "diff": "Flux produces noticeably more realistic and detailed images. Both are open source but Flux requires more compute to run."
+          },
+          {
+            "name": "vs Midjourney",
+            "diff": "Flux matches Midjourney on photorealism and is free to run yourself. Midjourney is still easier to use for non-developers."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "open-source",
+          "photorealistic"
+        ],
+        "cost": "free",
+        "costDetail": "Open source and free to run on your own hardware. Available via API through Replicate and fal.ai.",
+        "trending": true
+      },
+      {
+        "id": "ideogram",
+        "logo": "🔤",
+        "name": "Ideogram",
+        "maker": "Ideogram",
+        "category": "image",
+        "tagline": "The only AI image generator that actually gets text right.",
+        "what": "Ideogram is an AI image generator with one key superpower — it can render readable text inside images. Every other image model (Midjourney, DALL-E, Stable Diffusion) produces garbled nonsense when you ask it to include text. Ideogram was built specifically to fix that problem.",
+        "analogy": "Every AI image tool tries to write text and produces something that looks like a ransom note typed by someone having a stroke. Ideogram is the first one that went to school.",
+        "usecases": [
+          {
+            "icon": "📌",
+            "text": "Generating a poster or flyer with legible text, headlines, and a designed layout automatically"
+          },
+          {
+            "icon": "👕",
+            "text": "Creating t-shirt designs with readable slogans and styled typography"
+          },
+          {
+            "icon": "📲",
+            "text": "Producing social media graphics with text overlays without opening Photoshop"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs DALL-E 3",
+            "diff": "DALL-E 3 has improved at text but still makes errors. Ideogram was purpose-built for text accuracy and is noticeably more reliable."
+          },
+          {
+            "name": "vs Midjourney",
+            "diff": "Midjourney produces more artistic images but consistently fails at rendering text. Ideogram is the clear winner for any design that includes words."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "typography",
+          "design"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes 10 slow generations per day. Paid plans start at $7/month for faster, higher-quality outputs.",
+        "trending": false
+      },
+      {
+        "id": "firefly",
+        "logo": "🦋",
+        "name": "Firefly",
+        "maker": "Adobe",
+        "category": "image",
+        "tagline": "Adobe's AI image generator — commercially safe and built for designers.",
+        "what": "Adobe Firefly is Adobe's AI image generation model, built directly into Photoshop, Illustrator, and Adobe Express. Its biggest differentiator is that it was trained only on licensed Adobe Stock images, which means anything you generate is legally safe to use commercially without worrying about copyright issues.",
+        "analogy": "Every other AI image tool is a brilliant artist who learned by looking at everything on the internet, including stuff they weren't supposed to see. Firefly only studied properly licensed work — slower to learn, but cleaner to use professionally.",
+        "usecases": [
+          {
+            "icon": "🏢",
+            "text": "A marketing team generating campaign images they can use in paid ads without legal risk"
+          },
+          {
+            "icon": "🎨",
+            "text": "A Photoshop user using Generative Fill to extend a photo's background or remove objects seamlessly"
+          },
+          {
+            "icon": "📦",
+            "text": "A packaging designer rapidly generating product label variations to present to a client"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs DALL-E 3",
+            "diff": "Firefly is commercially safe for business use. DALL-E 3's training data and licensing terms are less clear for commercial applications."
+          },
+          {
+            "name": "vs Midjourney",
+            "diff": "Firefly integrates directly into Adobe tools designers already use. Midjourney produces more artistic images but has no native design software integration."
+          }
+        ],
+        "tags": [
+          "image-gen",
+          "commercial-safe",
+          "adobe"
+        ],
+        "cost": "",
+        "costDetail": "Included with Adobe Creative Cloud subscriptions. Standalone free tier available with 25 generative credits per month.",
+        "trending": false
+      },
+      {
+        "id": "kling",
+        "logo": "🎞",
+        "name": "Kling",
+        "maker": "Kuaishou",
+        "category": "image",
+        "tagline": "Generate stunning short videos from a single image or text prompt.",
+        "what": "Kling is an AI video generation model from a major Chinese tech company. You give it a text description or a still image, and it generates a short, realistic video clip. It is one of the highest-quality video generation tools available and shocked the AI community when it launched.",
+        "analogy": "Like DALL-E but for video — type what you want to see happen, and a few minutes later you have a clip of it actually happening.",
+        "usecases": [
+          {
+            "icon": "🎬",
+            "text": "Turning a product photo into a short video ad showing the product in motion"
+          },
+          {
+            "icon": "🎞",
+            "text": "Animating a still illustration to create a dynamic social media post"
+          },
+          {
+            "icon": "🎥",
+            "text": "Generating B-roll footage for a video project without a camera crew"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Runway",
+            "diff": "Both generate video from images. Kling produces more realistic motion. Runway has more editing tools and is more established with filmmakers."
+          },
+          {
+            "name": "vs Stable Diffusion Video",
+            "diff": "Kling produces noticeably higher quality and longer clips. Stable Diffusion Video is free but lags behind in quality."
+          }
+        ],
+        "tags": [
+          "video-gen",
+          "image-to-video",
+          "text-to-video"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes limited daily credits. Paid plans start at approximately $10/month for more generations.",
+        "trending": false
+      },
+      {
+        "id": "runway",
+        "logo": "🎥",
+        "name": "Runway",
+        "maker": "Runway",
+        "category": "image",
+        "tagline": "The AI video studio trusted by professional filmmakers.",
+        "what": "Runway is an AI creative platform focused on video generation and editing. It can generate video from text or images, remove backgrounds in real time, apply visual effects, and edit footage using text commands. It has become a genuine professional tool used on major film and TV productions.",
+        "analogy": "A full post-production studio that fits in a browser tab — no film school, no expensive software, no team of editors required.",
+        "usecases": [
+          {
+            "icon": "🎬",
+            "text": "Generating custom video backgrounds for a commercial shoot without building a physical set"
+          },
+          {
+            "icon": "✂️",
+            "text": "Removing the background from a video in real time without a green screen"
+          },
+          {
+            "icon": "🎥",
+            "text": "Editing a short film by typing instructions like 'make this scene look like it was shot at night'"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Kling",
+            "diff": "Runway has a more complete editing suite and professional workflow tools. Kling produces more photorealistic raw video output."
+          },
+          {
+            "name": "vs DALL-E 3",
+            "diff": "Both can generate visuals from text. DALL-E 3 produces still images. Runway produces video clips with motion."
+          }
+        ],
+        "tags": [
+          "video-gen",
+          "video-editing",
+          "professional"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 125 one-time credits. Paid plans start at $15/month for 625 credits per month.",
+        "trending": false
+      },
+      {
+        "id": "langchain",
+        "logo": "⛓",
+        "name": "LangChain",
+        "maker": "LangChain",
+        "category": "agents",
+        "tagline": "The most popular framework for building apps that chain AI steps together.",
+        "what": "LangChain is a framework for building AI applications that do more than one thing in sequence. Instead of asking an AI a question and getting an answer, LangChain lets you build pipelines — search the web, then summarize what you found, then write an email based on the summary. It chains multiple AI steps into one automated workflow.",
+        "analogy": "If an LLM is a single smart employee, LangChain is the project management system that tells that employee what to do next, what tools to use, and in what order.",
+        "usecases": [
+          {
+            "icon": "🔍",
+            "text": "Building a research assistant that automatically searches the web, reads the results, and writes a summary report"
+          },
+          {
+            "icon": "📄",
+            "text": "Creating a document Q&A system that lets users ask questions about a PDF and get cited answers"
+          },
+          {
+            "icon": "🤖",
+            "text": "Building an AI agent that browses your email inbox, categorizes messages, and drafts replies automatically"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LlamaIndex",
+            "diff": "LangChain is a general framework for building any kind of AI pipeline. LlamaIndex is specialized for loading, indexing, and querying documents."
+          },
+          {
+            "name": "vs CrewAI",
+            "diff": "LangChain is for building a single AI pipeline. CrewAI is for coordinating multiple AI agents that work as a team."
+          }
+        ],
+        "tags": [
+          "agents",
+          "framework",
+          "chains"
+        ],
+        "cost": "free",
+        "costDetail": "LangChain is free and open source. You pay separately for whatever AI APIs you use inside your pipeline.",
+        "trending": false
+      },
+      {
+        "id": "crewai",
+        "logo": "👥",
+        "name": "CrewAI",
+        "maker": "CrewAI",
+        "category": "agents",
+        "tagline": "Build teams of AI agents that work together to complete complex tasks.",
+        "what": "CrewAI lets you create multiple AI agents, give each one a specific role and set of tools, and have them collaborate on a task. One agent might be the researcher, another the writer, another the fact-checker — they pass work between each other just like a real team would.",
+        "analogy": "Instead of asking one AI to do everything, you hire a whole AI department. Each agent has a job title, a skillset, and a manager keeping them on task.",
+        "usecases": [
+          {
+            "icon": "📰",
+            "text": "Building an AI newsroom where one agent researches, one writes, and one edits — all automatically"
+          },
+          {
+            "icon": "🔬",
+            "text": "Running a competitive analysis where one agent finds competitors, one analyzes their pricing, and one writes the report"
+          },
+          {
+            "icon": "💻",
+            "text": "Automating a software development workflow where one agent writes code, another reviews it, and another writes the tests"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain builds a single pipeline. CrewAI coordinates multiple agents with different roles working in parallel or in sequence."
+          },
+          {
+            "name": "vs AutoGPT",
+            "diff": "AutoGPT is a single autonomous agent that figures out its own steps. CrewAI lets you define specific roles and workflows with multiple specialized agents."
+          }
+        ],
+        "tags": [
+          "agents",
+          "multi-agent",
+          "collaboration"
+        ],
+        "cost": "free",
+        "costDetail": "Open source and free. You pay separately for whatever LLM APIs your agents use.",
+        "trending": false
+      },
+      {
+        "id": "autogpt",
+        "logo": "🧠",
+        "name": "AutoGPT",
+        "maker": "Significant Gravitas",
+        "category": "agents",
+        "tagline": "Give an AI a goal and watch it figure out how to achieve it on its own.",
+        "what": "AutoGPT is one of the first autonomous AI agents — you give it a high-level goal like 'research the top 10 competitors in the fitness app market and write a report' and it breaks that goal into tasks, executes them one by one using tools like web search, and keeps going until it is done. No step-by-step instructions from you required.",
+        "analogy": "The difference between a calculator and an employee. A calculator does exactly what you press. AutoGPT is the employee you hand a project to and come back to later to find it completed.",
+        "usecases": [
+          {
+            "icon": "🔎",
+            "text": "Asking it to research a market, identify the top players, and produce a competitive landscape document automatically"
+          },
+          {
+            "icon": "📧",
+            "text": "Giving it access to your inbox and telling it to draft replies to all unread emails based on your previous communication style"
+          },
+          {
+            "icon": "🐛",
+            "text": "Pointing it at a codebase and asking it to find and fix all the failing tests autonomously"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain requires you to define each step in the pipeline. AutoGPT plans its own steps dynamically based on the goal you give it."
+          },
+          {
+            "name": "vs CrewAI",
+            "diff": "AutoGPT is a single self-directing agent. CrewAI is a team of specialized agents with defined roles. CrewAI is more predictable."
+          }
+        ],
+        "tags": [
+          "agents",
+          "autonomous",
+          "self-directing"
+        ],
+        "cost": "free",
+        "costDetail": "Open source and free. Requires an OpenAI API key which you pay for separately based on usage.",
+        "trending": false
+      },
+      {
+        "id": "n8n",
+        "logo": "🔁",
+        "name": "n8n",
+        "maker": "n8n",
+        "category": "agents",
+        "tagline": "A visual workflow automation tool with built-in AI capabilities.",
+        "what": "n8n is a workflow automation platform where you connect apps and services together using a drag-and-drop visual editor — no coding required. You can build automations like 'when a new order comes in on Shopify, add it to a Google Sheet and send a Slack notification.' It recently added AI nodes so you can drop an LLM into any workflow.",
+        "analogy": "LEGO bricks for your apps. Each brick is a different service — Gmail, Slack, OpenAI, Stripe, whatever — and you just snap them together to build the automation you want.",
+        "usecases": [
+          {
+            "icon": "📥",
+            "text": "Automatically summarizing every new email in your inbox with AI and sending the summary to Slack"
+          },
+          {
+            "icon": "🛒",
+            "text": "Triggering an AI to write a personalized thank-you email every time someone makes a purchase"
+          },
+          {
+            "icon": "📊",
+            "text": "Pulling data from multiple sources, having an AI analyze it, and posting a weekly summary to Notion automatically"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Zapier AI",
+            "diff": "n8n is open source and can be self-hosted for free. Zapier is easier to use but more expensive and you cannot host it yourself."
+          },
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain is for developers building AI pipelines in code. n8n is for anyone who wants to automate workflows visually without writing code."
+          }
+        ],
+        "tags": [
+          "automation",
+          "no-code",
+          "workflow"
+        ],
+        "cost": "",
+        "costDetail": "Self-hosted version is free forever. Cloud version starts at $20/month.",
+        "trending": false
+      },
+      {
+        "id": "flowise",
+        "logo": "🌊",
+        "name": "Flowise",
+        "maker": "FlowiseAI",
+        "category": "agents",
+        "tagline": "Build LangChain AI pipelines visually without writing any code.",
+        "what": "Flowise is a visual drag-and-drop interface for building LangChain applications. Everything that LangChain can do in code — RAG pipelines, agent workflows, chatbot chains — Flowise lets you build by connecting blocks on a canvas. It is designed for people who want the power of LangChain without the complexity.",
+        "analogy": "LangChain is like building with raw electrical wires — incredibly powerful, but you need to know what you are doing. Flowise puts all those same wires into neat plug-and-play modules.",
+        "usecases": [
+          {
+            "icon": "📄",
+            "text": "Building a document Q&A chatbot by dragging in a PDF loader, a vector store, and an LLM — no code written"
+          },
+          {
+            "icon": "🤖",
+            "text": "Prototyping an AI agent with web search and calculator tools to test before building the full coded version"
+          },
+          {
+            "icon": "🏢",
+            "text": "Letting a non-technical product manager build and test AI workflows without waiting for a developer"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain is a code library. Flowise is a visual interface built on top of LangChain — same power, no code required."
+          },
+          {
+            "name": "vs n8n",
+            "diff": "n8n automates any app workflow. Flowise is specifically for building AI chains and agent workflows with language models."
+          }
+        ],
+        "tags": [
+          "agents",
+          "no-code",
+          "visual"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. Self-host it on any server. Cloud hosting is available for a fee.",
+        "trending": false
+      },
+      {
+        "id": "llamaindex",
+        "logo": "📚",
+        "name": "LlamaIndex",
+        "maker": "LlamaIndex",
+        "category": "agents",
+        "tagline": "The best framework for connecting LLMs to your own data.",
+        "what": "LlamaIndex is a framework specifically designed to help AI models work with your own documents and data. It handles all the complex work of loading documents, breaking them into pieces, storing them in a searchable format, and retrieving the right pieces when the AI needs them. This is the core of what makes RAG work in practice.",
+        "analogy": "Before LlamaIndex, giving an AI your documents was like handing someone a library with no catalogue system. LlamaIndex builds the catalogue, the filing system, and the search engine all at once.",
+        "usecases": [
+          {
+            "icon": "📚",
+            "text": "Building a chatbot that can answer questions about your company's entire documentation library accurately"
+          },
+          {
+            "icon": "⚖️",
+            "text": "Creating a legal research tool that searches hundreds of case files and returns cited answers"
+          },
+          {
+            "icon": "🔬",
+            "text": "Indexing thousands of research papers so an AI can find the most relevant ones for any given question"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain is a general-purpose AI pipeline framework. LlamaIndex is specialized for data ingestion and retrieval — it is better for document-heavy RAG applications."
+          },
+          {
+            "name": "vs Flowise",
+            "diff": "LlamaIndex is a code library giving you full control. Flowise is a visual tool that uses LlamaIndex under the hood for non-technical users."
+          }
+        ],
+        "tags": [
+          "agents",
+          "rag",
+          "data-indexing"
+        ],
+        "cost": "free",
+        "costDetail": "Open source and free. You pay separately for whatever LLM and vector database you connect it to.",
+        "trending": false
+      },
+      {
+        "id": "dify",
+        "logo": "🏗",
+        "name": "Dify",
+        "maker": "Dify",
+        "category": "agents",
+        "tagline": "An open source platform for building and deploying AI apps without deep technical knowledge.",
+        "what": "Dify is an open source platform that lets you build, test, and deploy AI applications through a visual interface. It supports RAG pipelines, chatbots, AI agents, and workflow automation — and it can be self-hosted so your data never leaves your servers. Think of it as a full AI app development environment for teams.",
+        "analogy": "If Flowise is the tool for building AI pipelines, Dify is the whole studio — it includes the pipeline builder, a testing environment, a prompt editor, and a deployment system all in one.",
+        "usecases": [
+          {
+            "icon": "🏢",
+            "text": "A company deploying an internal AI assistant trained on their own documents, hosted on their own servers"
+          },
+          {
+            "icon": "🛠",
+            "text": "A developer team building and testing multiple AI chatbot prototypes with different LLMs side by side"
+          },
+          {
+            "icon": "📋",
+            "text": "Creating a customer-facing AI support tool that only answers questions based on an approved knowledge base"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Flowise",
+            "diff": "Both are visual AI builders you can self-host. Dify includes more production features like user management, API publishing, and analytics."
+          },
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain is a code library. Dify is a full platform with a UI — better for teams that need to collaborate without everyone being a developer."
+          }
+        ],
+        "tags": [
+          "agents",
+          "platform",
+          "self-hosted"
+        ],
+        "cost": "",
+        "costDetail": "Open source and free to self-host. Dify Cloud starts at $59/month for teams who don't want to manage their own infrastructure.",
+        "trending": false
+      },
+      {
+        "id": "zapier-ai",
+        "logo": "⚡",
+        "name": "Zapier AI",
+        "maker": "Zapier",
+        "category": "agents",
+        "tagline": "Automate anything between 6,000+ apps — now with AI built in.",
+        "what": "Zapier is the most popular automation platform in the world, connecting over 6,000 apps so they can talk to each other automatically. Its AI features let you add an LLM step to any automation — summarizing, classifying, generating text — without any code. If you have heard of IFTTT or Make, Zapier is the bigger, more powerful version.",
+        "analogy": "A universal remote control for every app you use, with an AI brain that can make decisions at each step.",
+        "usecases": [
+          {
+            "icon": "📧",
+            "text": "Automatically labeling and prioritizing incoming emails using AI, then moving them to the right folder"
+          },
+          {
+            "icon": "📲",
+            "text": "When a new lead fills out a form, have AI qualify the lead and send a personalized follow-up email automatically"
+          },
+          {
+            "icon": "📊",
+            "text": "Pulling weekly sales data from Shopify, having AI summarize the trends, and posting the summary to Slack every Monday"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs n8n",
+            "diff": "Zapier is easier to use and supports more apps. n8n is cheaper (free if self-hosted) and gives developers more control."
+          },
+          {
+            "name": "vs Make (Integromat)",
+            "diff": "Make is cheaper and more flexible for complex workflows. Zapier is simpler and has better app support for beginners."
+          }
+        ],
+        "tags": [
+          "automation",
+          "no-code",
+          "integrations"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 100 tasks per month. Paid plans start at $19.99/month for 750 tasks.",
+        "trending": false
+      },
+      {
+        "id": "cursor",
+        "logo": "🖱",
+        "name": "Cursor",
+        "maker": "Anysphere",
+        "category": "devtools",
+        "tagline": "The AI code editor that has made every other editor feel outdated.",
+        "what": "Cursor is a code editor (like VS Code) with deep AI integration built in from the ground up. It can read your entire codebase, understand what you are trying to build, write code for you, fix bugs, refactor functions, and explain what any piece of code does — all from inside the editor you are already working in.",
+        "analogy": "VS Code if VS Code grew a brain. It knows your whole project, not just the file you have open.",
+        "usecases": [
+          {
+            "icon": "⚡",
+            "text": "Describing a feature in plain English and having Cursor write the full implementation across multiple files"
+          },
+          {
+            "icon": "🐛",
+            "text": "Pasting an error message and having Cursor find the exact line causing it and suggest a fix"
+          },
+          {
+            "icon": "📖",
+            "text": "Asking Cursor to explain what a confusing function does so you can understand code written by someone else"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs GitHub Copilot",
+            "diff": "Copilot completes the line you are typing. Cursor understands your whole codebase and can write entire features from a description."
+          },
+          {
+            "name": "vs VS Code",
+            "diff": "VS Code is the editor. Cursor is built on VS Code but with AI that knows your whole project rather than just autocompleting snippets."
+          }
+        ],
+        "tags": [
+          "code-editor",
+          "ai-coding",
+          "developer"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 2,000 code completions and 50 slow requests per month. Pro plan is $20/month for unlimited usage.",
+        "trending": true
+      },
+      {
+        "id": "github-copilot",
+        "logo": "🐙",
+        "name": "GitHub Copilot",
+        "maker": "GitHub / Microsoft",
+        "category": "devtools",
+        "tagline": "The AI pair programmer that lives inside your existing editor.",
+        "what": "GitHub Copilot is an AI coding assistant that plugs into your existing editor (VS Code, JetBrains, Neovim) and autocompletes code as you type. It suggests the next line, the next function, or even a whole block of code based on what you have written and what you are trying to do. It is the most widely used AI coding tool in the world.",
+        "analogy": "Autocomplete on your phone, but for code — and trained on every public GitHub repository ever written.",
+        "usecases": [
+          {
+            "icon": "⌨️",
+            "text": "Writing boilerplate code — imports, class structures, repetitive functions — in seconds instead of minutes"
+          },
+          {
+            "icon": "🧪",
+            "text": "Generating unit tests for a function by typing the function name and letting Copilot write all the test cases"
+          },
+          {
+            "icon": "🌐",
+            "text": "Writing code in an unfamiliar language by letting Copilot fill in the syntax you don't know yet"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Cursor",
+            "diff": "Copilot is an extension that adds AI to your existing editor. Cursor is a whole new editor built around AI that understands your entire codebase."
+          },
+          {
+            "name": "vs Tabnine",
+            "diff": "Copilot is more powerful and context-aware. Tabnine is more privacy-focused and can run completely offline."
+          }
+        ],
+        "tags": [
+          "code-completion",
+          "ai-coding",
+          "developer"
+        ],
+        "cost": "",
+        "costDetail": "Free for students and open source maintainers. $10/month for individuals, $19/month per user for teams.",
+        "trending": false
+      },
+      {
+        "id": "vercel-ai-sdk",
+        "logo": "▲",
+        "name": "Vercel AI SDK",
+        "maker": "Vercel",
+        "category": "devtools",
+        "tagline": "The easiest way to add AI to a Next.js or React app.",
+        "what": "The Vercel AI SDK is a TypeScript library that makes it easy to connect any AI model (OpenAI, Anthropic, Google, etc.) to a web app. It handles all the complex parts — streaming responses so text appears word by word, switching between AI providers, and building chat interfaces — so you can add AI to your app in hours instead of days.",
+        "analogy": "Building an AI-powered web app without the SDK is like building a house from raw concrete and steel. The SDK gives you pre-built walls, doors, and windows — you still get to design the house, but you are not mixing concrete.",
+        "usecases": [
+          {
+            "icon": "💬",
+            "text": "Adding a streaming AI chatbot to a Next.js app where responses appear word by word, just like ChatGPT"
+          },
+          {
+            "icon": "🔄",
+            "text": "Switching your app from OpenAI to Claude with a single line change instead of rewriting all your API calls"
+          },
+          {
+            "icon": "🛠",
+            "text": "Building an AI tool that calls multiple APIs in sequence — search, then summarize, then return — with built-in error handling"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LangChain",
+            "diff": "LangChain is a full AI orchestration framework for complex pipelines. Vercel AI SDK is lighter and designed specifically for streaming AI responses in web apps."
+          },
+          {
+            "name": "vs raw API calls",
+            "diff": "You could call the OpenAI API directly, but you would have to handle streaming, error states, and provider switching yourself. The SDK does all that for you."
+          }
+        ],
+        "tags": [
+          "sdk",
+          "nextjs",
+          "streaming"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. You pay separately for whatever AI provider APIs you use inside it.",
+        "trending": false
+      },
+      {
+        "id": "supabase",
+        "logo": "🟢",
+        "name": "Supabase",
+        "maker": "Supabase",
+        "category": "devtools",
+        "tagline": "An open source database platform that now includes built-in vector search.",
+        "what": "Supabase is an open source alternative to Firebase that gives you a PostgreSQL database, authentication, file storage, and APIs — all in one. For AI apps, its most relevant feature is pgvector, a built-in extension that lets your database store and search vector embeddings, which is what powers semantic search and RAG applications.",
+        "analogy": "Your app's entire backend — database, login system, file storage, and now AI search — in one dashboard, set up in about ten minutes.",
+        "usecases": [
+          {
+            "icon": "🔐",
+            "text": "Adding user login and session management to an AI app without building authentication from scratch"
+          },
+          {
+            "icon": "🔍",
+            "text": "Storing document embeddings directly in the same database as your app data, so you only need one database instead of two"
+          },
+          {
+            "icon": "🚀",
+            "text": "Spinning up a full backend for a hackathon project in under an hour with database, auth, and API all ready"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Pinecone",
+            "diff": "Pinecone is a dedicated vector database optimized purely for similarity search. Supabase is a general database that also supports vectors — better if you want everything in one place."
+          },
+          {
+            "name": "vs Firebase",
+            "diff": "Both are backend-as-a-service platforms. Supabase uses SQL (PostgreSQL) which is more familiar to most developers. Firebase uses a NoSQL document model."
+          }
+        ],
+        "tags": [
+          "database",
+          "backend",
+          "vector-search"
+        ],
+        "cost": "",
+        "costDetail": "Free plan includes 500MB database and 2GB file storage. Pro plan is $25/month.",
+        "trending": false
+      },
+      {
+        "id": "pinecone",
+        "logo": "🌲",
+        "name": "Pinecone",
+        "maker": "Pinecone",
+        "category": "devtools",
+        "tagline": "The most popular dedicated vector database for production AI apps.",
+        "what": "Pinecone is a database built specifically to store and search vector embeddings at scale. An embedding is a list of numbers that represents the meaning of a piece of text or an image — Pinecone stores millions of these and finds the most similar ones in milliseconds. This is the core infrastructure behind semantic search and RAG in production.",
+        "analogy": "A regular database finds things by exact match — find the row where name equals 'John'. Pinecone finds things by meaning — find the 10 documents most similar in meaning to this question. Completely different kind of search.",
+        "usecases": [
+          {
+            "icon": "🔎",
+            "text": "Powering the search in an AI app that has millions of documents and needs to find the most relevant ones in under 100 milliseconds"
+          },
+          {
+            "icon": "🎯",
+            "text": "Building a recommendation engine that finds products similar to what a user is currently viewing"
+          },
+          {
+            "icon": "💬",
+            "text": "Storing all previous customer conversations so an AI support bot can retrieve relevant past interactions instantly"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Supabase pgvector",
+            "diff": "Pinecone is purpose-built for vectors and scales to billions of embeddings. Supabase pgvector is simpler and cheaper for smaller projects that don't need a dedicated vector DB."
+          },
+          {
+            "name": "vs Qdrant",
+            "diff": "Both are dedicated vector databases. Pinecone is fully managed with no infrastructure to run. Qdrant is open source and can be self-hosted for free."
+          }
+        ],
+        "tags": [
+          "vector-db",
+          "embeddings",
+          "search"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes 1 index with up to 100,000 vectors. Paid plans start at $70/month.",
+        "trending": false
+      },
+      {
+        "id": "replicate",
+        "logo": "♻️",
+        "name": "Replicate",
+        "maker": "Replicate",
+        "category": "devtools",
+        "tagline": "Run any open source AI model with a single API call.",
+        "what": "Replicate is a platform that hosts thousands of open source AI models — image generation, video generation, speech, code, and more — and lets you run them via a simple API. Instead of downloading models, setting up GPUs, and configuring environments, you just call an API and pay only for what you use.",
+        "analogy": "A vending machine for AI models. Thousands of models behind the glass — you pick one, put in your credit card, and it runs.",
+        "usecases": [
+          {
+            "icon": "🎨",
+            "text": "Running Flux or Stable Diffusion image generation in your app without buying a GPU or managing infrastructure"
+          },
+          {
+            "icon": "🧪",
+            "text": "Prototyping with 10 different image models in an afternoon to find which one fits your use case"
+          },
+          {
+            "icon": "🔊",
+            "text": "Adding voice cloning or audio generation to an app using open source models without any setup"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Hugging Face Inference API",
+            "diff": "Both host open source models. Replicate has a cleaner API and better support for image and video models. Hugging Face has more models overall."
+          },
+          {
+            "name": "vs self-hosting",
+            "diff": "Self-hosting is cheaper at high volume but requires GPU infrastructure and DevOps knowledge. Replicate is more expensive per call but requires zero infrastructure."
+          }
+        ],
+        "tags": [
+          "model-hosting",
+          "api",
+          "open-source"
+        ],
+        "cost": "",
+        "costDetail": "Pay-per-use, no subscription required. Costs vary by model — image generation typically costs $0.003 to $0.05 per image.",
+        "trending": false
+      },
+      {
+        "id": "ollama",
+        "logo": "🦙",
+        "name": "Ollama",
+        "maker": "Ollama",
+        "category": "devtools",
+        "tagline": "Run powerful open source AI models locally on your own laptop.",
+        "what": "Ollama is a tool that lets you download and run open source AI models like Llama, Mistral, and Gemma directly on your own computer. No API keys, no internet connection required, no usage fees. You install Ollama, run a single terminal command, and you have a fully functioning AI model running entirely on your machine.",
+        "analogy": "Installing an AI model is normally like trying to build a race car engine from scratch. Ollama is the mechanic who installs it for you in one step.",
+        "usecases": [
+          {
+            "icon": "🔒",
+            "text": "Running an AI assistant on a laptop that handles sensitive data and can never be connected to the internet"
+          },
+          {
+            "icon": "💰",
+            "text": "Developing and testing an AI app locally with zero API costs before switching to a cloud provider for production"
+          },
+          {
+            "icon": "⚡",
+            "text": "Running a local AI model that responds instantly with no network latency for a fast development workflow"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Groq",
+            "diff": "Ollama runs models on your own hardware — private and free but limited by your laptop's speed. Groq runs the same models on cloud hardware at 10x the speed."
+          },
+          {
+            "name": "vs Replicate",
+            "diff": "Replicate hosts models on the cloud and charges per use. Ollama runs models locally for free, but only as fast as your own hardware allows."
+          }
+        ],
+        "tags": [
+          "local",
+          "open-source",
+          "self-hosted"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free. The only cost is the electricity your computer uses to run the model.",
+        "trending": false
+      },
+      {
+        "id": "modal",
+        "logo": "☁️",
+        "name": "Modal",
+        "maker": "Modal Labs",
+        "category": "devtools",
+        "tagline": "Run Python code and AI workloads on the cloud with zero infrastructure setup.",
+        "what": "Modal is a cloud compute platform that lets you run Python functions on powerful cloud hardware — including GPUs — with almost no setup. You write normal Python, add a decorator, and Modal handles spinning up the servers, installing dependencies, and scaling automatically. It is popular for running AI models, fine-tuning, and batch processing jobs.",
+        "analogy": "Running code on Modal is like ordering food delivery instead of cooking. You write the recipe (your Python function), and Modal handles the kitchen, the ingredients, and the delivery.",
+        "usecases": [
+          {
+            "icon": "🏋️",
+            "text": "Fine-tuning an open source AI model on your own dataset using a GPU without renting or managing any servers"
+          },
+          {
+            "icon": "⚡",
+            "text": "Running a batch job that processes 100,000 documents through an AI model overnight and scales automatically"
+          },
+          {
+            "icon": "🚀",
+            "text": "Deploying an AI model as an API endpoint in minutes without any DevOps knowledge"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs AWS Lambda",
+            "diff": "AWS Lambda is for lightweight serverless functions. Modal is built for compute-heavy Python workloads like AI inference and model training that Lambda cannot handle."
+          },
+          {
+            "name": "vs Replicate",
+            "diff": "Replicate hosts pre-built open source models for you. Modal lets you run any custom Python code on GPUs, giving you full control."
+          }
+        ],
+        "tags": [
+          "cloud-compute",
+          "gpu",
+          "serverless"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes $30 in monthly credits. After that, pay-per-second of compute — GPU time starts at $0.59 per hour.",
+        "trending": false
+      },
+      {
+        "id": "cohere-embed",
+        "logo": "🔢",
+        "name": "Cohere Embed",
+        "maker": "Cohere",
+        "category": "rag",
+        "tagline": "Turn any text into numbers so AI can search it by meaning, not just keywords.",
+        "what": "Cohere Embed is an API that converts text into embeddings — lists of numbers that capture the meaning of that text. When you store these numbers in a vector database, you can search your documents by meaning rather than exact keywords. It is the first step in building any RAG or semantic search system.",
+        "analogy": "Imagine every document in your library gets translated into a specific GPS coordinate based on what it means. Cohere Embed does the translation. Searching by meaning is then just finding the closest coordinates.",
+        "usecases": [
+          {
+            "icon": "🔍",
+            "text": "Indexing a company's entire documentation library so employees can search it with natural questions instead of keywords"
+          },
+          {
+            "icon": "🎵",
+            "text": "Building a music recommendation engine that finds songs similar in mood and style, not just genre tags"
+          },
+          {
+            "icon": "📧",
+            "text": "Automatically categorizing incoming support tickets by meaning so they route to the right team"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs OpenAI Embeddings",
+            "diff": "Both convert text to embeddings. Cohere Embed supports more languages and includes a Rerank model that re-orders results by relevance after the initial search."
+          },
+          {
+            "name": "vs Pinecone",
+            "diff": "These tools work together, not against each other. Cohere Embed creates the embeddings. Pinecone stores and searches them."
+          }
+        ],
+        "tags": [
+          "embeddings",
+          "semantic-search",
+          "rag"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes limited API calls. Paid usage starts at $0.10 per million tokens for embedding.",
+        "trending": false
+      },
+      {
+        "id": "unstructured",
+        "logo": "📄",
+        "name": "Unstructured",
+        "maker": "Unstructured.io",
+        "category": "rag",
+        "tagline": "Parse any document — PDF, Word, HTML, image — into clean text for AI.",
+        "what": "Unstructured is a tool that takes messy, real-world documents — PDFs with tables, scanned images, Word files, HTML pages — and extracts clean, structured text from them. This is the unglamorous but essential first step of any RAG pipeline: before you can search your documents with AI, you need to actually be able to read them.",
+        "analogy": "Before you can catalog books in a library, you have to be able to open them. Unstructured is the tool that figures out how to open every kind of document no matter how weird the format.",
+        "usecases": [
+          {
+            "icon": "⚖️",
+            "text": "Extracting clean text from hundreds of scanned legal contracts so they can be indexed and searched by an AI"
+          },
+          {
+            "icon": "📊",
+            "text": "Pulling tables and data out of messy PDF reports so an AI can analyze the numbers"
+          },
+          {
+            "icon": "🌐",
+            "text": "Processing a website's HTML pages into clean text for a RAG system without writing custom scrapers for each page type"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs LlamaIndex readers",
+            "diff": "LlamaIndex has built-in document readers. Unstructured handles more complex formats and messy real-world documents that simpler readers fail on."
+          },
+          {
+            "name": "vs PyMuPDF",
+            "diff": "PyMuPDF is a Python library for basic PDF text extraction. Unstructured handles PDFs plus 20 other formats and is better at preserving document structure."
+          }
+        ],
+        "tags": [
+          "document-parsing",
+          "rag",
+          "preprocessing"
+        ],
+        "cost": "",
+        "costDetail": "Open source library is free. Hosted API has a free tier and paid plans starting at $20/month.",
+        "trending": false
+      },
+      {
+        "id": "qdrant",
+        "logo": "🎯",
+        "name": "Qdrant",
+        "maker": "Qdrant",
+        "category": "rag",
+        "tagline": "An open source vector database you can run yourself for free.",
+        "what": "Qdrant is a vector database — a database designed specifically to store embeddings and find the most similar ones quickly. It is like Pinecone but open source, meaning you can download it and run it on your own server at zero cost. It is becoming the go-to choice for developers who want Pinecone-level performance without Pinecone-level pricing.",
+        "analogy": "Pinecone is the managed hotel — comfortable, everything works, but you pay for it. Qdrant is the apartment you own — you have to maintain it yourself, but nobody charges you rent.",
+        "usecases": [
+          {
+            "icon": "🔒",
+            "text": "Building a RAG system for a healthcare company where patient data must stay on private servers"
+          },
+          {
+            "icon": "💰",
+            "text": "Running a semantic search system at a startup where the Pinecone bill would exceed the entire infra budget"
+          },
+          {
+            "icon": "🔬",
+            "text": "Storing millions of scientific paper embeddings for a research tool without a per-query cost"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Pinecone",
+            "diff": "Pinecone is fully managed and easier to scale. Qdrant is open source and free to self-host but you manage the infrastructure yourself."
+          },
+          {
+            "name": "vs Chroma",
+            "diff": "Both are open source vector databases. Qdrant is better for production at scale. Chroma is simpler to set up for local development and prototyping."
+          }
+        ],
+        "tags": [
+          "vector-db",
+          "open-source",
+          "self-hosted"
+        ],
+        "cost": "",
+        "costDetail": "Completely free to self-host. Qdrant Cloud managed service has a free tier and paid plans from $25/month.",
+        "trending": false
+      },
+      {
+        "id": "chroma",
+        "logo": "🌈",
+        "name": "Chroma",
+        "maker": "Chroma",
+        "category": "rag",
+        "tagline": "The simplest vector database to get started with for local AI development.",
+        "what": "Chroma is an open source vector database designed to be as simple as possible to set up and use. You install it with pip, import it in Python, and start storing and searching embeddings in minutes. It is the go-to choice for prototyping RAG applications locally before graduating to a production vector database.",
+        "analogy": "Chroma is the sketchbook. You use it to work out your ideas quickly without worrying about production scale. Once you know what you are building, you move to a bigger canvas.",
+        "usecases": [
+          {
+            "icon": "🧪",
+            "text": "Prototyping a document Q&A system locally in an afternoon to test whether the approach works before building the real thing"
+          },
+          {
+            "icon": "🎓",
+            "text": "Learning how RAG works by building a simple working example without needing to set up cloud infrastructure"
+          },
+          {
+            "icon": "🛠",
+            "text": "Building a local AI assistant for personal use that searches your own notes and documents"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Pinecone",
+            "diff": "Pinecone is production-ready and fully managed. Chroma is for local development and prototyping — it is not designed for high-scale production use."
+          },
+          {
+            "name": "vs Qdrant",
+            "diff": "Both are open source. Chroma is simpler with less configuration. Qdrant has more features and better performance for production deployments."
+          }
+        ],
+        "tags": [
+          "vector-db",
+          "open-source",
+          "local"
+        ],
+        "cost": "free",
+        "costDetail": "Completely free and open source. Runs entirely on your local machine with no cloud account needed.",
+        "trending": false
+      },
+      {
+        "id": "weaviate",
+        "logo": "🕸",
+        "name": "Weaviate",
+        "maker": "Weaviate",
+        "category": "rag",
+        "tagline": "A vector database with built-in AI modules and hybrid search.",
+        "what": "Weaviate is an open source vector database that goes further than just storing embeddings — it has built-in AI modules that can automatically generate embeddings from your data, perform hybrid search (combining keyword and semantic search), and even answer questions directly. It is designed for teams building production AI apps that need more than basic vector storage.",
+        "analogy": "Pinecone is a parking lot — great at storing cars and finding them fast. Weaviate is a smart parking garage that also washes your car, knows who owns each one, and can describe every vehicle stored inside.",
+        "usecases": [
+          {
+            "icon": "🏬",
+            "text": "Building an e-commerce search that combines keyword filters with semantic similarity so customers find exactly what they want"
+          },
+          {
+            "icon": "📰",
+            "text": "Creating a news archive search that returns articles matching both the exact topic and the general meaning of a query"
+          },
+          {
+            "icon": "🤖",
+            "text": "Building a knowledge base where the database itself can generate answers from stored content without a separate LLM call"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Pinecone",
+            "diff": "Weaviate is open source and adds hybrid search and built-in AI modules. Pinecone is simpler and fully managed, better for pure vector search at scale."
+          },
+          {
+            "name": "vs Qdrant",
+            "diff": "Both are open source vector databases. Weaviate has richer built-in AI features. Qdrant is leaner and more focused on pure vector search performance."
+          }
+        ],
+        "tags": [
+          "vector-db",
+          "hybrid-search",
+          "open-source"
+        ],
+        "cost": "",
+        "costDetail": "Open source and free to self-host. Weaviate Cloud free tier available. Paid managed plans start at $25/month.",
+        "trending": false
+      },
+      {
+        "id": "exa",
+        "logo": "🔍",
+        "name": "Exa",
+        "maker": "Exa",
+        "category": "rag",
+        "tagline": "A search API designed specifically for AI agents to search the web by meaning.",
+        "what": "Exa is a web search API built for AI applications. Unlike Google which matches keywords, Exa searches by meaning — you describe what you are looking for and it finds the most semantically relevant web pages. It is designed to plug directly into AI agents and RAG pipelines that need to search the internet as part of their workflow.",
+        "analogy": "Google finds pages that contain your words. Exa finds pages that understand what you mean. The difference is looking for the word 'fast' versus looking for the concept of speed.",
+        "usecases": [
+          {
+            "icon": "🤖",
+            "text": "Giving an AI agent the ability to search the web for current information as part of a research or analysis task"
+          },
+          {
+            "icon": "📰",
+            "text": "Building a news aggregator that finds articles about a topic based on meaning, not just keyword matches"
+          },
+          {
+            "icon": "🔬",
+            "text": "Searching academic literature for papers related to a concept even when they use different terminology"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Google Search API",
+            "diff": "Google matches keywords. Exa searches by meaning and is designed specifically for AI pipelines — it returns cleaner data for LLMs to process."
+          },
+          {
+            "name": "vs Tavily",
+            "diff": "Both are AI-focused search APIs. Exa is better for finding specific pages by meaning. Tavily is optimized for giving AI agents a quick summarized answer to a question."
+          }
+        ],
+        "tags": [
+          "search",
+          "semantic-search",
+          "rag"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes 1,000 searches per month. Paid plans start at $25/month for 10,000 searches.",
+        "trending": false
+      },
+      {
+        "id": "tavily",
+        "logo": "🗺",
+        "name": "Tavily",
+        "maker": "Tavily",
+        "category": "rag",
+        "tagline": "A search API built to give AI agents fast, accurate answers from the web.",
+        "what": "Tavily is a search API designed specifically for use inside AI agents. When an agent needs to look something up, Tavily searches the web, reads the relevant pages, and returns a clean, summarized answer — not a list of links. This is exactly what AI agents need: direct answers they can use immediately, not raw web pages they have to parse themselves.",
+        "analogy": "Google gives you a list of doors to open. Tavily opens them all, reads what is inside, and tells you the answer.",
+        "usecases": [
+          {
+            "icon": "🤖",
+            "text": "Giving a LangChain or CrewAI agent the ability to look up current information mid-task without hallucinating facts"
+          },
+          {
+            "icon": "📊",
+            "text": "Building a research agent that answers questions about current events using live web data, not the LLM's training data"
+          },
+          {
+            "icon": "✅",
+            "text": "Fact-checking an AI-generated report by having another agent search the web to verify each claim"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs Exa",
+            "diff": "Tavily returns summarized answers optimized for AI agents. Exa is better for finding specific pages by semantic meaning."
+          },
+          {
+            "name": "vs Google Search API",
+            "diff": "Google returns links and snippets. Tavily returns AI-ready answers extracted from those pages — much less post-processing required."
+          }
+        ],
+        "tags": [
+          "search",
+          "agents",
+          "rag"
+        ],
+        "cost": "",
+        "costDetail": "Free tier includes 1,000 API calls per month. Paid plans start at $35/month.",
+        "trending": false
+      },
+      {
+        "id": "perplexity",
+        "logo": "🔮",
+        "name": "Perplexity",
+        "maker": "Perplexity AI",
+        "category": "rag",
+        "tagline": "An AI search engine that answers questions with cited sources from the live web.",
+        "what": "Perplexity is an AI-powered search engine that searches the web in real time and answers your question directly — with citations. Unlike ChatGPT which answers from its training data, Perplexity goes and reads current web pages before answering. It also has an API so developers can build apps that use this live-web-search-then-answer capability.",
+        "analogy": "ChatGPT answers from memory. Perplexity checks the internet first, then answers — and shows you exactly which pages it checked.",
+        "usecases": [
+          {
+            "icon": "📰",
+            "text": "Getting an accurate, cited answer about a recent news event that happened after an LLM's training cutoff date"
+          },
+          {
+            "icon": "🔬",
+            "text": "Researching a technical topic and getting a synthesized answer with links to the actual sources to verify"
+          },
+          {
+            "icon": "🛠",
+            "text": "Using the Perplexity API inside an app to answer user questions about current events or recent data"
+          }
+        ],
+        "comparisons": [
+          {
+            "name": "vs ChatGPT",
+            "diff": "ChatGPT answers from training data and can be outdated or wrong about recent events. Perplexity searches the live web before answering and provides citations."
+          },
+          {
+            "name": "vs Tavily",
+            "diff": "Perplexity is a consumer product with a polished UI. Tavily is a developer API optimized for plugging into AI agent pipelines."
+          }
+        ],
+        "tags": [
+          "search",
+          "rag",
+          "citations"
+        ],
+        "cost": "",
+        "costDetail": "Free for basic use. Pro plan is $20/month for faster searches and access to more powerful models. API access is pay-per-use.",
+        "trending": false
+      }
+    ]
+  }
