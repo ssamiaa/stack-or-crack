@@ -1,0 +1,254 @@
+{
+    "briefs": [
+      {
+        "id": "brief-01",
+        "title": "Voice-Powered Study Assistant",
+        "description": "A computer science student wants an AI assistant that can listen to recorded lectures, convert them into text, summarize key ideas, answer questions about the material, and read answers back out loud during study sessions.",
+        "constraints": "Student budget, must handle long lecture recordings",
+        "budget": "startup",
+        "timeline": "2 weeks",
+        "users": "Single student",
+        "required_capabilities": [
+          "Speech-to-Text",
+          "Summarization",
+          "LLM Reasoning",
+          "Voice Output",
+          "App Integration"
+        ],
+        "difficulty": "Intermediate",
+        "slots": 5,
+        "expert_stack": [
+          "Whisper",
+          "Claude 3.5 Sonnet",
+          "ElevenLabs",
+          "LlamaIndex",
+          "Vercel AI SDK"
+        ]
+      },
+      {
+        "id": "brief-02",
+        "title": "Customer Support Copilot for a SaaS Startup",
+        "description": "A small SaaS startup is overwhelmed with support tickets. They want an AI assistant that can answer common questions instantly, search their documentation, and draft replies for more complicated cases.",
+        "constraints": "Small team, limited budget, answers must use company documentation",
+        "budget": "startup",
+        "timeline": "3 weeks",
+        "users": "Hundreds of customers",
+        "required_capabilities": [
+          "Chatbot",
+          "Document Search",
+          "LLM Reasoning",
+          "Automation",
+          "Data Storage"
+        ],
+        "difficulty": "Intermediate",
+        "slots": 5,
+        "expert_stack": [
+          "Claude 3.5 Sonnet",
+          "LlamaIndex",
+          "Qdrant",
+          "Zapier AI",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-03",
+        "title": "AI Code Reviewer for a Solo Developer",
+        "description": "An independent developer wants an AI tool that can review pull requests, detect bugs or risky code patterns, and suggest improvements before new code gets merged.",
+        "constraints": "Solo developer workflow, fast feedback required",
+        "budget": "startup",
+        "timeline": "10 days",
+        "users": "Single developer",
+        "required_capabilities": [
+          "Code Understanding",
+          "LLM Reasoning",
+          "Developer Tooling",
+          "Automation",
+          "Workflow Integration"
+        ],
+        "difficulty": "Beginner",
+        "slots": 5,
+        "expert_stack": [
+          "Claude 3.5 Sonnet",
+          "Cursor",
+          "LangChain",
+          "n8n",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-04",
+        "title": "Personalized AI News Digest",
+        "description": "A busy professional wants a daily AI briefing that gathers articles about technology, global events, and business news, removes duplicate stories, and summarizes everything into a short digest.",
+        "constraints": "Needs fresh web results every day, must avoid duplicate stories",
+        "budget": "startup",
+        "timeline": "2 weeks",
+        "users": "Single user",
+        "required_capabilities": [
+          "Web Search",
+          "Summarization",
+          "LLM Reasoning",
+          "Automation",
+          "Data Storage"
+        ],
+        "difficulty": "Intermediate",
+        "slots": 5,
+        "expert_stack": [
+          "Exa",
+          "Claude 3.5 Sonnet",
+          "Groq",
+          "Zapier AI",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-05",
+        "title": "AI Image Generation for an E-Commerce Store",
+        "description": "An online store wants to generate marketing images for products automatically. They need a system that can create polished visuals for product pages and advertising campaigns.",
+        "constraints": "Small team, high visual quality required",
+        "budget": "growth",
+        "timeline": "3 weeks",
+        "users": "Small e-commerce team",
+        "required_capabilities": [
+          "Image Generation",
+          "Image Editing",
+          "Automation",
+          "Asset Delivery",
+          "Backend Integration"
+        ],
+        "difficulty": "Beginner",
+        "slots": 5,
+        "expert_stack": [
+          "Flux",
+          "Replicate",
+          "Runway",
+          "n8n",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-06",
+        "title": "AI Research Assistant for a Journalist",
+        "description": "A journalist needs help analyzing large collections of reports, transcripts, and public records. They want an AI system that can search documents, summarize findings, and answer questions with references to the source material.",
+        "constraints": "Accuracy matters more than speed, answers must cite sources",
+        "budget": "pro",
+        "timeline": "4 weeks",
+        "users": "Journalist and editor",
+        "required_capabilities": [
+          "Document Processing",
+          "RAG",
+          "Search",
+          "Summarization",
+          "LLM Reasoning"
+        ],
+        "difficulty": "Advanced",
+        "slots": 5,
+        "expert_stack": [
+          "Unstructured",
+          "Claude 3.5 Sonnet",
+          "Weaviate",
+          "LlamaIndex",
+          "Exa"
+        ]
+      },
+      {
+        "id": "brief-07",
+        "title": "Multilingual Chatbot for a Small Business",
+        "description": "A small business wants a chatbot that can answer customer questions, help users book appointments, and communicate in multiple languages.",
+        "constraints": "Low budget, non-technical staff will manage the system",
+        "budget": "startup",
+        "timeline": "2 weeks",
+        "users": "Dozens of customers per day",
+        "required_capabilities": [
+          "Multilingual Chat",
+          "LLM Reasoning",
+          "Automation",
+          "Database Storage",
+          "Workflow Integration"
+        ],
+        "difficulty": "Beginner",
+        "slots": 5,
+        "expert_stack": [
+          "GPT-4o",
+          "Dify",
+          "Zapier AI",
+          "Supabase",
+          "Chroma"
+        ]
+      },
+      {
+        "id": "brief-08",
+        "title": "Automated Social Media Content Creator",
+        "description": "A startup marketing team wants an AI system that can turn blog posts and product updates into social media captions, promotional graphics, and short marketing content.",
+        "constraints": "Small marketing team, must produce both text and images quickly",
+        "budget": "startup",
+        "timeline": "2 weeks",
+        "users": "Startup marketing team",
+        "required_capabilities": [
+          "Text Generation",
+          "Image Generation",
+          "Content Repurposing",
+          "Automation",
+          "Publishing Workflow"
+        ],
+        "difficulty": "Beginner",
+        "slots": 5,
+        "expert_stack": [
+          "Claude 3.5 Sonnet",
+          "Ideogram",
+          "Runway",
+          "Zapier AI",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-09",
+        "title": "Document Q&A System for a Law Firm",
+        "description": "A law firm wants an internal AI assistant that can search contracts, legal memos, and case files, then answer staff questions with references to the original documents.",
+        "constraints": "Sensitive documents, answers must cite sources",
+        "budget": "pro",
+        "timeline": "4 weeks",
+        "users": "Legal team",
+        "required_capabilities": [
+          "Document Processing",
+          "RAG",
+          "Search",
+          "LLM Reasoning",
+          "Secure Storage"
+        ],
+        "difficulty": "Advanced",
+        "slots": 5,
+        "expert_stack": [
+          "Unstructured",
+          "Cohere Embed",
+          "Qdrant",
+          "Claude 3.5 Sonnet",
+          "Supabase"
+        ]
+      },
+      {
+        "id": "brief-10",
+        "title": "Real-Time Meeting Summarizer",
+        "description": "A remote startup wants an AI assistant that joins meetings, transcribes conversations, generates summaries, and extracts action items automatically after each call.",
+        "constraints": "Must process multi-speaker audio and produce summaries immediately",
+        "budget": "growth",
+        "timeline": "3 weeks",
+        "users": "Small remote team",
+        "required_capabilities": [
+          "Speech-to-Text",
+          "Speaker Recognition",
+          "Summarization",
+          "Action Item Extraction",
+          "Automation"
+        ],
+        "difficulty": "Intermediate",
+        "slots": 5,
+        "expert_stack": [
+          "Deepgram",
+          "AssemblyAI",
+          "Claude 3.5 Sonnet",
+          "n8n",
+          "Supabase"
+        ]
+      }
+    ]
+  }
