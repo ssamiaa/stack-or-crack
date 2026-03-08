@@ -3,10 +3,11 @@ import ToolCard, { Tool } from "@/components/ToolCard";
 import { useState } from "react";
 import Drawer from "@/components/Drawer";
 import toolsData from "@/data/tools.json";
+import StackTray from "@/components/StackTray";
 
 type Props = {
   goTo: (s: Screen) => void;
-  selectedTools: string[];
+  selectedTools: Tool[];
   onToggleTool: (id: string) => void;
 };
 
@@ -84,11 +85,12 @@ export default function Map({ goTo, selectedTools, onToggleTool }: Props) {
               .filter(tool => tool.category === activeCategory)
               .map(tool => (
                 <ToolCard
-                  key={tool.id}
-                  tool={tool}
-                  isSelected={selectedTools.includes(tool.id)}
-                  onSelect={onToggleTool}
-                  onLearnMore={(tool) => setDrawerTool(tool)}
+                key={tool.id}
+                tool={tool}
+                isSelected={selectedTools.some(t => t.id === tool.id)}
+                stackFull={selectedTools.length === 5}
+                onSelect={onToggleTool}
+                onLearnMore={(tool) => setDrawerTool(tool)}
                 />
               ))}
           </div>
@@ -104,30 +106,9 @@ export default function Map({ goTo, selectedTools, onToggleTool }: Props) {
         padding: "10px 28px",
         background: "rgba(10,8,20,0.95)",
         borderTop: "1px solid rgba(184,134,11,0.12)",
-        gap: "14px"
+        gap: "10px"
       }}>
-        {/* Stack tray */}
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <span style={{ fontFamily: "Special Elite, cursive", fontSize: "10px", color: "rgba(184,134,11,0.5)", letterSpacing: "2px", marginRight: "8px" }}>YOUR STACK</span>
-          {[0,1,2,3,4].map(i => (
-            <div key={i} style={{
-              width: "44px",
-              height: "44px",
-              border: `1px solid ${selectedTools[i] ? "rgba(26,158,143,0.6)" : "rgba(184,134,11,0.3)"}`,
-              borderRadius: "4px",
-              background: selectedTools[i] ? "rgba(26,158,143,0.12)" : "rgba(184,134,11,0.05)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "16px",
-              color: "rgba(184,134,11,0.2)",
-              fontFamily: "Cormorant Garamond, serif",
-              transition: "all 0.2s ease",
-            }}>
-              {selectedTools[i] ? "🤖" : "+"}
-            </div>
-          ))}
-        </div>
+        <StackTray stack={selectedTools} maxSize={5} />
 
         {/* Hint + button */}
         <div style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
@@ -159,7 +140,7 @@ export default function Map({ goTo, selectedTools, onToggleTool }: Props) {
       {/* Drawer */}
       <Drawer
         tool={drawerTool}
-        isSelected={drawerTool ? selectedTools.includes(drawerTool.id) : false}
+        isSelected={drawerTool ? selectedTools.some(t => t.id === drawerTool.id) : false}
         onClose={() => setDrawerTool(null)}
         onSelect={onToggleTool}
       />

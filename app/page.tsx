@@ -6,18 +6,21 @@ import Brief from "@/components/screens/Brief";
 import Map from "@/components/screens/Map";
 import Judging from "@/components/screens/Judging";
 import Verdict from "@/components/screens/Verdict";
+import { Tool } from "@/components/ToolCard";
+import toolsData from "@/data/tools.json";
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
-  const [selectedTools, setSelectedTools] = useState<string[]>([]);
+  const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
 
   const goTo = (s: Screen) => setScreen(s);
 
   const toggleTool = (id: string) => {
     setSelectedTools(prev => {
-      if (prev.includes(id)) return prev.filter(t => t !== id);
+      if (prev.find(t => t.id === id)) return prev.filter(t => t.id !== id);
       if (prev.length >= 5) return prev;
-      return [...prev, id];
+      const tool = toolsData.tools.find(t => t.id === id) as Tool;
+      return tool ? [...prev, tool] : prev;
     });
   };
 

@@ -1,8 +1,9 @@
 import { Screen } from "@/lib/types";
+import { Tool } from "@/components/ToolCard";
 
 type Props = {
   goTo: (s: Screen) => void;
-  selectedTools: string[];
+  selectedTools: Tool[];
 };
 
 export default function Judging({ goTo }: Props) {
