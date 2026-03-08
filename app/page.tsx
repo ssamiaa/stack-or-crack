@@ -61,15 +61,16 @@ export default function Home() {
 
   return (
     <main>
-      {screen === "landing" && <Landing goTo={goTo} goToExplore={goToExplore} />}
+      {screen === "landing" && <Landing goTo={goTo} onExplore={goToExplore} />}
       {screen === "brief" && <Brief goTo={goTo} brief={currentBrief} onNewBrief={newBrief} />}
       {screen === "map" && (
         <Map
-          goTo={goTo}
-          selectedTools={selectedTools}
-          onToggleTool={toggleTool}
-          brief={currentBrief}
-          exploreMode={exploreMode}
+            goTo={goTo}
+            selectedTools={selectedTools}
+            onToggleTool={toggleTool}
+            brief={currentBrief}
+            exploreMode={exploreMode}
+            onNewBrief={newBrief}
         />
       )}
       {screen === "judging" && (
