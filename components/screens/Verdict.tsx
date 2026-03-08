@@ -208,9 +208,17 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
                                     borderRadius: "12px",
                                     borderLeft: `3px solid ${v.correct ? "rgba(100,200,150,0.6)" : "rgba(200,80,80,0.6)"}`,
                                 }}>
-                                    <span style={{ fontSize: "22px", flexShrink: 0, marginTop: "1px" }}>
-                                        {toolObj?.logo ?? "🔧"}
-                                    </span>
+                                    {toolObj?.logo && (toolObj.logo.startsWith("http") || toolObj.logo.startsWith("/")) ? (
+                                        <img
+                                            src={toolObj.logo}
+                                            alt={toolObj.name}
+                                            style={{ width: "28px", height: "28px", objectFit: "contain", flexShrink: 0, marginTop: "2px", borderRadius: "4px" }}
+                                        />
+                                    ) : (
+                                        <span style={{ fontSize: "22px", flexShrink: 0, marginTop: "1px" }}>
+                                            {toolObj?.logo ?? "🔧"}
+                                        </span>
+                                    )}
                                     <div style={{ display: "flex", flexDirection: "column", gap: "4px", flex: 1 }}>
                                         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                             <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "17px", color: "rgba(255,255,255,0.9)" }}>
