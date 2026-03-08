@@ -1,6 +1,7 @@
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
 import briefsData from "@/data/briefs.json";
+
 type Brief = typeof briefsData.briefs[0];
 
 type Props = {
@@ -77,7 +78,15 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
           gap: "12px",
           flexShrink: 0,
         }}>
-          <span style={{ fontSize: "32px", filter: `drop-shadow(0 0 16px ${cfg.glow})` }}>🎩</span>
+          <img
+            src="/hatterw:ob.png"
+            alt="Mad Hatter"
+            style={{
+                width: "90px",
+                height: "90px",
+                objectFit: "cover",
+            }}
+            />
           <div>
             <h2 style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "24px", color: "rgba(255,255,255,0.9)", margin: 0, lineHeight: 1.2 }}>
               The Hatter Has Spoken
@@ -179,7 +188,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
     }}>
       {ratingDescriptions[currentLevel]}
     </p>
-  </div> {/* ← banner closes here */}
+  </div> 
 
   {/* Overall comment from API */}
   <p style={{

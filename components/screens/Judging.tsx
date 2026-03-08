@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Screen } from "@/lib/types";
 import { Tool } from "@/components/ToolCard";
 import briefsData from "@/data/briefs.json";
@@ -105,15 +106,22 @@ export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: 
           to { opacity: 1; transform: translateY(0px); }
         }
       `}</style>
+      {/* Animated mascot */}
+        <Image
+                src="/hatterw:ob.png"
+                alt="Mad Hatter"
+                width={300}
+                height={300}
+                style={{
+                        width: "300px",
+                        height: "300px",
+                        objectFit: "contain",
+                        animation: "float 2s ease-in-out infinite",
+                        filter: "drop-shadow(0 0 24px rgba(100, 200, 150, 0.45))",
+                        marginBottom: "-70px",
+                }}
+        />
 
-      {/* Animated hat */}
-      <div style={{
-        fontSize: "72px",
-        animation: "float 2s ease-in-out infinite",
-        filter: "drop-shadow(0 0 24px rgba(100, 200, 150, 0.45))",
-      }}>
-        🎩
-      </div>
 
       {/* Title */}
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>

@@ -226,7 +226,25 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                 position: "relative",
             }}>
                 {/* Spacer left */}
-                <div style={{ flex: 1 }} />
+                
+                {/* Mascot — bottom left */}
+                <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
+                style={{ flex: 1, display: "flex", alignItems: "flex-end" }}
+                >
+                <img
+                    src="/hatterw:ob.png"
+                    alt="Mad Hatter"
+                    style={{
+                    width: "150px",
+                    height: "150px",
+                    objectFit: "contain",
+                    marginBottom: "-20px",
+                    }}
+                />
+                </motion.div>
+
 
                 {/* StackTray — center */}
                 <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
