@@ -44,40 +44,46 @@ export default function Map({ goTo, selectedTools, onToggleTool }: Props) {
         {/* Category bar */}
         <div style={{ display: "flex", gap: "8px", padding: "12px 24px", background: "rgba(8,6,16,0.9)", borderBottom: "1px solid rgba(184,134,11,0.1)", overflowX: "auto" }}>
           {[["🧠", "Language Models"], ["🎙", "Voice & Audio"], ["🎨", "Image Gen"], ["⚡", "AI Agents"], ["🔧", "Dev Tools"]].map(([emoji, name]) => (
-            <div key={name} style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 18px",
-              cursor: "pointer",
-              borderRadius: "3px",
-              border: "1px solid rgba(184,134,11,0.15)",
-              background: "rgba(184,134,11,0.05)",
-              color: "rgba(240,224,200,0.6)",
-              fontFamily: "Special Elite, cursive",
-              fontSize: "12px",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
+            <div key={name} onClick={() => setActiveCategory(name)} style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 18px",
+                cursor: "pointer",
+                borderRadius: "3px",
+                border: `1px solid ${activeCategory === name ? "rgba(26,158,143,0.6)" : "rgba(184,134,11,0.15)"}`,
+                background: activeCategory === name ? "rgba(26,158,143,0.12)" : "rgba(184,134,11,0.05)",
+                color: activeCategory === name ? "#1a9e8f" : "rgba(240,224,200,0.6)",
+                fontFamily: "Special Elite, cursive",
+                fontSize: "12px",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+                transition: "all 0.2s ease",
             }}>
-              <span style={{ fontSize: "18px" }}>{emoji}</span>{name}
+                <span style={{ fontSize: "18px" }}>{emoji}</span>{name}
             </div>
-          ))}
+            ))}
         </div>
 
         {/* Tools grid */}
         <div style={{ flex: 1, padding: "24px", overflowY: "auto" }}>
+        <div style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "20px", color: "#f0e0c8", marginBottom: "8px" }}>
+  {activeCategory}
+</div>
         <div style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "20px", color: "#f0e0c8", marginBottom: "8px" }}>🧠 Language Models</div>
         <p style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "14px", color: "rgba(240,224,200,0.35)", marginBottom: "20px" }}>The brains of any AI application</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "20px" }}>
-            {placeholderTools.map(tool => (
-            <ToolCard
-                key={tool.id}
-                tool={tool}
-                isSelected={selectedTools.includes(tool.id)}
-                onSelect={onToggleTool}
-                onLearnMore={(tool) => setDrawerTool(tool)}
-            />
-            ))}
+            {placeholderTools
+                .filter(tool => tool.category === activeCategory)
+                .map(tool => (
+                    <ToolCard
+                    key={tool.id}
+                    tool={tool}
+                    isSelected={selectedTools.includes(tool.id)}
+                    onSelect={onToggleTool}
+                    onLearnMore={(tool) => setDrawerTool(tool)}
+                    />
+                ))}
         </div>
         </div>
 
