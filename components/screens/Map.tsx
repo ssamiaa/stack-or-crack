@@ -1,10 +1,23 @@
+"use client";
+
 import { Screen } from "@/lib/types";
 import ToolCard, { Tool } from "@/components/ToolCard";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Drawer from "@/components/Drawer";
 import toolsData from "@/data/tools.json";
 import StackTray from "@/components/StackTray";
 import briefsData from "@/data/briefs.json";
+import Image from "next/image";
+// images
+import lang from "@/images/brain.png";
+import voi from "@/images/microphone-black-shape.png";
+import imagegen from "@/images/color-palette.png";
+import agent from "@/images/artificial-intelligence.png";
+import devt from "@/images/settings.png";
+import rags from "@/images/open-book.png";
+import poison from "@/images/potion.png"
+
 type Brief = typeof briefsData.briefs[0];
 
 type Props = {
@@ -21,69 +34,118 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props)
   const tools = toolsData.tools;
 
   const categories = [
-    ["🧠", "Language Models", "llm"],
-    ["🎙", "Voice & Audio", "voice"],
-    ["🎨", "Image Gen", "image"],
-    ["⚡", "AI Agents", "agents"],
-    ["🔧", "Dev Tools", "devtools"],
-    ["📚", "RAG & Search", "rag"],
+    { img: lang, label: "Language Models", id: "llm" },
+    { img: voi, label: "Voice & Audio", id: "voice" },
+    { img: imagegen, label: "Image Gen", id: "image" },
+    { img: agent, label: "AI Agents", id: "agents" },
+    { img: devt, label: "Dev Tools", id: "devtools" },
+    { img: rags, label: "RAG & Search", id: "rag" },
   ];
 
-  const categoryTitle: Record<string, string> = {
-    llm: "🧠 Language Models",
-    voice: "🎙 Voice & Audio",
-    image: "🎨 Image Generation",
-    agents: "⚡ AI Agents",
-    devtools: "🔧 Dev Tools",
-    rag: "📚 RAG & Search",
+  const categoryTitleLabel: Record<string, string> = {
+    llm: "Language Models",
+    voice: "Voice & Audio",
+    image: "Image Generation",
+    agents: "AI Agents",
+    devtools: "Dev Tools",
+    rag: "RAG & Search",
   };
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
-      {/* Header */}
-      <div style={{ display: "flex", alignItems: "center", padding: "14px 28px", background: "rgba(10,8,20,0.95)", borderBottom: "1px solid rgba(184,134,11,0.15)", gap: "20px" }}>
-        <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "20px", color: "#d4a853" }}>
-          🎩 Stack or <span style={{ fontStyle: "italic", color: "#1a9e8f" }}>Crack</span>
-        </span>
-        <span style={{ flex: 1, fontFamily: "Special Elite, cursive", fontSize: "11px", color: "rgba(240,224,200,0.4)", letterSpacing: "1px", background: "rgba(184,134,11,0.06)", border: "1px solid rgba(184,134,11,0.15)", borderRadius: "3px", padding: "5px 12px" }}>
-          📜 Voice Study Assistant — startup budget — 2 weeks
-        </span>
-      </div>
-
       {/* Body */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
         {/* Category bar */}
-        <div style={{ display: "flex", gap: "8px", padding: "12px 24px", background: "rgba(8,6,16,0.9)", borderBottom: "1px solid rgba(184,134,11,0.1)", overflowX: "auto" }}>
-          {categories.map(([emoji, name, id]) => (
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "12px 24px", background: "transparent", borderBottom: "1px solid rgba(255,255,255,0.07)", overflowX: "auto" }}>
+          {/* Logo — flex:1 left side to balance right */}
+          <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+            <span style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "35px", color: "#fbfbf9", whiteSpace: "nowrap" }}>
+              Stack or <span style={{ fontWeight: 700, fontSize: "40px", fontStyle: "italic", color: "#7038d0", textShadow: "0 0 10px rgba(255,255,255,0.3)" }}>Crack</span>
+            </span>
+          </div>
+          {categories.map(({ img, label, id }) => (
             <div key={id} onClick={() => setActiveCategory(id)} style={{
               display: "flex",
               alignItems: "center",
               gap: "8px",
               padding: "8px 18px",
               cursor: "pointer",
-              borderRadius: "3px",
-              border: `1px solid ${activeCategory === id ? "rgba(26,158,143,0.6)" : "rgba(184,134,11,0.15)"}`,
-              background: activeCategory === id ? "rgba(26,158,143,0.12)" : "rgba(184,134,11,0.05)",
-              color: activeCategory === id ? "#1a9e8f" : "rgba(240,224,200,0.6)",
-              fontFamily: "Special Elite, cursive",
-              fontSize: "12px",
+              borderRadius: "14px",
+              border: `1px solid ${activeCategory === id ? "rgba(100,200,150,0.45)" : "rgba(255,255,255,0.1)"}`,
+              background: activeCategory === id
+                ? "linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)"
+                : "rgba(255,255,255,0.04)",
+              boxShadow: activeCategory === id ? "0 0 10px 2px rgba(100,200,150,0.3)" : "none",
+              color: activeCategory === id ? "#fff" : "rgba(255,255,255,0.5)",
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 600,
+              fontSize: "14px",
               whiteSpace: "nowrap",
               flexShrink: 0,
               transition: "all 0.2s ease",
             }}>
-              <span style={{ fontSize: "18px" }}>{emoji}</span>{name}
+              <Image
+                src={img}
+                alt={label}
+                width={18}
+                height={18}
+                style={{
+                  filter: activeCategory === id
+                    ? "drop-shadow(0 0 5px rgba(100,200,150,0.9)) invert(1)"
+                    : "drop-shadow(0 0 3px rgba(100,200,150,0.4)) invert(0.6)",
+                  transition: "filter 0.2s ease",
+                }}
+              />
+              {label}
             </div>
           ))}
+
+          {/* View Brief button — flex:1 right side to balance logo */}
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+          <motion.button
+            onClick={() => goTo("brief")}
+            whileHover={{ boxShadow: "0 0 10px 2px rgba(100,200,150,0.35)", borderColor: "rgba(100,200,150,0.45)" }}
+            transition={{ duration: 0.2 }}
+            style={{
+              flexShrink: 0,
+              padding: "8px 18px",
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.5)",
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              borderRadius: "14px",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              transition: "all 0.2s ease",
+            }}
+          >
+            View Brief
+          </motion.button>
+          </div>
         </div>
 
         {/* Tools grid */}
         <div style={{ flex: 1, padding: "24px", overflowY: "auto" }}>
-          <div style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "20px", color: "#f0e0c8", marginBottom: "20px" }}>
-            {categoryTitle[activeCategory]}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Cormorant Garamond, serif", fontWeight: 700, fontSize: "30px", color: "#f6f5f4", marginBottom: "20px" }}>
+            {(() => {
+              const cat = categories.find(c => c.id === activeCategory);
+              return cat ? (
+                <Image
+                  src={cat.img}
+                  alt={cat.label}
+                  width={30}
+                  height={30}
+                  style={{ filter: "drop-shadow(0 0 5px rgba(100,200,150,0.8)) invert(1)" }}
+                />
+              ) : null;
+            })()}
+            {categoryTitleLabel[activeCategory]}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "30px" }}>
             {tools
               .filter(tool => tool.category === activeCategory)
               .map(tool => (
@@ -104,39 +166,60 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props)
       {/* Submit bar */}
       <div style={{
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        padding: "10px 28px",
-        background: "rgba(10,8,20,0.95)",
-        borderTop: "1px solid rgba(184,134,11,0.12)",
-        gap: "10px"
+        padding: "16px 28px",
+        background: "transparent",
+        borderTop: "1px solid rgba(255,255,255,0.07)",
+        position: "relative",
       }}>
-        <StackTray stack={selectedTools} maxSize={5} />
+        {/* Spacer left */}
+        <div style={{ flex: 1 }} />
 
-        {/* Hint + button */}
-        <div style={{ display: "flex", alignItems: "center", width: "100%", justifyContent: "space-between" }}>
-          <span style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "14px", color: "rgba(240,224,200,0.3)" }}>
+        {/* StackTray — center */}
+        <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+          <StackTray stack={selectedTools} maxSize={5} />
+        </div>
+
+        {/* Hint + button — right */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px", marginBottom: "20px" }}>
+          <span style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "15px", color: "rgba(240,224,200,0.3)" }}>
             {selectedTools.length === 5
               ? "Your stack is complete — drink me!"
               : `Select ${5 - selectedTools.length} more tool${5 - selectedTools.length === 1 ? "" : "s"}`}
           </span>
-          <button
+          <motion.button
             onClick={() => selectedTools.length === 5 ? goTo("judging") : null}
+            whileHover={selectedTools.length === 5 ? { boxShadow: "0 0 16px 4px rgba(255,255,255,0.25)" } : {}}
+            transition={{ duration: 0.2 }}
             style={{
-              padding: "12px 40px",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 36px",
               background: selectedTools.length === 5 ? "rgba(158,42,43,0.8)" : "rgba(158,42,43,0.2)",
               border: `1px solid ${selectedTools.length === 5 ? "rgba(158,42,43,0.9)" : "rgba(158,42,43,0.2)"}`,
-              color: selectedTools.length === 5 ? "#f0e0c8" : "rgba(240,224,200,0.25)",
+              color: selectedTools.length === 5 ? "#fdfbf8" : "rgba(240,224,200,0.25)",
               fontFamily: "Cormorant Garamond, serif",
               fontWeight: 700,
-              fontSize: "15px",
+              fontSize: "20px",
               letterSpacing: "2px",
               cursor: selectedTools.length === 5 ? "pointer" : "not-allowed",
               borderRadius: "2px",
-              transition: "all 0.3s ease",
             }}>
-            🍶 Drink Me
-          </button>
+            <Image
+              src={poison}
+              alt="potion"
+              width={30}
+              height={30}
+              style={{
+                filter: selectedTools.length === 5
+                  ? "invert(1) drop-shadow(0 0 4px rgba(139, 42, 158, 0.9))"
+                  : "invert(0.3)",
+                transition: "filter 0.3s ease",
+              }}
+            />
+            Drink Me
+          </motion.button>
         </div>
       </div>
 
