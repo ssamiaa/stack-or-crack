@@ -1,8 +1,15 @@
 import { Screen } from "@/lib/types";
+import briefsData from "@/data/briefs.json";
 
-type Props = { goTo: (s: Screen) => void };
+type Brief = typeof briefsData.briefs[0];
 
-export default function Brief({ goTo }: Props) {
+type Props = {
+  goTo: (s: Screen) => void;
+  brief: Brief;
+  onNewBrief: () => void;
+};
+
+export default function Brief({ goTo, brief, onNewBrief }: Props) {
   return (
     <div style={{
       minHeight: "100vh",

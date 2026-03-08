@@ -4,14 +4,17 @@ import { useState } from "react";
 import Drawer from "@/components/Drawer";
 import toolsData from "@/data/tools.json";
 import StackTray from "@/components/StackTray";
+import briefsData from "@/data/briefs.json";
+type Brief = typeof briefsData.briefs[0];
 
 type Props = {
   goTo: (s: Screen) => void;
   selectedTools: Tool[];
   onToggleTool: (id: string) => void;
+  brief: Brief;
 };
 
-export default function Map({ goTo, selectedTools, onToggleTool }: Props) {
+export default function Map({ goTo, selectedTools, onToggleTool, brief }: Props) {
   const [activeCategory, setActiveCategory] = useState("llm");
   const [drawerTool, setDrawerTool] = useState<Tool | null>(null);
 

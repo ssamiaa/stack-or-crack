@@ -8,12 +8,25 @@ import Judging from "@/components/screens/Judging";
 import Verdict from "@/components/screens/Verdict";
 import { Tool } from "@/components/ToolCard";
 import toolsData from "@/data/tools.json";
+import briefsData from "@/data/briefs.json";
 
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
   const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
+  const [currentBrief, setCurrentBrief] = useState(() => {
+    const briefs = briefsData.briefs;
+    return briefs[Math.floor(Math.random() * briefs.length)];
+  });
 
   const goTo = (s: Screen) => setScreen(s);
+
+  const clearStack = () => setSelectedTools([]);
+
+  const newBrief = () => {
+    const briefs = briefsData.briefs;
+    setCurrentBrief(briefs[Math.floor(Math.random() * briefs.length)]);
+    clearStack();
+  };
 
   const toggleTool = (id: string) => {
     setSelectedTools(prev => {
@@ -24,17 +37,16 @@ export default function Home() {
     });
   };
 
-  const clearStack = () => setSelectedTools([]);
-
   return (
     <main>
       {screen === "landing" && <Landing goTo={goTo} />}
-      {screen === "brief" && <Brief goTo={goTo} />}
+      {screen === "brief" && <Brief goTo={goTo} brief={currentBrief} onNewBrief={newBrief} />}
       {screen === "map" && (
         <Map
           goTo={goTo}
           selectedTools={selectedTools}
           onToggleTool={toggleTool}
+          brief={currentBrief}
         />
       )}
       {screen === "judging" && (
