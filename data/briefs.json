@@ -3,9 +3,10 @@
       {
         "id": "brief-01",
         "title": "Voice-Powered Study Assistant",
-        "description": "A computer science student wants an AI assistant that can listen to recorded lectures, convert them into text, summarize key ideas, answer questions about the material, and read answers back out loud during study sessions.",
-        "constraints": "Student budget, must handle long lecture recordings",
-        "budget": "startup",
+        "description": "A CS student wants an app that records lectures, transcribes the audio, summarizes key concepts, answers questions about the material, and reads answers back out loud during study sessions.",
+        "constraints": "Free tiers only, single user, must handle recordings up to 2 hours",
+        "budget": "Personal",
+        "budgetDescription": "One person, hobby project",
         "timeline": "2 weeks",
         "users": "Single student",
         "required_capabilities": [
@@ -28,14 +29,15 @@
       {
         "id": "brief-02",
         "title": "Customer Support Copilot for a SaaS Startup",
-        "description": "A small SaaS startup is overwhelmed with support tickets. They want an AI assistant that can answer common questions instantly, search their documentation, and draft replies for more complicated cases.",
-        "constraints": "Small team, limited budget, answers must use company documentation",
-        "budget": "startup",
+        "description": "A fast-growing SaaS company is overwhelmed with support tickets. They want an AI assistant that searches their documentation to answer common questions instantly and drafts suggested replies for edge cases that fall outside the docs. Answers must never come from general knowledge — only from company documentation.",
+        "constraints": "Answers must come from company docs only, must handle thousands of simultaneous users, zero downtime tolerance",
+        "budget": "Enterprise",
+        "budgetDescription": "Large organization, well funded",
         "timeline": "3 weeks",
-        "users": "Hundreds of customers",
+        "users": "Thousands of customers",
         "required_capabilities": [
-          "Chatbot",
           "Document Search",
+          "RAG",
           "LLM Reasoning",
           "Automation",
           "Data Storage"
@@ -53,9 +55,10 @@
       {
         "id": "brief-03",
         "title": "AI Code Reviewer for a Solo Developer",
-        "description": "An independent developer wants an AI tool that can review pull requests, detect bugs or risky code patterns, and suggest improvements before new code gets merged.",
-        "constraints": "Solo developer workflow, fast feedback required",
-        "budget": "startup",
+        "description": "An independent developer wants an AI tool that reviews pull requests, detects bugs and risky code patterns, suggests improvements before merges, and automatically notifies them via Slack when a review is ready.",
+        "constraints": "Solo developer workflow, fast feedback required, must integrate with existing GitHub setup",
+        "budget": "Personal",
+        "budgetDescription": "One person, hobby project",
         "timeline": "10 days",
         "users": "Single developer",
         "required_capabilities": [
@@ -65,7 +68,7 @@
           "Automation",
           "Workflow Integration"
         ],
-        "difficulty": "Beginner",
+        "difficulty": "Intermediate",
         "slots": 5,
         "expert_stack": [
           "Claude 3.5 Sonnet",
@@ -78,19 +81,20 @@
       {
         "id": "brief-04",
         "title": "Personalized AI News Digest",
-        "description": "A busy professional wants a daily AI briefing that gathers articles about technology, global events, and business news, removes duplicate stories, and summarizes everything into a short digest.",
-        "constraints": "Needs fresh web results every day, must avoid duplicate stories",
-        "budget": "startup",
+        "description": "A busy professional wants a daily briefing that pulls fresh articles on technology, business, and global events every morning, summarizes the key stories, and delivers everything as a short email digest.",
+        "constraints": "Must fetch fresh web content daily, digest must arrive by 8am",
+        "budget": "Personal",
+        "budgetDescription": "One person, hobby project",
         "timeline": "2 weeks",
-        "users": "Single user",
+        "users": "Single professional",
         "required_capabilities": [
           "Web Search",
           "Summarization",
           "LLM Reasoning",
-          "Automation",
+          "Scheduled Automation",
           "Data Storage"
         ],
-        "difficulty": "Intermediate",
+        "difficulty": "Beginner",
         "slots": 5,
         "expert_stack": [
           "Exa",
@@ -103,15 +107,16 @@
       {
         "id": "brief-05",
         "title": "AI Image Generation for an E-Commerce Store",
-        "description": "An online store wants to generate marketing images for products automatically. They need a system that can create polished visuals for product pages and advertising campaigns.",
-        "constraints": "Small team, high visual quality required",
-        "budget": "growth",
+        "description": "An online store wants to stop paying photographers for every new product. They need a system that takes a product name and description, generates polished image variations, and delivers them ready for product pages and ad campaigns.",
+        "constraints": "High visual quality required, small team with no design background, must handle batch generation for new product launches",
+        "budget": "Startup",
+        "budgetDescription": "Small team, limited funding",
         "timeline": "3 weeks",
         "users": "Small e-commerce team",
         "required_capabilities": [
           "Image Generation",
-          "Image Editing",
-          "Automation",
+          "Video Generation",
+          "Pipeline Automation",
           "Asset Delivery",
           "Backend Integration"
         ],
@@ -128,42 +133,44 @@
       {
         "id": "brief-06",
         "title": "AI Research Assistant for a Journalist",
-        "description": "A journalist needs help analyzing large collections of reports, transcripts, and public records. They want an AI system that can search documents, summarize findings, and answer questions with references to the source material.",
-        "constraints": "Accuracy matters more than speed, answers must cite sources",
-        "budget": "pro",
+        "description": "A journalist needs help researching stories across live web sources, public records, and news archives. They want an AI that can search the open web, summarize findings, and answer questions with citations so every claim can be traced back to its source.",
+        "constraints": "Accuracy matters more than speed, every answer must cite a source URL, sources must be live and current not static documents",
+        "budget": "Startup",
+        "budgetDescription": "Small team, limited funding",
         "timeline": "4 weeks",
         "users": "Journalist and editor",
         "required_capabilities": [
-          "Document Processing",
+          "Live Web Search",
           "RAG",
-          "Search",
           "Summarization",
+          "Citation Tracking",
           "LLM Reasoning"
         ],
         "difficulty": "Advanced",
         "slots": 5,
         "expert_stack": [
+          "Exa",
           "Unstructured",
           "Claude 3.5 Sonnet",
           "Weaviate",
-          "LlamaIndex",
-          "Exa"
+          "LlamaIndex"
         ]
       },
       {
         "id": "brief-07",
         "title": "Multilingual Chatbot for a Small Business",
-        "description": "A small business wants a chatbot that can answer customer questions, help users book appointments, and communicate in multiple languages.",
-        "constraints": "Low budget, non-technical staff will manage the system",
-        "budget": "startup",
+        "description": "A small local business wants a chatbot on their website that answers customer questions in multiple languages and helps users book appointments. The owner has no technical background and needs to manage the chatbot through a visual interface without writing any code.",
+        "constraints": "No technical staff, low budget, must be fully manageable through a visual no-code interface, must support at least 3 languages",
+        "budget": "Startup",
+        "budgetDescription": "Small team, limited funding",
         "timeline": "2 weeks",
         "users": "Dozens of customers per day",
         "required_capabilities": [
           "Multilingual Chat",
           "LLM Reasoning",
-          "Automation",
+          "No-Code Management",
           "Database Storage",
-          "Workflow Integration"
+          "Workflow Automation"
         ],
         "difficulty": "Beginner",
         "slots": 5,
@@ -178,16 +185,17 @@
       {
         "id": "brief-08",
         "title": "Automated Social Media Content Creator",
-        "description": "A startup marketing team wants an AI system that can turn blog posts and product updates into social media captions, promotional graphics, and short marketing content.",
-        "constraints": "Small marketing team, must produce both text and images quickly",
-        "budget": "startup",
+        "description": "A startup marketing team wants a system that takes blog posts and product updates as input, rewrites them as platform-specific social media captions, generates matching promotional graphics, and queues posts for publishing automatically.",
+        "constraints": "Small marketing team, must produce both text and visuals in one pipeline, must post to multiple platforms without manual effort",
+        "budget": "Startup",
+        "budgetDescription": "Small team, limited funding",
         "timeline": "2 weeks",
         "users": "Startup marketing team",
         "required_capabilities": [
           "Text Generation",
           "Image Generation",
           "Content Repurposing",
-          "Automation",
+          "Pipeline Automation",
           "Publishing Workflow"
         ],
         "difficulty": "Beginner",
@@ -203,15 +211,16 @@
       {
         "id": "brief-09",
         "title": "Document Q&A System for a Law Firm",
-        "description": "A law firm wants an internal AI assistant that can search contracts, legal memos, and case files, then answer staff questions with references to the original documents.",
-        "constraints": "Sensitive documents, answers must cite sources",
-        "budget": "pro",
+        "description": "A law firm wants an internal AI assistant that ingests contracts, legal memos, and case files from their private servers, then answers staff questions with citations to the exact source document and page number. Documents must never leave the firm's infrastructure.",
+        "constraints": "Documents must stay on private infrastructure, every answer must cite its exact source, zero tolerance for hallucination",
+        "budget": "Enterprise",
+        "budgetDescription": "Large organization, well funded",
         "timeline": "4 weeks",
-        "users": "Legal team",
+        "users": "Legal team of 20",
         "required_capabilities": [
           "Document Processing",
-          "RAG",
-          "Search",
+          "Embedding",
+          "Vector Search",
           "LLM Reasoning",
           "Secure Storage"
         ],
@@ -228,13 +237,14 @@
       {
         "id": "brief-10",
         "title": "Real-Time Meeting Summarizer",
-        "description": "A remote startup wants an AI assistant that joins meetings, transcribes conversations, generates summaries, and extracts action items automatically after each call.",
-        "constraints": "Must process multi-speaker audio and produce summaries immediately",
-        "budget": "growth",
+        "description": "A remote startup wants a system that joins video calls, transcribes multi-speaker conversations with speaker labels, generates a structured summary, and automatically extracts and assigns action items to the right team member within five minutes of the call ending.",
+        "constraints": "Must correctly attribute speech to the right speaker, summary and action items must be delivered within 5 minutes of call end",
+        "budget": "Enterprise",
+        "budgetDescription": "Large organization, well funded",
         "timeline": "3 weeks",
-        "users": "Small remote team",
+        "users": "Remote team of 10",
         "required_capabilities": [
-          "Speech-to-Text",
+          "Real-Time Speech-to-Text",
           "Speaker Recognition",
           "Summarization",
           "Action Item Extraction",
