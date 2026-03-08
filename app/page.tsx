@@ -10,6 +10,14 @@ import { Tool } from "@/components/ToolCard";
 import toolsData from "@/data/tools.json";
 import briefsData from "@/data/briefs.json";
 
+type JudgeVerdict = {
+  overall_rating: string;
+  overall: string;
+  tool_verdicts: { tool: string; rating: string; correct: boolean; verdict: string }[];
+  missed_tools: string[];
+  hatter_quote: string;
+};
+
 export default function Home() {
   const [screen, setScreen] = useState<Screen>("landing");
   const [selectedTools, setSelectedTools] = useState<Tool[]>([]);
@@ -17,6 +25,7 @@ export default function Home() {
     const briefs = briefsData.briefs;
     return briefs[Math.floor(Math.random() * briefs.length)];
   });
+  const [verdict, setVerdict] = useState<JudgeVerdict | null>(null);
 
   const goTo = (s: Screen) => setScreen(s);
 
@@ -56,18 +65,22 @@ export default function Home() {
       )}
       {screen === "judging" && (
         <Judging
-          goTo={goTo}
-          selectedTools={selectedTools}
+            goTo={goTo}
+            selectedTools={selectedTools}
+            brief={currentBrief}
+            onVerdictReady={setVerdict}
         />
-      )}
-      {screen === "verdict" && (
+        )}
+        {screen === "verdict" && (
         <Verdict
             goTo={goTo}
             selectedTools={selectedTools}
             onClear={clearStack}
             onNewBrief={newBrief}
+            verdict={verdict}
+            brief={currentBrief}
         />
-    )}
+        )}
     </main>
   );
 }
