@@ -1,0 +1,1 @@
+export type Screen = "landing" | "brief" | "map" | "judging" | "verdict";
