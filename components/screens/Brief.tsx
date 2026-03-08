@@ -19,12 +19,6 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
     const [flipKey, setFlipKey] = useState(0);
     const [showBudgetTooltip, setShowBudgetTooltip] = useState(false);
 
-    const budgetDescriptions: Record<string, string> = {
-        startup: "Bootstrap budget — free tiers and tools under ~$50/month",
-        growth: "Growing team — willing to pay for quality, ~$50–300/month",
-        pro: "Professional setup — no hard cost ceiling, prioritise capability",
-    };
-
     const handleNewBrief = () => {
         onNewBrief();
         setFlipKey(k => k + 1);
@@ -131,7 +125,7 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                                                         0 0 15px 1px rgba(112, 56, 208, 0.4)
                                                     `
                                                 }}>
-                                            {budgetDescriptions[brief.budget] ?? brief.budget}
+                                            {brief.budgetDescription}
                                         </div>
                                     )}
                                 </div>

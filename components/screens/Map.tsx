@@ -35,12 +35,6 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
     const [drawerTool, setDrawerTool] = useState<Tool | null>(null);
     const [showBudgetTooltip, setShowBudgetTooltip] = useState(false);
 
-    const budgetDescriptions: Record<string, string> = {
-        startup: "Bootstrap budget — free tiers and tools under ~$50/month",
-        growth: "Growing team — willing to pay for quality, ~$50–300/month",
-        pro: "Professional setup — no hard cost ceiling, prioritise capability",
-    };
-
     const tools = toolsData.tools;
 
     const badgeStyle: React.CSSProperties = {
@@ -304,7 +298,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                                                         0 0 15px 1px rgba(112, 56, 208, 0.4)
                                                     `
                                                 }}>
-                                                    {budgetDescriptions[brief.budget] ?? brief.budget}
+                                                    {brief.budgetDescription}
                                                 </div>
                                             )}
                                         </div>

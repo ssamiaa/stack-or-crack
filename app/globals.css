@@ -45,9 +45,9 @@ body {
     gap: 12px;
 }
 
-.title-crack {
+.title-main .title-crack {
     font-style: italic;
-    color: #7038d0;
+    color: #5a2ca9 !important;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     font-size: 1.2em;
     margin-left: 4px;
