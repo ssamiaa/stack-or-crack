@@ -1,6 +1,8 @@
 # Stack or Crack
 
-Stack or Crack is an interactive AI literacy game where players are given a real project brief and must assemble the right stack of AI tools to solve it. Once your stack is complete, the Mad Hatter judges every choice — evaluating fit, cost, and coverage against the brief. Learn the AI tool landscape by putting it to use.
+*Can you navigate the AI realm?* 
+
+In Stack or Crack, you get a real project brief and explore the map of AI tools. You assemble your stack, then the Mad Hatter judges every choice. Learn the AI landscape by putting it to use.
 
 ## Getting Started
 
