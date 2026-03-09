@@ -26,15 +26,16 @@ interface ToolCardProps {
     stackFull: boolean;
     onSelect: (id: string) => void;
     onLearnMore: (tool: Tool) => void;
+    exploreMode?: boolean;
 }
 
-export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLearnMore }: ToolCardProps) {
+export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLearnMore, exploreMode = false }: ToolCardProps) {
     const gradientStyle: React.CSSProperties = {
         background: 'linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)',
     };
 
     const glow = "0 0 18px 4px rgba(100, 200, 150, 0.45)";
-    const dimmed = stackFull && !isSelected;
+    const dimmed = !exploreMode && stackFull && !isSelected;
 
     const badgeStyle: React.CSSProperties = {
         backgroundColor: '#31234a',
@@ -44,19 +45,19 @@ export default function ToolCard({ tool, isSelected, stackFull, onSelect, onLear
 
     return (
         <motion.div
-            whileHover={dimmed ? {} : { y: -3, boxShadow: glow }}
-            whileTap={dimmed ? {} : { scale: 0.98 }}
+            whileHover={dimmed || exploreMode ? {} : { y: -3, boxShadow: glow }}
+            whileTap={dimmed || exploreMode ? {} : { scale: 0.98 }}
             animate={{
                 boxShadow: isSelected ? glow : "0 0 0px 0px rgba(0,0,0,0)",
                 opacity: dimmed ? 0.45 : 1,
             }}
             transition={{ duration: 0.2 }}
-            onClick={() => onSelect(tool.id)}
+            onClick={() => !exploreMode && onSelect(tool.id)}
             style={gradientStyle}
             className={`
         relative flex flex-col gap-2 rounded-xl border p-3.5
         transition-colors duration-150 select-none
-        ${dimmed ? "cursor-not-allowed" : "cursor-pointer"}
+        ${exploreMode ? "cursor-default" : dimmed ? "cursor-not-allowed" : "cursor-pointer"}
         ${isSelected
                     ? "border-white/30"
                     : "border-white/10 hover:border-white/25"

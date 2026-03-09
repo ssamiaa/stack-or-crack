@@ -16,10 +16,10 @@ export default function StackTray({ stack, maxSize = 5 }: StackTrayProps) {
     const slots = Array.from({ length: maxSize }, (_, i) => stack[i] ?? null);
 
     return (
-        <div className="flex items-center gap-5">
+        <div className="stack-tray-root flex items-center gap-5">
             <span
                 style={{ color: isFull ? "#349056" : "rgba(255,255,255,0.3)" }}
-                className="text-xl font-semibold tabular-nums">
+                className="stack-tray-label text-xl font-semibold tabular-nums">
                 STACK
             </span>
             {slots.map((tool, i) => (
@@ -46,7 +46,7 @@ export default function StackTray({ stack, maxSize = 5 }: StackTrayProps) {
                                 }
                         }
                         className={`
-                            flex h-15 w-15 items-center justify-center rounded-xl border text-xl
+                            stack-tray-slot flex h-15 w-15 items-center justify-center rounded-xl border text-xl
                             transition-colors duration-150
                             ${tool
                                 ? "border-green-400/40 cursor-default"
@@ -110,7 +110,7 @@ export default function StackTray({ stack, maxSize = 5 }: StackTrayProps) {
             {/* Stack count */}
             <span
                 style={{ color: isFull ? "#349056" : "rgba(255,255,255,0.3)" }}
-                className="mb-5 text-3xl font-bold tabular-nums"
+                className="stack-tray-count mb-5 text-3xl font-bold tabular-nums"
             >
                 {stack.length}/{maxSize}
             </span>

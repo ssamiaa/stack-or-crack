@@ -112,6 +112,7 @@ export default function Judging({ goTo, selectedTools, brief, onVerdictReady }: 
                 alt="Mad Hatter"
                 width={300}
                 height={300}
+                className="judging-hatter-img"
                 style={{
                         width: "300px",
                         height: "300px",

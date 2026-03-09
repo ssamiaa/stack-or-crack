@@ -52,3 +52,100 @@ body {
     font-size: 1.2em;
     margin-left: 4px;
 }
+
+
+/* ── Mobile responsiveness ───────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Map — header */
+    .map-header {
+        flex-wrap: wrap !important;
+        padding: 10px 14px !important;
+        gap: 6px !important;
+    }
+    .map-header-categories {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start !important;
+        padding-bottom: 2px;
+    }
+    .map-header-categories::-webkit-scrollbar { display: none; }
+    .map-header-actions { flex: 0 !important; }
+
+    /* Map — tool grid */
+    .map-tool-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 12px !important;
+    }
+
+    /* Map — sidebar & hatter hidden on mobile */
+    .map-brief-sidebar { display: none !important; }
+    .map-hatter { display: none !important; }
+
+    /* Map — submit bar stacks vertically */
+    .map-submit-bar {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 12px 16px !important;
+        gap: 10px !important;
+        align-items: center !important;
+        overflow: hidden !important;
+    }
+    .map-submit-tray {
+        position: static !important;
+        transform: none !important;
+    }
+    .map-submit-actions {
+        flex: none !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* StackTray */
+    .stack-tray-slot {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    .stack-tray-root {
+        gap: 8px !important;
+    }
+    .stack-tray-label {
+        font-size: 13px !important;
+    }
+    .stack-tray-count {
+        font-size: 18px !important;
+        margin-bottom: 12px !important;
+    }
+    .stack-tray-slot img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* Landing stats */
+    .landing-stats {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+    }
+
+    /* Judging hatter */
+    .judging-hatter-img {
+        width: 160px !important;
+        height: 160px !important;
+        margin-bottom: -40px !important;
+    }
+
+    /* Verdict outer padding */
+    .verdict-outer {
+        padding: 12px !important;
+    }
+}

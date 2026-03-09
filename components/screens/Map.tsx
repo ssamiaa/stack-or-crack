@@ -34,14 +34,9 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
     const [activeCategory, setActiveCategory] = useState("llm");
     const [drawerTool, setDrawerTool] = useState<Tool | null>(null);
     const [showBudgetTooltip, setShowBudgetTooltip] = useState(false);
+    const [showMobileBrief, setShowMobileBrief] = useState(false);
 
     const tools = toolsData.tools;
-
-    const badgeStyle: React.CSSProperties = {
-        backgroundColor: "#31234a",
-        color: "#e9d5ff",
-        boxShadow: "0 0 8px 2px rgba(168, 85, 247, 0.4)",
-    };
 
     const categories = [
         { img: lang, label: "Language Models", id: "llm" },
@@ -68,7 +63,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
             <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
                 {/* Header bar */}
-                <div style={{ position: "relative", display: "flex", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                <div className="map-header" style={{ position: "relative", display: "flex", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
 
                     {/* Left — logo */}
                     <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
@@ -78,7 +73,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                     </div>
 
                     {/* Centre — categories (absolutely positioned so they're truly centred) */}
-                    <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div className="map-header-categories" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", display: "flex", alignItems: "center", gap: "8px" }}>
                         {categories.map(({ img, label, id }) => (
                             <div key={id} onClick={() => setActiveCategory(id)} style={{
                                 display: "flex",
@@ -118,7 +113,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                     </div>
 
                     {/* Right — buttons */}
-                    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px" }}>
+                    <div className="map-header-actions" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px" }}>
                         {exploreMode ? (
                             <motion.button
                                 onClick={() => goTo("brief")}
@@ -179,11 +174,116 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                         >
                             Back
                         </motion.button>
+                        {/* Mobile-only brief toggle */}
+                        {!exploreMode && (
+                            <motion.button
+                                className="flex md:hidden"
+                                onClick={() => setShowMobileBrief(v => !v)}
+                                whileHover={{ opacity: 0.8 }}
+                                style={{
+                                    padding: "8px 14px",
+                                    background: showMobileBrief ? "rgba(100,200,150,0.15)" : "rgba(255,255,255,0.04)",
+                                    border: `1px solid ${showMobileBrief ? "rgba(100,200,150,0.4)" : "rgba(255,255,255,0.1)"}`,
+                                    color: showMobileBrief ? "rgba(100,200,150,0.9)" : "rgba(255,255,255,0.5)",
+                                    fontFamily: "Cormorant Garamond, serif",
+                                    fontWeight: 600,
+                                    fontSize: "14px",
+                                    borderRadius: "14px",
+                                    cursor: "pointer",
+                                    whiteSpace: "nowrap",
+                                    alignItems: "center",
+                                    gap: "6px",
+                                }}
+                            >
+                                Brief
+                            </motion.button>
+                        )}
                     </div>
                 </div>
 
                 {/* Content row: tools + brief sidebar */}
-                <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+                <div style={{ flex: 1, display: "flex", overflow: "hidden", position: "relative" }}>
+
+                    {/* Mobile brief overlay */}
+                    {showMobileBrief && !exploreMode && (
+                        <div style={{
+                            position: "absolute",
+                            inset: 0,
+                            zIndex: 20,
+                            overflowY: "auto",
+                            background: "linear-gradient(225deg, rgba(77,124,91,0.18) 0%, rgba(43,74,83,0.15) 50%, rgba(30,51,68,0.18) 100%)",
+                            backdropFilter: "blur(12px)",
+                            WebkitBackdropFilter: "blur(12px)",
+                            padding: "20px 16px",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "14px",
+                        }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                                <span style={{ fontSize: "13px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "rgba(255,255,255,0.3)" }}>Your Mission</span>
+                                <h2 style={{ margin: 0, fontSize: "22px", fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>{brief.title}</h2>
+                            </div>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                                {brief.required_capabilities.map(cap => (
+                                    <span key={cap} style={{ boxShadow: "0 0 6px 1px rgba(100,200,150,0.25)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "999px", padding: "3px 10px", fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>{cap}</span>
+                                ))}
+                            </div>
+                            <p style={{ margin: 0, fontSize: "16px", fontStyle: "italic", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>{brief.description}</p>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
+                                {/* Budget with info icon */}
+                                <div style={{ position: "relative", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                    <span style={{ display: "block", fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Budget</span>
+                                    <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)" }}>{brief.budget}</span>
+                                    <div
+                                        style={{ position: "absolute", bottom: "5px", right: "6px", cursor: "pointer" }}
+                                        onMouseEnter={() => setShowBudgetTooltip(true)}
+                                        onMouseLeave={() => setShowBudgetTooltip(false)}
+                                    >
+                                        <Image src={info} alt="info" width={13} height={13} style={{ opacity: 0.4, filter: "invert(1)" }} />
+                                        {showBudgetTooltip && (
+                                            <div style={{
+                                                position: "absolute",
+                                                bottom: "calc(100% + 8px)",
+                                                right: 0,
+                                                width: "180px",
+                                                background: "#1a1a2e",
+                                                border: "1px solid rgba(112,56,208,0.4)",
+                                                borderRadius: "10px",
+                                                padding: "10px 12px",
+                                                fontSize: "12px",
+                                                color: "rgba(255,255,255,0.7)",
+                                                lineHeight: 1.5,
+                                                zIndex: 30,
+                                                pointerEvents: "none",
+                                                whiteSpace: "normal",
+                                                textAlign: "left",
+                                                boxShadow: "0 4px 6px -1px rgba(0,0,0,0.6), 0 0 15px 1px rgba(112,56,208,0.4)",
+                                            }}>
+                                                {brief.budgetDescription}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                {/* Timeline */}
+                                <div style={{ borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                    <span style={{ display: "block", fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Timeline</span>
+                                    <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)" }}>{brief.timeline}</span>
+                                </div>
+                                {/* Users */}
+                                <div style={{ borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)", padding: "10px 8px", textAlign: "center", background: "rgba(255,255,255,0.03)" }}>
+                                    <span style={{ display: "block", fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>Users</span>
+                                    <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.75)" }}>{brief.users}</span>
+                                </div>
+                            </div>
+                            <motion.button
+                                onClick={() => setShowMobileBrief(false)}
+                                whileHover={{ opacity: 0.8 }}
+                                style={{ padding: "10px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.6)", fontFamily: "Cormorant Garamond, serif", fontSize: "15px", borderRadius: "12px", cursor: "pointer", marginTop: "4px" }}
+                            >
+                                Close Brief
+                            </motion.button>
+                        </div>
+                    )}
 
                     {/* Tools grid */}
                     <div style={{ flex: 1, overflowY: "auto" }}>
@@ -218,7 +318,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                             })()}
                             {categoryTitleLabel[activeCategory]}
                         </div>
-                        <div style={{ display: "grid", gridTemplateColumns: `repeat(${exploreMode ? 5 : 4}, 1fr)`, gap: "30px", padding: "24px" }}>
+                        <div className="map-tool-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${exploreMode ? 5 : 4}, 1fr)`, gap: "30px", padding: "24px" }}>
                             {tools
                                 .filter(tool => tool.category === activeCategory)
                                 .map(tool => (
@@ -229,6 +329,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                                         stackFull={selectedTools.length === 5}
                                         onSelect={onToggleTool}
                                         onLearnMore={(tool) => setDrawerTool(tool)}
+                                        exploreMode={exploreMode}
                                     />
                                 ))}
                         </div>
@@ -236,7 +337,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
 
                     {/* Brief sidebar — challenge mode only */}
                     {!exploreMode && (
-                        <div style={{
+                        <div className="map-brief-sidebar" style={{
                             width: "410px",
                             flexShrink: 0,
                             borderLeft: "1px solid rgba(255,255,255,0.07)",
@@ -295,9 +396,8 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                                             {showBudgetTooltip && (
                                                 <div style={{
                                                     position: "absolute",
-                                                    top: "50%",
-                                                    transform: "translateY(-50%)",
-                                                    left: "calc(100% + 12px)",
+                                                    bottom: "calc(100% + 8px)",
+                                                    right: 0,
                                                     width: "200px",
                                                     background: "#1a1a2e",
                                                     border: "1px solid rgba(112, 56, 208, 0.4)",
@@ -310,7 +410,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                                                     pointerEvents: "none",
                                                     whiteSpace: "normal",
                                                     boxShadow: `
-                                                        0 4px 6px -1px rgba(0, 0, 0, 0.6), 
+                                                        0 4px 6px -1px rgba(0, 0, 0, 0.6),
                                                         0 0 15px 1px rgba(112, 56, 208, 0.4)
                                                     `
                                                 }}>
@@ -345,8 +445,8 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
 
             </div>
 
-            {/* Submit bar — hidden in explore mode */}
-            {!exploreMode && <div style={{
+            {/* Submit bar — challenge mode only */}
+            {!exploreMode && <div className="map-submit-bar" style={{
                 display: "flex",
                 alignItems: "center",
                 height: "125px",
@@ -356,70 +456,78 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                 position: "relative",
                 overflow: "visible",
             }}>
-                {/* Mascot — bottom left, overflows upward */}
-                <motion.div
-                    animate={{ y: [0, -12, 0] }}
-                    transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
-                    style={{ flex: 1, display: "flex", alignItems: "flex-end", marginLeft: "-30px" }}
-                >
-                    <img
-                        src="/hatterw:ob.png"
-                        alt="Mad Hatter"
-                        style={{
-                            width: "180px",
-                            height: "180px",
-                            objectFit: "contain",
-                            marginBottom: "-10px",
-                        }}
-                    />
-                </motion.div>
-
+                {/* Mascot — challenge mode only */}
+                {!exploreMode && (
+                    <motion.div
+                        animate={{ y: [0, -12, 0] }}
+                        transition={{ duration: 5, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
+                        className="map-hatter" style={{ flex: 1, display: "flex", alignItems: "flex-end", marginLeft: "-30px" }}
+                    >
+                        <img
+                            src="/hatterw:ob.png"
+                            alt="Mad Hatter"
+                            style={{ width: "180px", height: "180px", objectFit: "contain", marginBottom: "-10px" }}
+                        />
+                    </motion.div>
+                )}
 
                 {/* StackTray — center */}
-                <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+                <div className="map-submit-tray" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
                     <StackTray stack={selectedTools} maxSize={5} />
                 </div>
 
-                {/* Hint + button — right */}
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px", marginBottom: "20px" }}>
-                    <span style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "18px", color: "rgba(240,224,200,0.3)" }}>
-                        {selectedTools.length === 5
-                            ? "Your stack is complete — drink me!"
-                            : `Select ${5 - selectedTools.length} more tool${5 - selectedTools.length === 1 ? "" : "s"}`}
-                    </span>
-                    <motion.button
-                        onClick={() => selectedTools.length === 5 ? goTo("judging") : null}
-                        whileHover={selectedTools.length === 5 ? { boxShadow: "0 0 16px 4px rgba(255,255,255,0.25)" } : {}}
-                        transition={{ duration: 0.2 }}
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            padding: "10px 36px",
-                            background: selectedTools.length === 5 ? "rgba(158,42,43,0.8)" : "rgba(158,42,43,0.2)",
-                            border: `1px solid ${selectedTools.length === 5 ? "rgba(158,42,43,0.9)" : "rgba(158,42,43,0.2)"}`,
-                            color: selectedTools.length === 5 ? "#fdfbf8" : "rgba(240,224,200,0.25)",
-                            fontFamily: "Cormorant Garamond, serif",
-                            fontWeight: 700,
-                            fontSize: "25px",
-                            letterSpacing: "2px",
-                            cursor: selectedTools.length === 5 ? "pointer" : "not-allowed",
-                            borderRadius: "15px",
-                        }}>
-                        <Image
-                            src={poison}
-                            alt="potion"
-                            width={30}
-                            height={30}
-                            style={{
-                                filter: selectedTools.length === 5
-                                    ? "invert(1) drop-shadow(0 0 4px rgba(139, 42, 158, 0.9))"
-                                    : "invert(0.3)",
-                                transition: "filter 0.3s ease",
-                            }}
-                        />
-                        Drink Me
-                    </motion.button>
+                {/* Right side */}
+                <div className="map-submit-actions" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px", marginBottom: exploreMode ? 0 : "20px" }}>
+                    {exploreMode ? (
+                        /* Explore mode: just show count */
+                        <span style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "18px", color: "rgba(240,224,200,0.3)" }}>
+                            {selectedTools.length === 0
+                                ? "Select tools to build a stack"
+                                : `${selectedTools.length}/5 selected`}
+                        </span>
+                    ) : (
+                        /* Challenge mode: hint + drink me */
+                        <>
+                            <span style={{ fontFamily: "Cormorant Garamond, serif", fontStyle: "italic", fontSize: "18px", color: "rgba(240,224,200,0.3)" }}>
+                                {selectedTools.length === 5
+                                    ? "Your stack is complete — drink me!"
+                                    : `Select ${5 - selectedTools.length} more tool${5 - selectedTools.length === 1 ? "" : "s"}`}
+                            </span>
+                            <motion.button
+                                onClick={() => selectedTools.length === 5 ? goTo("judging") : null}
+                                whileHover={selectedTools.length === 5 ? { boxShadow: "0 0 16px 4px rgba(255,255,255,0.25)" } : {}}
+                                transition={{ duration: 0.2 }}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "8px",
+                                    padding: "10px 36px",
+                                    background: selectedTools.length === 5 ? "rgba(158,42,43,0.8)" : "rgba(158,42,43,0.2)",
+                                    border: `1px solid ${selectedTools.length === 5 ? "rgba(158,42,43,0.9)" : "rgba(158,42,43,0.2)"}`,
+                                    color: selectedTools.length === 5 ? "#fdfbf8" : "rgba(240,224,200,0.25)",
+                                    fontFamily: "Cormorant Garamond, serif",
+                                    fontWeight: 700,
+                                    fontSize: "25px",
+                                    letterSpacing: "2px",
+                                    cursor: selectedTools.length === 5 ? "pointer" : "not-allowed",
+                                    borderRadius: "15px",
+                                }}>
+                                <Image
+                                    src={poison}
+                                    alt="potion"
+                                    width={30}
+                                    height={30}
+                                    style={{
+                                        filter: selectedTools.length === 5
+                                            ? "invert(1) drop-shadow(0 0 4px rgba(139, 42, 158, 0.9))"
+                                            : "invert(0.3)",
+                                        transition: "filter 0.3s ease",
+                                    }}
+                                />
+                                Drink Me
+                            </motion.button>
+                        </>
+                    )}
                 </div>
             </div>}
 
@@ -429,6 +537,7 @@ export default function Map({ goTo, selectedTools, onToggleTool, brief, exploreM
                 isSelected={drawerTool ? selectedTools.some(t => t.id === drawerTool.id) : false}
                 onClose={() => setDrawerTool(null)}
                 onSelect={onToggleTool}
+                exploreMode={exploreMode}
             />
 
         </div>

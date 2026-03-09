@@ -155,6 +155,7 @@ export default function Landing({ goTo, onExplore }: Props) {
 
             <motion.div
                 {...popIn(0.9)}
+                className="landing-stats"
                 style={{
                     display: "flex",
                     gap: "48px",
