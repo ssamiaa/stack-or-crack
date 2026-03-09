@@ -8,9 +8,10 @@ interface DrawerProps {
     isSelected: boolean;
     onClose: () => void;
     onSelect: (id: string) => void;
+    exploreMode?: boolean;
 }
 
-export default function Drawer({ tool, isSelected, onClose, onSelect }: DrawerProps) {
+export default function Drawer({ tool, isSelected, onClose, onSelect, exploreMode = false }: DrawerProps) {
     const gradientStyle: React.CSSProperties = {
         background: "linear-gradient(225deg, #4d7c5b 0%, #2b4a53 50%, #1e3344 100%)",
         perspective: 1200,
@@ -156,33 +157,35 @@ export default function Drawer({ tool, isSelected, onClose, onSelect }: DrawerPr
 
                             {/* Sticky footer */}
                             <div className="flex gap-3 border-t border-white/10 p-4">
-                                {/* Add / remove from stack */}
-                                <motion.button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        onSelect(tool.id);
-                                    }}
-                                    style={stackButtonStyle}
-                                    whileHover={{ opacity: 0.85 }}
-                                    transition={{ duration: 0.15 }}
-                                    className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-semibold cursor-pointer"
-                                >
-                                    {isSelected ? (
-                                        <>
-                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
-                                            </svg>
-                                            In Stack
-                                        </>
-                                    ) : (
-                                        <>
-                                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                                            </svg>
-                                            Add to Stack
-                                        </>
-                                    )}
-                                </motion.button>
+                                {/* Add / remove from stack — hidden in explore mode */}
+                                {!exploreMode && (
+                                    <motion.button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            onSelect(tool.id);
+                                        }}
+                                        style={stackButtonStyle}
+                                        whileHover={{ opacity: 0.85 }}
+                                        transition={{ duration: 0.15 }}
+                                        className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-semibold cursor-pointer"
+                                    >
+                                        {isSelected ? (
+                                            <>
+                                                <svg className="h-4 w-4" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                                                </svg>
+                                                In Stack
+                                            </>
+                                        ) : (
+                                            <>
+                                                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                                                </svg>
+                                                Add to Stack
+                                            </>
+                                        )}
+                                    </motion.button>
+                                )}
 
                                 {/* Visit site */}
                                 <motion.a

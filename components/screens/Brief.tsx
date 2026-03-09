@@ -92,7 +92,7 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                     {/* Constraints */}
                     <div className="flex flex-col gap-2">
                         <span className="text-xl font-semibold uppercase tracking-widest text-white/30">Constraints</span>
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             {/* Budget — with info icon in bottom-right */}
                             <div className="relative rounded-xl border border-white/10 px-4 py-3 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
                                 <span className="block text-lg font-semibold uppercase tracking-widest text-white/30 mb-1">Budget</span>
@@ -103,32 +103,32 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                                     onMouseLeave={() => setShowBudgetTooltip(false)}
                                 >
                                     <Image src={info} alt="info" width={15} height={15} style={{ opacity: 0.35, filter: "invert(1)" }} />
-                                    {showBudgetTooltip && (
-                                        <div style={{
-                                                    position: "absolute",
-                                                    top: "50%",
-                                                    transform: "translateY(-50%)",
-                                                    left: "calc(100% + 12px)",
-                                                    width: "200px",
-                                                    background: "#1a1a2e",
-                                                    border: "1px solid rgba(112, 56, 208, 0.4)",
-                                                    borderRadius: "10px",
-                                                    padding: "10px 12px",
-                                                    fontSize: "15px",
-                                                    color: "rgba(255,255,255,0.7)",
-                                                    lineHeight: 1.5,
-                                                    zIndex: 50,
-                                                    pointerEvents: "none",
-                                                    whiteSpace: "normal",
-                                                    boxShadow: `
-                                                        0 4px 6px -1px rgba(0, 0, 0, 0.6), 
-                                                        0 0 15px 1px rgba(112, 56, 208, 0.4)
-                                                    `
-                                                }}>
-                                            {brief.budgetDescription}
-                                        </div>
-                                    )}
                                 </div>
+                                {showBudgetTooltip && (
+                                    <div style={{
+                                        position: "absolute",
+                                        bottom: "calc(100% + 8px)",
+                                        right: 0,
+                                        width: "200px",
+                                        background: "#1a1a2e",
+                                        border: "1px solid rgba(112, 56, 208, 0.4)",
+                                        borderRadius: "10px",
+                                        padding: "10px 12px",
+                                        fontSize: "15px",
+                                        color: "rgba(255,255,255,0.7)",
+                                        lineHeight: 1.5,
+                                        zIndex: 50,
+                                        pointerEvents: "none",
+                                        whiteSpace: "normal",
+                                        textAlign: "left",
+                                        boxShadow: `
+                                            0 4px 6px -1px rgba(0, 0, 0, 0.6),
+                                            0 0 15px 1px rgba(112, 56, 208, 0.4)
+                                        `
+                                    }}>
+                                        {brief.budgetDescription}
+                                    </div>
+                                )}
                             </div>
                             {/* Timeline */}
                             <div className="rounded-xl border border-white/10 px-4 py-3 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
@@ -157,39 +157,41 @@ export default function Brief({ goTo, brief, onNewBrief }: Props) {
                 </div>
 
                 {/* Footer */}
-                <div className="flex gap-3 border-t border-white/10 p-4">
+                <div className="flex flex-col sm:flex-row gap-3 border-t border-white/10 p-4">
                     <motion.button
                         onClick={() => goTo("map")}
                         style={primaryButtonStyle}
                         whileHover={{ opacity: 0.85 }}
                         transition={{ duration: 0.15 }}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
+                        className="flex sm:flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
                     >
-                        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                         </svg>
                         Build My Stack
                     </motion.button>
 
-                    <motion.button
-                        onClick={handleNewBrief}
-                        style={badgeStyle}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.15 }}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
-                    >
-                        New Brief
-                    </motion.button>
+                    <div className="flex sm:flex-1 gap-3">
+                        <motion.button
+                            onClick={handleNewBrief}
+                            style={badgeStyle}
+                            whileHover={{ opacity: 0.85 }}
+                            transition={{ duration: 0.15 }}
+                            className="flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-lg font-semibold cursor-pointer"
+                        >
+                            New Brief
+                        </motion.button>
 
-                    <motion.button
-                        onClick={() => goTo("landing")}
-                        style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)", boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.3)" }}
-                        whileHover={{ opacity: 0.85 }}
-                        transition={{ duration: 0.15 }}
-                        className="flex items-center justify-center gap-2 rounded-xl border border-white/20 px-5 py-2.5 text-lg font-semibold cursor-pointer"
-                    >
-                        Home
-                    </motion.button>
+                        <motion.button
+                            onClick={() => goTo("landing")}
+                            style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)", boxShadow: "0 0 10px 2px rgba(100, 200, 150, 0.3)" }}
+                            whileHover={{ opacity: 0.85 }}
+                            transition={{ duration: 0.15 }}
+                            className="flex items-center justify-center gap-2 rounded-xl border border-white/20 px-5 py-2.5 text-lg font-semibold cursor-pointer"
+                        >
+                            Home
+                        </motion.button>
+                    </div>
                 </div>
             </motion.div>
         </div>

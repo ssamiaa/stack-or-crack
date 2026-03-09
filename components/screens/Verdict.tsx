@@ -46,7 +46,7 @@ export default function Verdict({ goTo, onNewBrief, verdict, selectedTools, brie
     const cfg = LEVEL_CONFIG[currentLevel] ?? LEVEL_CONFIG["emerging"];
 
     return (
-        <div style={{
+        <div className="verdict-outer" style={{
             height: "100vh",
             display: "flex",
             alignItems: "center",
